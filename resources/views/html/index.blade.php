@@ -1,6 +1,6 @@
 @extends("layouts.master")
 
-@section("title","Home Page | Pet Fashion Home Page" )
+@section("title","Home Page | Pet Fashion Management System" )
 
 @section("home")
 

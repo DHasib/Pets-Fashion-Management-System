@@ -86,28 +86,28 @@
                 <div class="col-md-10 p0">
                     <div class="collapse navbar-collapse" id="min_navbar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="pet_products.html">Pet Products</a></li>
-                            <li><a href="pets.html">Pets</a></li>
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li><a href="{{ url('/pet_products') }}">Pet Products</a></li>
+                            <li><a href="{{ url('/pets') }}">Pets</a></li>
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="fa fa-chevron-circle-down"> Services </i> </a>
                                 <ul class="dropdown-menu other_dropdwn">
-                                    <li><a href="calculate_pet_keeping_cost.html">calculate Pet keeping cost</a></li>
-                                    <li><a href="doctor_support.html">Doctor Support</a></li>
+                                    <li><a href="{{ url('/calculate_pet_keeping_cost') }}">calculate Pet keeping cost</a></li>
+                                    <li><a href="{{ url('/doctor_support') }}">Doctor Support</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="{{ url('/blog') }}">Blog</a></li>
+                            <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="fa fa-chevron-circle-down"> Account </i> </a>
                                 <ul class="dropdown-menu other_dropdwn">
-                                    <li><a href="sing-in.html"><i class="fa fa-sign-in"> Sing-in </i></a></li>
-                                    <li><a href="sing-up.html"><i class="fa fa-user-plus"> Sing-up </i></a></li>
+                                    <li><a href="{{ url('/sing_in') }}"><i class="fa fa-sign-in"> Sing-in </i></a></li>
+                                    <li><a href="{{ url('/sing_up') }}"><i class="fa fa-user-plus"> Sing-up </i></a></li>
                                 </ul>
                             </li>
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"> </i> Cart <span
+                            <li><a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"> </i> Cart <span
                                         class="badge badge-light"> 5</span> </a></li>
 
                             <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
@@ -119,9 +119,9 @@
     <!-- ============================================================================= End Header_Area  ========================================================================================================================================================================================================= -->
 
 
-     <!-- Extend home page using section   1-->
-     @section("home")
-     @show
+    <!-- Extend home page using section   1-->
+    @section("home")
+    @show
 
     <!-- Extend pet_products page using section   2-->
     @section("pet_products")
@@ -155,27 +155,27 @@
     @section("sing_up")
     @show
      
-    <!-- Extend cart page using section   10-->
+    <!-- Extend items_details page using section   10-->
+    @section("items_details")
+    @show
+
+    <!-- Extend cart page using section   11-->
     @section("cart")
     @show
      
-    <!-- Extend check_out page using section   11-->
+    <!-- Extend check_out page using section   12-->
     @section("check_out")
     @show
      
-    <!-- Extend user_profile page using section   12-->
+    <!-- Extend user_profile page using section   13-->
     @section("user_profile")
     @show
      
-    <!-- Extend admin_pannel page using section   13-->
+    <!-- Extend admin_pannel page using section   14-->
     @section("admin_pannel")
     @show
      
-    <!-- Extend items_details page using section   14-->
-    @section("items_details")
-    @show
-     
-    <!-- Extend doctor_management page using section   15-->
+    <!-- Extend doctor_management page using section  15-->
     @section("doctor_management")
     @show
      
