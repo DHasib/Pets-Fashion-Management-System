@@ -37,3 +37,7 @@ Route::get("sing_up", "HtmlController@sing_up");
 Route::get("cart", "HtmlController@cart");
 
 Route::get("items_details", "HtmlController@items_details");
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

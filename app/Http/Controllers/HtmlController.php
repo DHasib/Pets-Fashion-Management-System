@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class HtmlController extends Controller
 {
+    /**
+     * Create a new  controller instance.
+     * 
+     * @return void
+     */
+    Public function __construct()
+    {
+
+       // $this->middleware('auth');
+
+    }
      public function home(){
         return view("html.index");
      }
