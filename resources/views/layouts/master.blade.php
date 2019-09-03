@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>  @yield("title")  </title>
 
     <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="{{ url('/images/favicon.png')}} " type="image/x-icon" />
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href=" {{ url('css/bootstrap.min.css')}} " rel="stylesheet">
     <!-- Animate CSS -->
-    <link href="vendors/animate/animate.css" rel="stylesheet">
+    <link href="{{ url('vendors/animate/animate.css')}} " rel="stylesheet">
     <!-- Icon CSS-->
-    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href=" {{ url('vendors/font-awesome/css/font-awesome.min.css')}} ">
     <!-- Camera Slider -->
-    <link rel="stylesheet" href="vendors/camera-slider/camera.css">
+    <link rel="stylesheet" href=" {{ url('vendors/camera-slider/camera.css')}} ">
     <!-- Owlcarousel CSS-->
-    <link rel="stylesheet" type="text/css" href="vendors/owl_carousel/owl.carousel.css" media="all">
+    <link rel="stylesheet" type="text/css" href=" {{ url('vendors/owl_carousel/owl.carousel.css')}} " media="all">
 
     <!--Theme Styles CSS-->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href=" {{ url('css/style.css')}} " media="all" />
 
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
     <body>
@@ -78,7 +77,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="index.html"><img src=" {{url('images/logo.png')}} " alt=""></a>
                     </div>
                 </div>
 
@@ -99,12 +98,33 @@
                             </li>
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                             <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
+                            
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="fa fa-chevron-circle-down"> Account </i> </a>
+                        <!-- Authentication Links -->
                                 <ul class="dropdown-menu other_dropdwn">
-                                    <li><a href="{{ url('/sing_in') }}"><i class="fa fa-sign-in"> Sing-in </i></a></li>
-                                    <li><a href="{{ url('/sing_up') }}"><i class="fa fa-user-plus"> Sing-up </i></a></li>
+
+                                    @guest
+
+                                            <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"> {{ __('Login') }} </i></a></li>
+
+                                        @if (Route::has('register'))    
+
+                                                <li><a href="{{ route('register') }}"><i class="fa fa-user-plus"> {{url('register') }} </i></a></li>
+                                        @endif
+                                        @else
+            
+                                        <li><a href="#"> {{ Auth::user()->name }} <span class="caret"></span> </a></li>
+
+                                        <li><a href="{{ route('logout') }}"> onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}</a></li>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        @endguest  
                                 </ul>
                             </li>
                             <li><a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"> </i> Cart <span
@@ -195,7 +215,7 @@
                 <div class="footer_row row">
                     <div class="col-md-3 col-sm-6 footer_about">
                         <h2>ABOUT OUR COMPANY</h2>
-                        <img src="images/footer-logo.png" alt="">
+                        <img src=" {{url('images/footer-logo.png')}} " alt="">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua.</p>
                         <ul class="socail_icon">
@@ -245,26 +265,28 @@
         <!-- End Footer Area -->
     
         <!-- jQuery JS -->
-        <script src="js/jquery-1.12.0.min.js"></script>
+        <script src="{{ url('js/jquery-1.12.0.min.js')}} "></script>
         <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="{{ url('js/bootstrap.min.js')}} "></script>
         <!-- Animate JS -->
-        <script src="vendors/animate/wow.min.js"></script>
+        <script src=" {{ url('vendors/animate/wow.min.js')}} "></script>
         <!-- Camera Slider -->
-        <script src="vendors/camera-slider/jquery.easing.1.3.js"></script>
-        <script src="vendors/camera-slider/camera.min.js"></script>
+        <script src=" {{ url('vendors/camera-slider/jquery.easing.1.3.js')}} "></script>
+        <script src=" {{ url('vendors/camera-slider/camera.min.js')}} "></script>
         <!-- Isotope JS -->
-        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-        <script src="vendors/isotope/isotope.pkgd.min.js"></script>
+        <script src=" {{ url('vendors/isotope/imagesloaded.pkgd.min.js')}} "></script>
+        <script src=" {{ url('vendors/isotope/isotope.pkgd.min.js')}} "></script>
         <!-- Progress JS -->
-        <script src="vendors/Counter-Up/jquery.counterup.min.js"></script>
-        <script src="vendors/Counter-Up/waypoints.min.js"></script>
+        <script src=" {{ url('vendors/Counter-Up/jquery.counterup.min.js')}} "></script>
+        <script src=" {{ url('vendors/Counter-Up/waypoints.min.js')}} "></script>
         <!-- Owlcarousel JS -->
-        <script src="vendors/owl_carousel/owl.carousel.min.js"></script>
+        <script src=" {{ url('vendors/owl_carousel/owl.carousel.min.js')}} "></script>
         <!-- Stellar JS -->
-        <script src="vendors/stellar/jquery.stellar.js"></script>
+        <script src=" {{ url('vendors/stellar/jquery.stellar.js')}} "></script>
         <!-- Theme JS -->
-        <script src="js/theme.js"></script>
+        <script src=" {{ url('js/theme.js')}}"></script>
+        
+     
     </body>
     
     </html>

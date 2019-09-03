@@ -50,7 +50,7 @@ class HtmlController extends Controller
     }
     public function sing_up(){
          
-        return view("html.sing_up");
+        //return view("html.sing_up");
     }
     public function cart(){
          

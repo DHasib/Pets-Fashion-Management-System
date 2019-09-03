@@ -11,12 +11,17 @@
 |
 */
 
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
+Route::get('/', function () {
+    return view('html.index');
+});
 
 
-Route::get("home", "HtmlController@home");
+
+Route::resource("CRUD","CrudController");  //This is Resource Controller to CRUD Operation
+
+//Route::post("log-in","UserController@doLogin");  //This is User Controller to Log-in ,Log-out, authencation
+
+//Route::get("home", "HtmlController@home");
 
 Route::get("pet_products", "HtmlController@pet_products");
 
@@ -32,12 +37,14 @@ Route::get("contact_us", "HtmlController@contact_us");
 
 Route::get("sing_in", "HtmlController@sing_in");
 
-Route::get("sing_up", "HtmlController@sing_up");
+//Route::get("sing_up", "HtmlController@sing_up");
 
 Route::get("cart", "HtmlController@cart");
 
 Route::get("items_details", "HtmlController@items_details");
 
-//Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
