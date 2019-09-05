@@ -2,6 +2,8 @@
 
 @section("title","Registration Form | Pet Fashion Management System" )
 
+
+
 @section('content')
 
         <!-- Start Sing-up page layout Area -->
@@ -99,14 +101,6 @@
                                                 <div class="col-md-6">
                                                     <input type="password" id="password_confirmation" class="form-control"
                                                         name="password_confirmation" value="{{ old('password_confirmation') }}">
-
-                                                        <!-- For Error Messages Show  -->
-                                                            @if ($errors->has('password_confirmation'))
-                                                                <span class="help-block">
-                                                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                                                </span>
-                                                        @endif 
-
                                                 </div>
                                             </div>
 

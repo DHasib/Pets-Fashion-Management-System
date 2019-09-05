@@ -1,8 +1,8 @@
-@extends("layouts.master")
+@extends("layouts.app")
 
 @section("title","Calculate Pet Keeping Cost | Pet Fashion Management System" )
 
-@section("calculate_pet_keeping_cost")
+@section("content")
 
     <!-- OUR OFFER [ SLIDE-BAR ] -->
     <section class="our_partners_area offerpage1">

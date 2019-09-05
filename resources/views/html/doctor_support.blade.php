@@ -1,8 +1,8 @@
-@extends("layouts.master")
+@extends("layouts.app")
 
 @section("title","Doctor Support | Pet Fashion Management System" )
 
-@section("doctor_support")
+@section("content")
 
  
     <!-- OUR OFFER [ SLIDE-BAR ] -->

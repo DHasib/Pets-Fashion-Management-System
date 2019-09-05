@@ -1,8 +1,8 @@
-@extends("layouts.master")
+@extends("layouts.app")
 
 @section("title","Contact Us | Pet Fashion Management System" )
 
-@section("contact_us")
+@section("content")
 
     <!-- Map -->
     <div class="contact_map">

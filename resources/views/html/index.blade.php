@@ -1,8 +1,8 @@
-@extends("layouts.master")
+@extends("layouts.app")
 
 @section("title","Home Page | Pet Fashion Management System" )
 
-@section("home")
+@section("content")
 
     <!-- Slider area -->
     <section class="slider_area row m0">

@@ -11,40 +11,44 @@
 |
 */
 
-Route::get('/', function () {
-    return view('html.index');
-});
+//Route::get('/', function () {
+   // return view('html.index');
+//});
 
 
-
-Route::resource("CRUD","CrudController");  //This is Resource Controller to CRUD Operation
-
-//Route::post("log-in","UserController@doLogin");  //This is User Controller to Log-in ,Log-out, authencation
-
-//Route::get("home", "HtmlController@home");
-
-Route::get("pet_products", "HtmlController@pet_products");
-
-Route::get("pets", "HtmlController@pets");
-
-Route::get("calculate_pet_keeping_cost", "HtmlController@calculate_pet_keeping_cost");
-
-Route::get("doctor_support", "HtmlController@doctor_support");
-
-Route::get("blog", "HtmlController@blog");
-
-Route::get("contact_us", "HtmlController@contact_us");
-
-Route::get("sing_in", "HtmlController@sing_in");
-
-//Route::get("sing_up", "HtmlController@sing_up");
-
-Route::get("cart", "HtmlController@cart");
-
-Route::get("items_details", "HtmlController@items_details");
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index');
+
+Route::get("pet_products", "HomeController@pet_products");
+
+Route::get("pets", "HomeController@pets");
+
+Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_cost");
+
+Route::get("doctor_support", "HomeController@doctor_support");
+
+Route::get("blog", "HomeController@blog");
+
+Route::get("contact_us", "HomeController@contact_us");
+
+Route::get("cart", "HomeController@cart");
+
+Route::get("check_out", "HomeController@check_out");
+
+Route::get("user_profile", "HomeController@user_profile");
+
+Route::get("admin_pannel", "HomeController@admin_pannel");
+
+Route::get("items_details", "HomeController@items_details");
+
+Route::get("doctor_management", "HomeController@doctor_management");
+
+Route::get("page_not_found", "HomeController@page_not_found");
+
+
+
+
 

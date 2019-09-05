@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section("title","Forgot Password | Pet Fashion Management System" )
+@section("title","Reset Password | Pet Fashion Management System" )
 
 @section('content')
 

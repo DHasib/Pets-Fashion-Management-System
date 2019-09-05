@@ -1,8 +1,8 @@
-@extends("layouts.master")
+@extends("layouts.app")
 
 @section("title","Items Details | Pet Fashion Management System" )
 
-@section("items_details")
+@section("content")
 
         <!-- OUR OFFER [ SLIDE-BAR ] -->
         <section class="our_partners_area offerpage1">
