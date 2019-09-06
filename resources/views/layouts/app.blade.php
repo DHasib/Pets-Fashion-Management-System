@@ -39,19 +39,21 @@
                         <!-- Top Header_Area -->
                         <section class="top_header_area">
                             <div class="container">
+                         @foreach ($link as $data)
                                 <ul class="nav navbar-nav top_nav">
-                                    <li><a href="#"><i class="fa fa-phone"></i>+1 (168) 314 5016</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i>info@thethemspro.com</a></li>
-                                    <li><a href="#"><i class="fa fa-clock-o"></i>Mon - Sat 12:00 - 20:00</a></li>
+                                    <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>
+                                    <li><a href="#"><i class="fa fa-clock-o"></i>{{$data->shop_open_details}}</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right social_nav">
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_tw_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_glg_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_instrsg_link}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_pint_link}}"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 </ul>
+                         @endforeach
                             </div>
                         </section>
                         <!-- End Top Header_Area -->
@@ -96,7 +98,7 @@
                                                         class="fa fa-chevron-circle-down"> Services </i> </a>
                                                 <ul class="dropdown-menu other_dropdwn">
                                                     <li><a href="{{ url('/calculate_pet_keeping_cost') }}">calculate Pet keeping cost</a></li>
-                                                    <li><a href="{{ url('/doctor_support') }}">Doctor Support</a></li>
+                                                    <li><a href="{{ url('user/doctor_support') }}">Doctor Support</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="{{ url('/blog') }}">Blog</a></li>
@@ -118,17 +120,15 @@
                                                             @endif
                                                         @else
                             
-                                                        <li><a href="#"> {{ Auth::user()->name }} <span class="caret"></span> </a></li>
+                                                        <li><a href="{{url('admin/admin')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
 
                                                                 <li> 
-                                                                     <a  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();"> Logout </a>
+                                                                     <a  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"> Log-out</i> </a>
                                                                 </li>
 
                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                                     @csrf
                                                             </form>
-                                                        
-                                                       
                                                     @endguest  
                                                 </ul>
                                             </li>

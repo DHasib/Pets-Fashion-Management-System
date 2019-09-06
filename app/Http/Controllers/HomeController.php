@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DynamicHomepage;
+use App\DynamicLinks;
 
 class HomeController extends Controller
 {
@@ -23,8 +25,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('html/index');
+        $sdata = DynamicHomepage::all();
+        $link = DynamicLinks::all();
+        return view('html/index', compact('sdata','link'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function pet_products(){
          
         return view("html.pet_products");

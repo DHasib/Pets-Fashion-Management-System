@@ -54,7 +54,7 @@
                                             <div class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
                                                 <label for="PhoneNum" class="col-md-4 text-right">{{ __('Phone Number') }}</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="PhoneNum" class="form-control @error('PhoneNum') is-invalid @enderror" name="PhoneNum" value="{{ old('PhoneNun') }}">
+                                                    <input type="text" id="PhoneNum" class="form-control @error('PhoneNum') is-invalid @enderror" name="PhoneNum" value="{{ old('PhoneNum') }}">
 
                                                     <!-- For Error Messages Show  -->
                                                     @error('PhoneNum')

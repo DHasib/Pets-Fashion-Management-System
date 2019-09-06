@@ -49,21 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            "name"              =>"required|min:5|string",
+            "name"              =>"required|min:5|alpha",
             "email"             =>"required|email|unique:users",
             "PhoneNum"          =>"required|regex:/(01)[0-9]{9}/|max:16|unique:users",
             "location"          =>"required|string|max:30",
-            "password"          =>"required|string|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",
-       
+            "password"          =>"required|string|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",      
         ],[
-            "name.required"          =>"Name Must be Fill",
-            "name.alpha"             =>"Name Must be alphabatic",
-            "PhoneNum.regex"         =>"Phone Number Must be in Valid Phone Number",
-            "email.required"         =>"Email Must be Fill",
-            "email.email"            =>"Email Must be a valid e-mail address",
-            "location.required"      =>"Location Must be Fill",
-            "password.required"      =>"password  Must be Fill",
-            "password.regex"         =>" Your password must be 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.",
+            "password.regex"    =>" Your password must be 8 characters long and should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.",
         ]);
     }
 
@@ -81,6 +73,10 @@ class RegisterController extends Controller
             'PhoneNum'         => $data['PhoneNum'],
             'location'         => $data['location'],
             'password'         => Hash::make($data['password']),
+            'role'             =>    0,
         ]);
     }
 }
+
+
+

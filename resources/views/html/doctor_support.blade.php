@@ -18,7 +18,7 @@
                                 <div class="row construction_iner offerpage2">
                                     <div class="col-md-6 col-sm-4 construction">
                                         <div class="cns-img">
-                                            <img src="images/cns-1.jpg" alt="">
+                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
                                         </div>
                                         <div class="cns-content">
                                             <i aria-hidden="true"><b>70%off</b></i>
@@ -30,7 +30,7 @@
                                 <div class="row construction_iner offerpage2">
                                     <div class="col-md-6 col-sm-4 construction">
                                         <div class="cns-img">
-                                            <img src="images/cns-1.jpg" alt="">
+                                            <img src="{{url('images/cns-1.jpg')}}" alt="">
                                         </div>
                                         <div class="cns-content">
                                             <i aria-hidden="true"><b>70%off</b></i>
@@ -42,7 +42,7 @@
                                 <div class="row construction_iner offerpage2">
                                     <div class="col-md-6 col-sm-4 construction">
                                         <div class="cns-img">
-                                            <img src="images/cns-1.jpg" alt="">
+                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
                                         </div>
                                         <div class="cns-content">
                                             <i aria-hidden="true"><b>70%off</b></i>
@@ -54,7 +54,7 @@
                                 <div class="row construction_iner offerpage2">
                                     <div class="col-md-6 col-sm-4 construction">
                                         <div class="cns-img">
-                                            <img src="images/cns-1.jpg" alt="">
+                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
                                         </div>
                                         <div class="cns-content">
                                             <i aria-hidden="true"><b>70%off</b></i>
@@ -106,7 +106,7 @@
                                 <div class="col-md-7">
 
                                     <span class="list-group-item"> <b>Doctor Name</b>: Kuddus Ali</span>
-                                    <img style="width: 100%; height: 100%;" src="images/blog/blog_hed-1.jpg" alt="">
+                                    <img style="width: 100%; height: 100%;" src="{{url('images/blog/blog_hed-1.jpg')}}" alt="">
                                 </div>
                                 <div class="col-md-5">
                                     <span class="list-group-item"> <b>Doctor Qualification</b></span>
@@ -218,80 +218,89 @@
                         </div>
                     </section>
 
+               
                     <!-- For OnlineDoctor Section   Three -->
                     <section class="col-md-12  tabcontent hdn" id="OnlineDoctor">
                         <br>
+                    @if (Auth::user())      <!-- This code define to check User logged in or not -->
                             <div class="panel-heading pnlheading">
                                 <h4>Doctor Kuddus Ali</h4>
                             </div>
-                        <div class="calculate scroll"><br><br>
-                            <div class="col-md-12 col-sm-12">
-                                <!-- for diveded section1 -->
-                                <div class="mesgs">
-                                    <div class="msg_history">
-                                        <div class="incoming_msg">
-                                            <div class="incoming_msg_img"> <img
-                                                    src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                      
+                            <div class="calculate scroll"><br><br>
+                                <div class="col-md-12 col-sm-12">
+                                    <!-- for diveded section1 -->
+                                    <div class="mesgs">
+                                        <div class="msg_history">
+                                            <div class="incoming_msg">
+                                                <div class="incoming_msg_img"> <img
+                                                        src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                                </div>
+                                                <div class="received_msg">
+                                                    <div class="received_withd_msg">
+                                                        <p>Test which is a new approach to have all
+                                                            solutions</p>
+                                                        <span class="time_date"> 11:01 AM | June 9</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="received_msg">
-                                                <div class="received_withd_msg">
+                                            <div class="outgoing_msg">
+                                                <div class="sent_msg">
                                                     <p>Test which is a new approach to have all
                                                         solutions</p>
                                                     <span class="time_date"> 11:01 AM | June 9</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="outgoing_msg">
-                                            <div class="sent_msg">
-                                                <p>Test which is a new approach to have all
-                                                    solutions</p>
-                                                <span class="time_date"> 11:01 AM | June 9</span>
-                                            </div>
-                                        </div>
-                                        <div class="incoming_msg">
-                                            <div class="incoming_msg_img"> <img
-                                                    src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
-                                            </div>
-                                            <div class="received_msg">
-                                                <div class="received_withd_msg">
-                                                    <p>Test, which is a new approach to have</p>
-                                                    <span class="time_date"> 11:01 AM | Yesterday</span>
+                                            <div class="incoming_msg">
+                                                <div class="incoming_msg_img"> <img
+                                                        src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                                </div>
+                                                <div class="received_msg">
+                                                    <div class="received_withd_msg">
+                                                        <p>Test, which is a new approach to have</p>
+                                                        <span class="time_date"> 11:01 AM | Yesterday</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="outgoing_msg">
-                                            <div class="sent_msg">
-                                                <p>Apollo University, Delhi, India Test</p>
-                                                <span class="time_date"> 11:01 AM | Today</span>
-                                            </div>
-                                        </div>
-                                        <div class="incoming_msg">
-                                            <div class="incoming_msg_img"> <img
-                                                    src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
-                                            </div>
-                                            <div class="received_msg">
-                                                <div class="received_withd_msg">
-                                                    <p>We work directly with our designers and suppliers,
-                                                        and sell direct to you, which means quality, exclusive
-                                                        products, at a price anyone can afford.</p>
+                                            <div class="outgoing_msg">
+                                                <div class="sent_msg">
+                                                    <p>Apollo University, Delhi, India Test</p>
                                                     <span class="time_date"> 11:01 AM | Today</span>
                                                 </div>
                                             </div>
+                                            <div class="incoming_msg">
+                                                <div class="incoming_msg_img"> <img
+                                                        src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                                </div>
+                                                <div class="received_msg">
+                                                    <div class="received_withd_msg">
+                                                        <p>We work directly with our designers and suppliers,
+                                                            and sell direct to you, which means quality, exclusive
+                                                            products, at a price anyone can afford.</p>
+                                                        <span class="time_date"> 11:01 AM | Today</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="type_msg">
-                                        <div class="input_msg_write">
-                                            <input type="text" class="write_msg" placeholder="Type a message" />
-                                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
-                                                    aria-hidden="true"></i></button>
+                                        <div class="type_msg">
+                                            <div class="input_msg_write">
+                                                <input type="text" class="write_msg" placeholder="Type a message" />
+                                                <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
+                                                        aria-hidden="true"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- for diveded section1 -->
                             </div>
-                            <!-- for diveded section1 -->
-                        </div>
-                    </section>
 
+                     @else
+                        <div class="text text-danger"> <h2>You Mush Have an Account/Login To Used Our online Doctor Suppot  System. </h2><br>
+                        <a href="{{route('login')}}" class="btn btn-warning "> Click Here to Login </a> <a href="{{route('register')}}" class="btn btn-info "> Click Here to Register </a>
+                        </div>
+                        @endif
+                    </section>
+                   
                     <div class="clearfix"></div>
                 </div>
 
