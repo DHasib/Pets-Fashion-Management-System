@@ -12,7 +12,7 @@
 */
 
 //Route::get('/', function () {
-   // return view('html.index');
+  ///  return view('html.index');
 //});
 
 
@@ -55,9 +55,9 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
 });
 
 
-Route::get('admin', function () {
-    return view('layouts/admin_master');
-});
+//Route::get('admin', function () {
+    //return view('layouts/admin_master');
+//});
 
 
 
@@ -71,21 +71,25 @@ Route::get('admin', function () {
 
 //Route group for admin
 Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
-  Route::get('admin', function () {
-      return view('layouts/admin_master');
-  });
-  
-  //Top Header Edit Work...............
-  Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");
+    Route::get('admin', function () {
+        return view('layouts/admin_master');
+    });
 
-  Route::post("topHeader/update", "DynamicHomepageController@updatetopHeader");
+      //User Details Show/Block Work...............
+      Route::get("users/table", "UserController@showUserDetails");
+      Route::post("user/blocked", "UserController@blockedUser");
+      Route::post("user/unblocked", "UserController@unBlockedUser");
+      Route::post("search/user", "UserController@search");
 
+      //Top Header Edit Work...............
+      Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");
+      Route::post("topHeader/update", "DynamicHomepageController@updatetopHeader");
 
-  //Slide Edit Work...............
-  Route::get("slider/show", "DynamicHomepageController@showUploadSlider");
-  Route::get('slider/edit/{slider_id}', 'DynamicHomepageController@editSlide');
+      //Slide Edit Work...............
+      Route::get("slider/show", "DynamicHomepageController@showUploadSlider");
+      Route::get('slider/edit/{slider_id}', 'DynamicHomepageController@editSlide');
 
-  Route::post("slider/update", "DynamicHomepageController@updateSliderDetails");
+      Route::post("slider/update", "DynamicHomepageController@updateSliderDetails");
 
 
 });

@@ -20,6 +20,12 @@
                                 <h4>{{ __('Login') }} </h4>
                             </div>
                             <div class="panel-body">
+                                    @if (session('message'))  
+                                    <div class="alert alert-danger">
+                                            <strong> {{ session('message') }}</strong>
+                                    </div>   
+                                   
+                                     @endif 
                                 <form action="{{ route('login') }}" method="POST">
 
                                     {{ csrf_field() }}

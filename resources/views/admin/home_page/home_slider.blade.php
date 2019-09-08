@@ -16,6 +16,7 @@
                   <div class="card card-warning">
                     <div class="card-header">
                       <h3 class="card-title">Slider Details Table</h3>
+                      <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/slider/show')}}" style="color:White;">Refresh</a></div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -31,7 +32,6 @@
                           </tr>
                         </thead>
                         <tbody>
-                            
                             <?php $i=1; ?>
                             @foreach ($sdata as $slider)
                           <tr>
@@ -39,7 +39,7 @@
                             <td>{{ $slider->slider_title }}</td>
                             <td>{{ $slider->slider_heading }}</td>
                             <td>{{ $slider->slider_desc }}</td>
-                            <td><img src="{{ url('images',$slider->slider_image) }}" class="img-rounded" style="width:100px; height:50px;">{{ $slider->slider_image }}</td>
+                            <td><img src="{{ url('images/Slider_img',$slider->slider_image) }}" class="img-rounded" style="width:100px; height:50px;">{{ $slider->slider_image }}</td>
                             <td><a href="{{url('/admin/slider/edit',$slider->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
                           </tr>
                           @endforeach
@@ -62,14 +62,18 @@
             <!-- Form Element sizes -->
             <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title"> <h2>   Upload Slider Details </h2></h3>
-                  <h2>
-                      @if (Session::has('message'))
-                      <span class="alert-info">
-                          <strong>{{ Session::get('message') }}</strong>
-                      </span>
-                      @endif
+                  <h3 class="card-title"> Upload Slider Details </h3>
+                  <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/slider/show')}}" style="color:White;">Refresh</a></div>
                 </div>
+                @if (Session::has('message'))
+                      <div class="alert alert-success">
+                          <strong>{{ Session::get('message') }}</strong>
+                      </div>
+                  @elseif (Session::has('error'))
+                      <div class="alert alert-danger">
+                          <strong>{{ Session::get('error') }}</strong>
+                      </div>
+                   @endif
                 <div class="card-body">
                     <form action="{{url('/admin/slider/update')}}" method="POST"  enctype="multipart/form-data">
                       {{ csrf_field() }}

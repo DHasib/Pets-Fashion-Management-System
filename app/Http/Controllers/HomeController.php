@@ -34,19 +34,14 @@ class HomeController extends Controller
 
 
 
+    
 
 
 
 
 
 
-
-
-
-
-
-
-
+    
 
 
     public function pet_products(){

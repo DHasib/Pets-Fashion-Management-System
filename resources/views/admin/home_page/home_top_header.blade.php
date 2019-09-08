@@ -1,7 +1,7 @@
 
 @extends("layouts.admin_master")
 
-@section("title","Edit Slider| Pet Fashion Administration" )
+@section("title","Edit Top Header | Pet Fashion Administration" )
 
 
  <!-- Bootstrap CSS -->
@@ -17,18 +17,16 @@
             <!-- Form Element sizes -->
             <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title"> <h2> Set Social and Conatct Link </h2></h3>
-
-                 
-                 
-                  <h2>
-                      @if (Session::has('message'))
-                      <span class="alert-info">
-                          <strong>{{ Session::get('message') }}</strong>
-                      </span>
-                      @endif
+                  <h3 class="card-title"> Set Social and Conatct Link </h3>
+                  <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/topHeader/show')}}" style="color:White;">Refresh</a></div>
                 </div>
+                @if (Session::has('message'))
+                <div  class="alert alert-success">
+                    <strong>{{ Session::get('message') }}</strong>
+                </div>
+              @endif
                 <div class="card-body">
+                    
                     <form action="{{url('/admin/topHeader/update')}}" method="POST" >
                       {{ csrf_field() }}
                   @foreach ($link as $data)

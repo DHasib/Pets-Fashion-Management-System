@@ -39,6 +39,7 @@
                         <!-- Top Header_Area -->
                         <section class="top_header_area">
                             <div class="container">
+                         @if(isset($link))
                          @foreach ($link as $data)
                                 <ul class="nav navbar-nav top_nav">
                                     <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
@@ -54,6 +55,7 @@
                                     <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 </ul>
                          @endforeach
+                        @endif 
                             </div>
                         </section>
                         <!-- End Top Header_Area -->
@@ -159,12 +161,16 @@
                                         <img src=" {{url('images/footer-logo.png')}} " alt="">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                             labore et dolore magna aliqua.</p>
+                                        @if(isset($link))
+                                        @foreach ($link as $data)
                                         <ul class="socail_icon">
-                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_tw_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_glg_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                         </ul>
+                                        @endforeach
+                                        @endif 
                                     </div>
                                     <div class="col-md-3 col-sm-6 footer_about quick">
                                         <h2>Quick links</h2>
@@ -189,11 +195,14 @@
                                         <address>
                                             <p>Have questions, comments or just want to say hello:</p>
                                             <ul class="my_address">
-                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>info@thethemspro.com</a>
-                                                </li>
-                                                <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>+880 123 456 789</a></li>
-                                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Sector # 10, Road #
-                                                            05, Plot # 31, Uttara, Dhaka 1230 </span></a></li>
+                                            @if(isset($link))
+                                            @foreach ($link as $data)
+                                                   <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
+                                                   <li><a href="#"><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>   
+                                            @endforeach
+                                            @endif 
+                                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span> Road #
+                                                            05, Shop # 31, Katabon, Dhaka 1230 </span></a></li>
                                             </ul>
                                         </address>
                                     </div>

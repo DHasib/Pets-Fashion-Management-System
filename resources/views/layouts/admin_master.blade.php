@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <!-- CSRF Token -->
+    <meta name="_token" content="{{ csrf_token() }}">
+
    <!--  For Defining Dynamic Title -->
    <title>  @yield("title")  </title>
 
@@ -130,7 +133,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('admin/users/table')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                     User Management
@@ -150,19 +153,19 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Product</p>
+                    <p>Add Products</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Pet</p>
+                    <p>Add Pets</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Boosk</p>
+                    <p>Add Boosks</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -185,7 +188,7 @@
                 <li class="nav-item">
                     <a href="{{url('admin/topHeader/show')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Edit Top Header Link </p>
+                    <p>Edit Header Link </p>
                     </a>
                 </li>
                 <li class="nav-item">

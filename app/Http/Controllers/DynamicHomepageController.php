@@ -21,16 +21,16 @@ class DynamicHomepageController extends Controller
     public function showUploadSlider()
     {
          $sdata = DynamicHomepage::all();
-        return view("admin/admin_home_slider", compact("sdata"));
+        return view("admin/home_page/home_slider", compact("sdata"));
     }  
 
     protected function updateSliderDetails(Request $request)
     {
         
             $validate_data =  Validator::make($request->all(),[
-            "slider_title"          =>"required|max:50|alpha",
-            "slider_heading"        =>"required|max:100|alpha",
-            "slider_desc"           =>"required|max:200|alpha",
+            "slider_title"          =>"required|max:50|string",
+            "slider_heading"        =>"required|max:100|string",
+            "slider_desc"           =>"required|max:200|string",
             "slider_image"          =>"required|image|mimes:jpeg,png,jpg|max:2050",
            ])->validate();
 
@@ -57,15 +57,15 @@ class DynamicHomepageController extends Controller
 
                 if ($is_saved){
                     session()->flash("message", "Sucessfully Upload Slider");
-                    return view("admin/admin_home_slider", compact("sdata"));
+                    return view("admin/home_page/home_slider", compact("sdata"));
                 }else{
-                    session()->flash("message", "Failed to Upload Slider");
-                    return view("admin/admin_home_slider", compact("sdata"));
+                    session()->flash("error", "Failed to Upload Slider");
+                    return view("admin/home_page/home_slider", compact("sdata"));
                 }
           }
           else{
-            session()->flash("message", "Please select the Slider Details which you want to update");
-            return view("admin/admin_home_slider", compact("sdata"));
+            session()->flash("error", "Please First Select the Slider Details which you Want to Update");
+            return view("admin/home_page/home_slider", compact("sdata"));
           }
       
     }
@@ -75,7 +75,7 @@ class DynamicHomepageController extends Controller
         $sdata = DynamicHomepage::all();
         $eslider = DynamicHomepage::find($slider_id);
     
-        return view("admin/admin_home_slider", compact("eslider","sdata"));
+        return view("admin/home_page/home_slider", compact("eslider","sdata"));
 
     }
 
@@ -85,7 +85,7 @@ class DynamicHomepageController extends Controller
 public function showTopHeader()
 {
      $link = DynamicLinks::all();
-    return view("admin/admin_home_top_header", compact("link"));
+    return view("admin/home_page/home_top_header", compact("link"));
 }  
 
 
@@ -121,10 +121,10 @@ protected function updatetopHeader(Request $request)
 
             if ($is_saved){
                 session()->flash("message", "Sucessfully Upload Header Details");
-                return view("admin/admin_home_top_header", compact("link"));
+                return view("admin/home_page/home_top_header", compact("link"));
             }else{
                 session()->flash("message", "Failed to Upload Header Details");
-                return view("admin/admin_home_top_header", compact("link"));
+                return view("admin/home_page/home_top_header", compact("link"));
             }
         
       
