@@ -1,0 +1,15 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+
+      //this function declare to OnetoMany Relationship
+    public function blogPosts()
+    {
+        return $this->hasMany('App\Blog_Post');
+    }
+}

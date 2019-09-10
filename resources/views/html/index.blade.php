@@ -9,7 +9,7 @@
     <section class="slider_area row m0">
         <div class="slider_inner">
                 @foreach ($sdata as $slider)
-            <div data-thumb="images/Slider_img/{{$slider->slider_image}}" data-src="images/Slider_img/{{$slider->slider_image}}">
+            <div data-thumb="{{url($slider->slider_image)}}" data-src="{{url($slider->slider_image)}}">
                 <div class="camera_caption">
                     <div class="container">
                         <h5 class=" wow fadeInUp animated">{{ $slider->slider_title}}</h5>

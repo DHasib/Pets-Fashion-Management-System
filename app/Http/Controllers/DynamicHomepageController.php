@@ -31,7 +31,7 @@ class DynamicHomepageController extends Controller
             "slider_title"          =>"required|max:50|string",
             "slider_heading"        =>"required|max:100|string",
             "slider_desc"           =>"required|max:200|string",
-            "slider_image"          =>"required|image|mimes:jpeg,png,jpg|max:2050",
+            "slider_image"          =>"required|image|mimes:jpeg,jpg|max:2050",
            ])->validate();
 
            $sdata = DynamicHomepage::all();
@@ -49,7 +49,9 @@ class DynamicHomepageController extends Controller
                 if ($request->hasFile('slider_image')) 
                 {
                     $image = $request->file('slider_image');
-                    $sliderDetails->slider_image      =  $image->getClientOriginalName();
+                   $image_new_name      =  time().$image->getClientOriginalName();
+
+                   $sliderDetails->slider_image = '/images/Slider_img/' . $image_new_name ;
 
                     $image->move($FileLocation, $sliderDetails->slider_image);
                 } 

@@ -61,6 +61,15 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
 
 
 
+//Route group for Registered Users.........................................................................................................................................................................................
+//.................................................................................................................................................................................................................
+Route::prefix('user')->middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('users.index');
+    });
+    //Route::get('/addFlat','RoomInfoController@showAddFlatForm');
+   
+});
 
 
 
@@ -69,27 +78,44 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
 
 
 
-//Route group for admin
-Route::prefix('admin')->middleware(['auth','auth.admin'])->group(function () {
+//Route group for Admin Activities.........................................................................................................................................................................................
+//.................................................................................................................................................................................................................
+Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
     Route::get('admin', function () {
         return view('layouts/admin_master');
     });
 
-      //User Details Show/Block Work...............
-      Route::get("users/table", "UserController@showUserDetails");
-      Route::post("user/blocked", "UserController@blockedUser");
-      Route::post("user/unblocked", "UserController@unBlockedUser");
-      Route::post("search/user", "UserController@search");
 
-      //Top Header Edit Work...............
-      Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");
-      Route::post("topHeader/update", "DynamicHomepageController@updatetopHeader");
+      //Post Blog CRUD Functionaly using Resource Controller......................
+          Route::Resource("blogPost", "BlogPostController");
 
-      //Slide Edit Work...............
-      Route::get("slider/show", "DynamicHomepageController@showUploadSlider");
-      Route::get('slider/edit/{slider_id}', 'DynamicHomepageController@editSlide');
+      //Catageries CRUD Functionaly using Resource Controller......................
+          Route::Resource("petCategory", "CategoriesController");
 
-      Route::post("slider/update", "DynamicHomepageController@updateSliderDetails");
+     //Admin Profile...............................................................
+        // Route::Resource("profile/show", "ProfileController");
+         Route::get("profile/show", "ProfileController@showAdminProfile");
+         Route::Post("profile/update", "ProfileController@updateProfile");
+         Route::Post("profile/save", "ProfileController@saveProfile");
+         Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
+         Route::Post("account/password/change", "ProfileController@changeUserPassword");
+        
+      //User Details Show/Block Work...............................................
+          Route::get("make/doctor/{user_id}", "UserController@makeDoctor");
+          Route::get("remove/doctor/{user_id}", "UserController@removeDoctor");
+          Route::get("users/table", "UserController@showUserDetails");
+          Route::post("user/blocked", "UserController@blockedUser");
+          Route::post("user/unblocked", "UserController@unBlockedUser");
+          Route::post("search/user", "UserController@search");
+
+      //Top Header Edit Work........................................................
+          Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");
+          Route::post("topHeader/update", "DynamicHomepageController@updatetopHeader");
+
+      //Slide Edit Work.............................................................
+          Route::get("slider/show", "DynamicHomepageController@showUploadSlider");
+          Route::get('slider/edit/{slider_id}', 'DynamicHomepageController@editSlide');
+          Route::post("slider/update", "DynamicHomepageController@updateSliderDetails");
 
 
 });

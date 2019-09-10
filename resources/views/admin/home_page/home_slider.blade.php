@@ -39,7 +39,7 @@
                             <td>{{ $slider->slider_title }}</td>
                             <td>{{ $slider->slider_heading }}</td>
                             <td>{{ $slider->slider_desc }}</td>
-                            <td><img src="{{ url('images/Slider_img',$slider->slider_image) }}" class="img-rounded" style="width:100px; height:50px;">{{ $slider->slider_image }}</td>
+                            <td><img src="{{ url($slider->slider_image) }}" class="img-rounded" style="width:100px; height:50px;"></td>
                             <td><a href="{{url('/admin/slider/edit',$slider->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
                           </tr>
                           @endforeach
@@ -112,7 +112,7 @@
                           </div>
                           <div class="form-group {{ $errors->has('slider_image') ? ' has-error' : '' }}">
                                   <label for="sheading">Slider Image:</label>
-                                  <input type="file" class="form-control"  name="slider_image"  aria-describedby="inputGroupFileAddon01"  placeholder="@if(isset($eslider)){{$eslider->slider_image}}@endif">
+                                  <input type="file" class="form-control"  name="slider_image"  value="@if(isset($eslider)){{$eslider->slider_image}}@endif">
   
                                           @if ($errors->has('slider_image'))
                                               <span class="help-block">

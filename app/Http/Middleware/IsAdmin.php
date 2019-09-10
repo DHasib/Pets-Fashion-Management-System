@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,8 @@ class IsAdmin
         {
                 return $next($request);
         }
+        
+        Session::flash('info', 'You do not have Permissions to perform this Action');
         return redirect('login');
     }
 }

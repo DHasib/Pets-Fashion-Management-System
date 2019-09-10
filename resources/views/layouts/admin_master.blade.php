@@ -36,6 +36,13 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{url('home')}}" class="nav-link">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+          <a  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();" class="nav-link"> <i class="fa fa-sign-out"> Log-out</i> </a>
+     </li>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+      </form>
     </ul>
 
     <!-- Right navbar links -->
@@ -115,7 +122,7 @@
             <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-            <a href="#" class="d-block text-uppercase">admin</a>
+            <a href="{{ url('admin/profile/show') }}" class="d-block text-uppercase">admin profile</a>
             </div>
         </div>
 
@@ -217,11 +224,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('admin/blogPost') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Post Blog </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Blog List </p>
+                      </a>
+                  </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -231,13 +244,21 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('admin/petCategory') }}" class="nav-link">
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>
+                       Pet Category
+                    </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                         <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Live Chat
                         </p>
                         </a>
-                    </li>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

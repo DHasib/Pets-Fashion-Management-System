@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'PhoneNum','location','password', 'blocked_date',
+        'name', 'email', 'PhoneNum','location','password', 'blocked_date', 'role',
     ];
     protected $dates = [
         'blocked_date'
@@ -45,5 +45,11 @@ class User extends Authenticatable
             unset($this->remember_token);
     
         return parent::save($options);
+    }
+
+
+    public function profile() 
+    {
+        return $this->hasOne('App\Profile');
     }
 }
