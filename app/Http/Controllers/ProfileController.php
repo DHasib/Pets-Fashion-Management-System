@@ -117,7 +117,7 @@ class ProfileController extends Controller
       $validate_data =  Validator::make($request->all(),[
             "user_fb_link"   =>"required|url",
             "user_yt_link"   =>"required|url",
-            "your_self"      =>"required|string|min:50|max:600",
+            "your_self"      =>"required|string|min:50|max:1000",
         ])->validate();
 
             $user = Auth::user();

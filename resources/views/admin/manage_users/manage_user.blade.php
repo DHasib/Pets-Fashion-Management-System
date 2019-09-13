@@ -1,4 +1,3 @@
-
 @extends("layouts.admin_master")
 
 @section("title","User Management | Pet Fashion Administration" )
@@ -23,13 +22,19 @@
                       <div class="card-tools">
                         
                           <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/users/table')}}" style="color:White;">Refresh</a></div>
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                               <form class="form-inline" action="{{url('admin/search/user')}}" method="POST">
+                            <div class="input-group input-group-sm  {{ $errors->has('search_user') ? 'has-error' : '' }}" style="width: 150px;">
+                               <form class="form-inline" action="{{url('admin/search/blog')}}" method="POST">
                                 {{ csrf_field() }}
                                       <div class="input-group-append">
                                           <input type="text" name="search_user" value="{{ old('search_user') }}" class="form-control" size="8" placeholder="Search" >
-                                        <button type="submit" class="form-control btn btn-default"><i class="fas fa-search"></i></button>
+                                          <button type="submit" class="form-control btn btn-default"><i class="fas fa-search"></i></button>
                                       </div>
+                                      
+                                      @if ($errors->has('search_user'))
+                                      <span class="help-block">
+                                        <strong>  {{ $errors->first('search_user') }}</strong>
+                                      </span>
+                                    @endif
                               </form>
                             </div>
                       </div>
@@ -37,23 +42,18 @@
                     </div>
                     <br>
 
-                      @if (Session('message'))
+                      @if (Session('success'))
                         <div class="alert alert-success">
-                            <strong>{{ Session('message') }}</strong>
+                            <strong>{{ Session('success') }}</strong>
                         </div>
                         @elseif (Session('error'))
                             <div class="alert alert-danger">
                                 <strong>{{ Session('error') }}</strong>
                             </div>
-                            @elseif ($errors->has('search_user'))
-                              <div class="alert alert-danger">
-                                <strong>  {{ $errors->first('search_user') }}</strong>
-                              </div>
-                    
                       @endif
 
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height:400px;" id="result">
+                    <div class="card-body table-responsive p-0" style="height:600px;" id="result">
                       <table class="table table-head-fixed">
                         <thead>
                           <tr>
@@ -92,7 +92,7 @@
                                   <td>
                                   @if($user->role != 1 )
                                       <!--  Doctor Section  -->
-                                            @if(isset($user) && ($user->role ==3))
+                                            @if(isset($user) && ($user->role ==2))
                                                     <button class="btn btn-danger btn-sm" ><a href="{{url('admin/remove/doctor',$user->id)}}" style="color:White;">remove</a></button>
                                             @else
                                                     <button class="btn btn-primary btn-sm" ><a href="{{url('admin/make/doctor',$user->id)}}" style="color:White;">Doctor</a></button>
@@ -139,7 +139,7 @@
                                      
                                   </tr>
                           @empty
-                              <div class="alert alert-danger">No Result Found!! Search Value Does not Match <strong> {{ request()->query('search') }} </strong></div>
+                              <div class="alert alert-danger">No Result Found!! Search Value Does not Match <strong> {{ request('search_user') }} </strong></div>
                           @endforelse
                       
                           

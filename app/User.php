@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profile');
     }
+
+    public function blogPost()
+    {
+        return $this->hasMany('App\BlogPost');
+    }
+
+
+
 }

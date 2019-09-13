@@ -1,4 +1,3 @@
-
 @extends("layouts.admin_master")
 
 @section("title","Admin Profile  | Pet Fashion Administration" )
@@ -28,7 +27,7 @@
                                     <strong>{{ Session::get('error') }}</strong>
                                 </div>
                         @endif   
-          @if(isset($user))  
+          @if(isset($user) && $user->count() > 0)  
                     <div class="card card-body">               
                          <div class="row">  
                                 <div class="col-md-6"><!-- col-md-6 -->
@@ -134,7 +133,7 @@
 
                                                 <div class="form-group {{ $errors->has('your_self') ? 'has-error' : '' }} ">
                                                         <label for="comment">  About your Self:</label>
-                                                        <textarea name="your_self" cols="5" rows="3" class="form-control"  placeholder="Write About Your Self" value="@if($user->profile->about != null){{$user->profile->about}}@else{{ old('your_self') }}@endif"></textarea>
+                                                        <textarea name="your_self" cols="5" rows="3" class="form-control"  placeholder="Write About Your Self" value="@if( $user->profile->about != null){{$user->profile->about}}@else{{ old('your_self') }}@endif"></textarea>
                                                             @if ($errors->has('your_self'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('your_self') }}</strong>
@@ -160,10 +159,10 @@
                                                             <div class="col-md-10 {{ $errors->has('profile_pic') ? ' has-error' : '' }}">
                                                             <form action="{{ url('admin/profile/image/upload') }}" method="POST"  enctype="multipart/form-data">
                                                                                 @csrf
-                                                                                    <img src="{{url($user->profile->user_img)}}" class="img-thumbnail mx-auto d-block"  style="width:300px; height:170px;">
+                                                                                    <img src="@if($user->profile->user_img != null ){{url($user->profile->user_img)}}@else # @endif" class="img-thumbnail mx-auto d-block"  style="width:300px; height:170px;">
                                                                                 <div class="col-md-8 ">
                                                                                     <label for="profile_pic">Upload Image:</label>
-                                                                                    <input type="file" class="form-control"  name="profile_pic"  value="@if($user->profile->user_img != null )){{$user->profile->user_img}}@else{{ old('profile_pic') }}@endif">
+                                                                                    <input type="file" class="form-control"  name="profile_pic"  value="@if($user->profile->user_img != null ){{$user->profile->user_img}}@else{{ old('profile_pic') }}@endif">
                                                                             
                                                                                     @if ($errors->has('profile_pic'))
                                                                                         <span class="help-block">

@@ -17,6 +17,7 @@ class CreateTopHeaderDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('shop_contact_number');
             $table->string('shop_email');
+            $table->string('shop_open_details');
             $table->string('shop_fb_link');
             $table->string ('shop_tw_link');
             $table->string ('shop_glg_link');

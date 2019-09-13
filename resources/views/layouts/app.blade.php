@@ -6,25 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>  @yield("title")  </title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="{{ asset('/images/favicon.png')}} " type="image/x-icon" />
-    <!-- Bootstrap CSS -->
+<!-- Favicon -->
+    <link rel="icon" href="{{ asset('/images/petsfashion.png')}} " type="image/x-icon" />
+<!-- Bootstrap CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- Animate CSS -->
+<!-- Animate CSS -->
     <link href="{{ asset('vendors/animate/animate.css')}} " rel="stylesheet">
-    <!-- Icon CSS-->
+<!-- Icon CSS-->
     <link rel="stylesheet" href=" {{ asset('vendors/font-awesome/css/font-awesome.min.css')}} ">
-    <!-- Camera Slider -->
+<!-- Camera Slider -->
     <link rel="stylesheet" href=" {{ asset('vendors/camera-slider/camera.css')}} ">
-    <!-- Owlcarousel CSS-->
+<!-- Owlcarousel CSS-->
     <link rel="stylesheet" type="text/css" href=" {{ asset('vendors/owl_carousel/owl.carousel.css')}} " media="all">
-    <!--Theme Styles CSS-->
+<!--Theme Styles CSS-->
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/style.css')}} " media="all" />
+
+    <!--Plugins for Blog page-->
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/crumina-fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/normalize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/grid.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/styles.css')}}">
+    <!--Plugins styles-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/primary-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/magnific-popup.css')}}">
    
  
    
@@ -36,29 +49,30 @@
                         <!-- Preloader -->
                         <div class="preloader"></div>
 
-                        <!-- Top Header_Area -->
-                        <section class="top_header_area">
-                            <div class="container">
-                         @if(isset($link))
-                         @foreach ($link as $data)
-                                <ul class="nav navbar-nav top_nav">
-                                    <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>
-                                    <li><a href="#"><i class="fa fa-clock-o"></i>{{$data->shop_open_details}}</a></li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right social_nav">
-                                    <li><a href="{{$data->shop_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="{{$data->shop_tw_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="{{$data->shop_glg_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a href="{{$data->shop_instrsg_link}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="{{$data->shop_pint_link}}"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                </ul>
-                         @endforeach
+                    <!-- Top Header_Area -->
+                <section class="top_header_area">
+                        <div class="container">
+                    @if(isset($link))
+                    @foreach ($link as $data)
+                            <ul class="nav navbar-nav top_nav">
+                                <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>
+                                <li><a href="#"><i class="fa fa-clock-o"></i>{{$data->shop_open_details}}</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right social_nav">
+                                <li><a href="{{$data->shop_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="{{$data->shop_tw_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="{{$data->shop_glg_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="{{$data->shop_instrsg_link}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="{{$data->shop_pint_link}}"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul>
+                            @endforeach
                         @endif 
                             </div>
-                        </section>
-                        <!-- End Top Header_Area -->
+                </section>
+    <!-- End Top Header_Area -->
+
 
                         <!-- Header_Area -->
                         <nav class="navbar navbar-default header_aera" id="main_navbar">
@@ -235,8 +249,19 @@
                         <script src=" {{ asset('vendors/owl_carousel/owl.carousel.min.js')}} "></script>
                         <!-- Stellar JS -->
                         <script src=" {{ asset('vendors/stellar/jquery.stellar.js')}} "></script>
+                        <!-- Blog Image Popup Js -->
+                        <script src="app/js/crum-mega-menu.js"></script>
+                        <script src="app/js/theme-plugins.js"></script>
+                        <script src="app/js/main.js"></script>
                          <!-- Theme JS -->
                         <script src=" {{ asset('js/theme.js')}}"></script>
+                        
+
+                      
+            <script>
+
+            
+            </script>
                       
         
           </div> 

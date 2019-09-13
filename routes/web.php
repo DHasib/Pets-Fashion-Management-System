@@ -15,6 +15,10 @@
   ///  return view('html.index');
 //});
 
+//Public Blog Show...................................................
+    Route::get("blog", "HomeController@blog");
+    Route::get("post/{slug}", "HomeController@singleBlog");
+    Route::get("category/{id}", "HomeController@category");
 
 
 
@@ -30,7 +34,7 @@ Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_c
 
 Route::get("user/doctor_support", "HomeController@doctor_support");
 
-Route::get("blog", "HomeController@blog");
+
 
 Route::get("contact_us", "HomeController@contact_us");
 
@@ -87,10 +91,26 @@ Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
 
 
       //Post Blog CRUD Functionaly using Resource Controller......................
-          Route::Resource("blogPost", "BlogPostController");
+          Route::Resource("blogPost", "BlogPostsController");
 
-      //Catageries CRUD Functionaly using Resource Controller......................
-          Route::Resource("petCategory", "CategoriesController");
+          Route::post("search/blog", "BlogPostsController@search");
+
+    //Trash and Status Controller......................
+          Route::get("trash/{id}", "trashController@destroy");
+          Route::get("trashed", "trashController@trashed");
+          Route::get("restore/{id}", "trashController@restore");
+          Route::get("killed/{id}", "trashController@kill");
+          Route::get("show/panding", "trashController@showPanding");
+          Route::get("active/{id}", "trashController@active");
+
+
+
+      //Catageries CRUD FunctiConaly Controller......................
+          Route::get("pet/category", "CategoriesController@index");
+          Route::post("create/pet/category", "CategoriesController@store");
+          Route::get("edit/pet/category/{category_id}", "CategoriesController@edit");
+          Route::post("update/pet/category/{category_id}", "CategoriesController@update");
+          Route::get("delete/pet/category/{category_id}", "CategoriesController@delete");
 
      //Admin Profile...............................................................
         // Route::Resource("profile/show", "ProfileController");

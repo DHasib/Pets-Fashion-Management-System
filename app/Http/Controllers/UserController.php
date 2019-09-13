@@ -32,13 +32,13 @@ class UserController extends Controller
                 if( strtotime($retrivValur) < strtotime('now'))
                 {
                     session()->flash("error", "You can't Block User From Previous/Today Days !! please Select Blocked Duration");
-                    return view("admin/users/user_details", compact("users")); 
+                    return view("admin/manage_users/manage_user", compact("users")); 
                 }
 
                 else if(now()->diffInDays($retrivValur) > 6 )
                 {
                     session()->flash("error", "You can Not Blocked User More Than 7 days");
-                    return view("admin/users/user_details", compact("users")); 
+                    return view("admin/manage_users/manage_user", compact("users")); 
                 }
 
                 else if($UserDetails = User::find($request->id))
@@ -47,17 +47,17 @@ class UserController extends Controller
                     $is_saved = $UserDetails->save();
 
                         if ($is_saved){
-                            session()->flash("message", "Sucessfully Blocked User");
-                            return view("admin/users/user_details", compact("users")); 
+                            session()->flash("seccess", "Sucessfully Blocked User");
+                            return view("admin/manage_users/manage_user", compact("users")); 
                         }else{
                             session()->flash("error", "Failed to Blocked User");
-                            return view("admin/users/user_details", compact("users")); 
+                            return view("admin/manage_users/manage_user", compact("users")); 
                         }
                 }
                 else
                 {
                     session()->flash("error", "Invalid Selected User To Block");
-                    return view("admin/users/user_details", compact("users")); 
+                    return view("admin/manage_users/manage_user", compact("users")); 
                 }
         
     }
@@ -75,19 +75,19 @@ class UserController extends Controller
 
                     if ($is_saved)
                     {
-                        session()->flash("message", "Sucessfully Unblocked User");
-                        return view("admin/users/user_details", compact("users")); 
+                        session()->flash("success", "Sucessfully Unblocked User");
+                        return view("admin/manage_users/manage_user", compact("users")); 
                     }
                     else
                     {
-                        session()->flash("message", "Failed to Unblocked User");
-                        return view("admin/users/user_details", compact("users")); 
+                        session()->flash("error", "Failed to Unblocked User");
+                        return view("admin/manage_users/manage_user", compact("users")); 
                     }
             }
             else
             {
-                    session()->flash("message", "Invalid Selected User Details");
-                    return view("admin/users/user_details", compact("users")); 
+                    session()->flash("error", "Invalid Selected User Details");
+                    return view("admin/manage_users/manage_user", compact("users")); 
             }
         
         }
@@ -116,7 +116,7 @@ class UserController extends Controller
                                 ->orWhere('location', 'like', '%'.$user_search.'%')
                                 ->get(); 
 
-                            return view("admin/users/user_details", compact("users"));  
+                            return view("admin/manage_users/manage_user", compact("users"));  
                 }
         }
     //Access granted as a  Doctor..............................
@@ -129,23 +129,23 @@ class UserController extends Controller
             if($user->role == 0)
             {
                 
-                    $user->role = 3;
+                    $user->role = 2;
                     $is_saved = $user->save();
                 if(  $is_saved)
                 {
-                    session()->flash("message", "Access Granted to a Details");
-                    return view("admin/users/user_details", compact("users", "user")); 
+                    session()->flash("success", "Access Granted to a Details");
+                    return view("admin/manage_users/manage_user", compact("users", "user")); 
                 }
                 else
                 {
                     session()->flash("error", "Failed to make him Doctor");
-                    return view("admin/users/user_details", compact("users" ,"user")); 
+                    return view("admin/manage_users/manage_user", compact("users" ,"user")); 
                     }
         }
         else
         {
             session()->flash("error", "Already make as him Doctor");
-            return view("admin/users/user_details", compact("users", "user")); 
+            return view("admin/manage_users/manage_user", compact("users", "user")); 
         }
     
         }
@@ -155,26 +155,26 @@ class UserController extends Controller
             $users = User::all();
             $user = User::find($user_id);
         
-            if($user->role == 3)
+            if($user->role == 2)
             {
                 $user->role = 0;
                 $is_saved = $user->save();
 
                     if(  $is_saved)
                     {
-                        session()->flash("message", "Remove Access successfully");
-                        return view("admin/users/user_details", compact("users", "user")); 
+                        session()->flash("success", "Remove Access successfully");
+                        return view("admin/manage_users/manage_user", compact("users", "user")); 
                     }
                     else
                     {
                         session()->flash("error", "Failed to remove him Doctor");
-                        return view("admin/users/user_details", compact("users" ,"user")); 
+                        return view("admin/manage_users/manage_user", compact("users" ,"user")); 
                     }
             }
             else
             {
                 session()->flash("error", "Already make as him Doctor");
-                return view("admin/users/user_details", compact("users", "user")); 
+                return view("admin/manage_users/manage_user", compact("users", "user")); 
             }
   
         }
@@ -214,10 +214,10 @@ class UserController extends Controller
                 $is_saved = $headerDerails->save();
 
                 if ($is_saved){
-                    session()->flash("message", "Sucessfully Upload Header Details");
+                    session()->flash("success", "Sucessfully Upload Header Details");
                     return view("admin/home_page/home_top_header", compact("link"));
                 }else{
-                    session()->flash("message", "Failed to Upload Header Details");
+                    session()->flash("error", "Failed to Upload Header Details");
                     return view("admin/home_page/home_top_header", compact("link"));
                 }
             

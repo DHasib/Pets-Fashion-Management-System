@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\User;
 use App\Profile;
+use App\BlogPost;
 
 
 use Illuminate\Support\Facades\Hash;
@@ -27,13 +28,13 @@ class UsersTableSeeder extends Seeder
             $user->password = Hash::make('Admin@123');
             $user->save();
 
-    //For insert Admin profile...................................
-          $prof = new Profile;
-          $prof->user_id      = $user->id;
-          $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-          $prof->facebook     = 'facebook.com';
-          $prof->youtube      = 'youtube.com';
-          $prof->save();
+           //For insert Admin profile...................................
+              $prof = new Profile;
+              $prof->user_id      = $user->id;
+              $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
+              $prof->facebook     = 'facebook.com';
+              $prof->youtube      = 'youtube.com';
+              $prof->save();
 
         //For insert User Data.......................................
         $user = new User;

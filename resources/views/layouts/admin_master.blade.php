@@ -11,6 +11,8 @@
    <!--  For Defining Dynamic Title -->
    <title>  @yield("title")  </title>
 
+   <!-- Favicon -->
+   <link rel="icon" href="{{ asset('/images/petsfashion.png')}} " type="image/x-icon" />
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- overlayScrollbars -->
@@ -21,6 +23,11 @@
     <link rel="stylesheet" href="{{asset('dist/css/custom.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!--plugin toastr CSS-->
+  <link rel="stylesheet" type="text/css" href=" {{ asset('css/toastr.min.css')}} " media="all" /> 
+  <!--plugin Summernote CSS-->
+  <link rel="stylesheet" type="text/css" href=" {{ asset('css/summernote.css')}} " media="all" /> 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
@@ -141,7 +148,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{url('admin/users/table')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-users "></i>
                 <p>
                     User Management
                 </p>
@@ -150,7 +157,7 @@
             
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-plus  fa-fw"></i>
                 <p>
                    Add Items
                     <i class="fas fa-angle-left right"></i>
@@ -185,9 +192,9 @@
             </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-cog fa-fw"></i>
                 <p>
-                    Edit Home Page
+                    Settings
                     <i class="fas fa-angle-left right"></i>
                 </p>
                 </a>
@@ -216,7 +223,7 @@
             </li>
             <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <i class="nav-icon fas fa-rss-square "></i>
                     <p>
                         Blog
                         <i class="fas fa-angle-left right"></i>
@@ -224,28 +231,34 @@
                     </a>
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ url('admin/blogPost') }}" class="nav-link">
+                        <a href="{{ url('admin/blogPost/create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Post Blog </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{url('admin/blogPost')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Blog List </p>
                       </a>
                   </li>
+                  <li class="nav-item">
+                      <a href="{{url('admin/trashed')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Trashed Blogs </p>
+                      </a>
+                  </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ asset('admin/show/panding') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Approve User Blogs</p>
+                        <p>Panding Blogs</p>
                         </a>
                     </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/petCategory') }}" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
+                    <a href="{{ url('admin/pet/category') }}" class="nav-link">
+                    <i class="nav-icon fas fa-list-alt"></i>
                     <p>
                        Pet Category
                     </p>
@@ -253,7 +266,7 @@
                 </li>
                 <li class="nav-item">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-comments"></i>
                         <p>
                             Live Chat
                         </p>
@@ -282,8 +295,11 @@
         <!-- /.content-header -->
 
       
-
-
+        @if (Session::has('info'))
+        <div class="alert alert-info">
+            <strong>{{ Session::get('info') }}</strong>
+        </div>
+       @endif
       <!-- Extend All page content Here   16-->
       @section("content")
       @show
@@ -331,8 +347,27 @@
 <!-- PAGE SCRIPTS -->
 <script src="{{url('dist/js/pages/dashboard2.js')}}"></script>
 
-
 <!-- ==================== Start REQUIRED SCRIPTS ======================================================================================================================================================================== -->
+
+         <!-- toastr JS -->
+         <script src=" {{ asset('js/toastr.min.js')}}"></script>
+           <!-- Summer note JS -->
+          <script src=" {{ asset('js/summernote.js')}}"></script>
+                      
+  <script>
+           /* @if(Session::has('success'))
+                toastr.success("{{  Session::get('success') }}")
+            @elseif(Session::has('error'))
+                 toastr.error("{{  Session::get('error') }}")
+
+            @endif*/
+
+            $(document).ready(function() {
+                $('#blog_content').summernote();
+              });
+
+    </script>
+
 
 </body>
 </html>
