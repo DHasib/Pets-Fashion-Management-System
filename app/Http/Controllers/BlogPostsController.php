@@ -19,8 +19,9 @@ class BlogPostsController extends Controller
      */
     public function index()
     {
-     
-        return view('admin/blog_post/index')->with('posts', BlogPost::all());
+       
+        return view('admin/blog_post/index')->with('posts', BlogPost::all())
+                                            ->with('authUser',  Auth::user());
     }
 
     /**
@@ -34,6 +35,7 @@ class BlogPostsController extends Controller
         $categories = Category::all();
         //$tags = Tag::all();
 
+        $authUser = Auth::user();
         if($categories->count() == 0)
         {
             Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a post.');
@@ -41,8 +43,7 @@ class BlogPostsController extends Controller
             return redirect()->back();
         }
 
-
-        return view ('admin/blog_post/create', compact('categories'));
+        return view ('admin/blog_post/create', compact('categories', "authUser"));
     }
 
     /**
@@ -54,7 +55,7 @@ class BlogPostsController extends Controller
     public function store(Request $request)
     {
 
-       //DD(Auth::id());
+
         $validate_data =  Validator::make($request->all(),[
 
             "blog_title"              =>"required|string|min:4|max:30", 
@@ -105,7 +106,8 @@ class BlogPostsController extends Controller
         $blog_post = BlogPost::find($id);
 
         return view('admin/blog_post/edit')->with('blog_post', $blog_post)
-                                      ->with('categories', Category::all());
+                                           ->with('categories', Category::all())
+                                           ->with('authUser',  Auth::user());
 
     }
 
@@ -174,22 +176,55 @@ class BlogPostsController extends Controller
 
            ])->validate();
 
+             $authUser = Auth::user();
                $user_search = $request->search_user;
 
                if ($user_search == NULL) 
                {
                $posts= BlogPost::all();
-               return view("admin/blog_post/index", compact("posts")); 
+               return view("admin/blog_post/index", compact("posts", "authUser")); 
                } 
                else 
                {
                    $posts = BlogPost::where('blog_title','LIKE', '%'.$user_search.'%')
                                             ->get(); 
 
-                           return view("admin/blog_post/index", compact("posts"));  
+                           return view("admin/blog_post/index", compact("posts", "authUser"));  
                }
        }
 
 
+
+
+//For Onlu User Shoe Their Edit Blog Form..................................
+       public function userBlogEdit($id)
+       {
+       
+           $blog_post = BlogPost::find($id);
+   
+           return view('user/edit')->with('blog_post',   $blog_post)
+                                    ->with('categories', Category::all())
+                                    ->with('user',       Auth::user());
+   
+       }
+  
+//Blog post form show for Onlu User...............
+       public function postBlog()
+       {
+
+        $categories = Category::all();
+        //$tags = Tag::all();
+
+        $user = Auth::user();
+        if($categories->count() == 0)
+        {
+            Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a post.');
+
+            return redirect()->back();
+        }
+
+        return view ('user/post', compact('categories', "user"));
+        
+       }
 
 }

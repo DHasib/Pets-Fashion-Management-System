@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 
 use Session;
 use App\BlogPost;
+use Auth;
+
 class trashController extends Controller
 {
+
+//Trashed a blog post..................................... 
     public function destroy($id)
     {
-        $plog_post = BlogPost::find($id);
+        $plog_post = BlogPost::find($id); 
 
         $plog_post->delete();
 
@@ -18,14 +22,24 @@ class trashController extends Controller
 
         return redirect()->back();
     }
-
+//Show Trashed  blog for admin..................................... 
     public function trashed() 
     {
-        $trashed = BlogPost::onlyTrashed()->get();
+        $trashed = BlogPost::onlyTrashed()->where('user_id', Auth::user()->id)->get();
         
-        return view('admin/blog_post/trashed')->with('trashed', $trashed);
+        return view('admin/blog_post/trashed')->with('trashed', $trashed)
+                                              ->with('authUser', Auth::user()); 
     }
 
+//Show Trashed  blog for User..................................... 
+    public function trashedUser() 
+    {
+        $trashed = BlogPost::onlyTrashed()->where('user_id', Auth::user()->id)->get();
+        
+        return view('user/trashed')->with('trashed', $trashed)
+                                              ->with('user', Auth::user()); 
+    }
+//Permanently Delete Trashed post..................................... 
     public function kill($id)
     {
         $trashed = BlogPost::withTrashed()->where('id', $id)->first();
@@ -36,7 +50,7 @@ class trashController extends Controller
 
         return redirect()->back();
     }
-
+// Resore Trashed post..................................... 
     public function restore($id)
     {
         $trashed = BlogPost::withTrashed()->where('id', $id)->first();
@@ -45,40 +59,9 @@ class trashController extends Controller
 
         Session::flash('success', 'Post Restored Successfully.');
 
-        return view ('admin/blog_post/index');
+        return redirect()->back()->with('authUser', Auth::user()); 
     }
 
-  //Panding Blogs list.............................................
-  
-  public function showPanding()
-  {
-
-    $panding = BlogPost::all();
-
-    return view('admin/blog_post/panding_blog', compact('panding'));
-                                 
-
-  }
-
-
-
-//Astive user Blog.............................................
-    public function active($id)
-    {
-        $status = BlogPost::find($id);
-
-        //DD( $status->status);
-       if($status->status == 1){
-   
-         $status->status = 0;
-         $status->save();
-
-        Session::flash('success', 'Post has been Active Successfully.');
-
-        return redirect()->back();
-
-       }
-    }
 
 
 }

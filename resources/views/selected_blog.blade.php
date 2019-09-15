@@ -127,14 +127,10 @@
 
                                         </div>
                 
-                                        <div class="socials text-center">
-                                                <div class="addthis_inline_share_toolbox_gjor"></div>
-                                        </div>
-
                                     </article>
-
-                                    <div class="blog-details-author">
-
+                                     <span> <h4>About Blog Writter </h4><br></span>
+                                    <div class="blog-details-author"> 
+                                           
                                         <div class="blog-details-author-thumb">
                                                 <img src="{{asset ($post->user->profile->user_img) }}" style="width:100px; height:100px; border-radius:100%;" alt="Author">
                                         </div>
@@ -158,7 +154,7 @@
                                                 </div>
                                         </div>
                                     </div>
-
+                               <!-- This section for arrow paginate  -->
                                     <div class="pagination-arrow">
 
                                         @if($prev)

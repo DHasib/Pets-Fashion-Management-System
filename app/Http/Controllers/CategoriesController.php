@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use Session;
 use App\Category;
 use Validator;
+use Auth;
 
 class CategoriesController extends Controller
 {
     public function index()
     {
+       
         //2nd way to fetch and send data...................
-             return view('admin/categories/crud_categories')->with('categories', Category::all());
+             return view('admin/categories/crud_categories')->with('categories', Category::all())
+                                                            ->with('authUser', Auth::user()); 
 
     }
 
@@ -36,10 +39,12 @@ class CategoriesController extends Controller
 
         if ($is_saved){
             session()->flash("success", "Sucessfully Added Pet Category");
-            return view("admin/categories/crud_categories")->with('categories', Category::all());
+            return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                              ->with('authUser', Auth::user()); 
         }else{
             session()->flash("error", "Failed to Upload Slider");
-            return view("admin/categories/crud_categories")->with('categories', Category::all());
+            return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                             ->with('authUser', Auth::user()); 
         }
 
     }
@@ -48,7 +53,8 @@ class CategoriesController extends Controller
     {
  
         return view('admin/categories/crud_categories')->with('category', Category::find($id))
-                                                       ->with('categories', Category::all());
+                                                       ->with('categories', Category::all())
+                                                       ->with('authUser', Auth::user()); 
     }
 
     protected function update(Request $request, $id)
@@ -66,10 +72,12 @@ class CategoriesController extends Controller
 
             if ($is_saved){
                 session()->flash("success", "Sucessfully Update Pet Category");
-                return view("admin/categories/crud_categories")->with('categories', Category::all());
+                return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                                ->with('authUser', Auth::user()); 
             }else{
                 session()->flash("error", "Failed to Update Pet Category");
-            return view("admin/categories/crud_categories")->with('categories', Category::all());
+            return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                           ->with('authUser', Auth::user()); 
             }
 
     }
@@ -88,11 +96,13 @@ class CategoriesController extends Controller
 
             Session::flash('success', 'You succesfully deleted the category.');
 
-            return view("admin/categories/crud_categories")->with('categories', Category::all());
+            return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                          ->with('authUser', Auth::user()); 
        }
        else{
         session()->flash("error", "Please select First Category to Delete");
-        return view("admin/categories/crud_categories")->with('categories', Category::all());
+        return view("admin/categories/crud_categories")->with('categories', Category::all())
+                                                         ->with('authUser', Auth::user());  
        }
     
     }

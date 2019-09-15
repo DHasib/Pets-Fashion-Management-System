@@ -74,7 +74,6 @@
 body {
   position: relative;
   background: #fff;
-  color: #acacac;
   font-family: "Varela Round", Arial, "Helvetica Neue", Helvetica, serif;
   font-size: 16px;
   font-weight: 400;
@@ -83,7 +82,6 @@ body {
 img {
   max-width: 100%;
   height: auto;
-  display: inline-block;
   vertical-align: middle; }
 
 blockquote {
@@ -549,7 +547,7 @@ input {
       padding: 35px 0; } }
 
 .medium-padding120 {
-  padding: 120px 0; }
+  padding: 100px 0; }
   @media (max-width: 800px) {
     .medium-padding120 {
       padding: 35px 0; } }
@@ -937,13 +935,10 @@ h6, .h6 {
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
-  padding: 25px 50px;
   font-size: 15px;
   line-height: 1;
-  text-transform: uppercase;
   font-family: "Varela Round", Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #fff;
-  border-radius: 50px;
   position: relative;
   transition: all .3s ease;
   text-align: center; }

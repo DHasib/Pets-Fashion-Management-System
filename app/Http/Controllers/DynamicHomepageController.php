@@ -11,6 +11,7 @@ use App\DynamicLinks;
 use Validator;
 
 use session;
+use Auth;
 
 
 class DynamicHomepageController extends Controller
@@ -20,13 +21,14 @@ class DynamicHomepageController extends Controller
 
     public function showUploadSlider()
     {
+        $authUser = Auth::user(); 
          $sdata = DynamicHomepage::all();
-        return view("admin/home_page/home_slider", compact("sdata"));
+        return view("admin/home_page/home_slider", compact("sdata", "authUser"));
     }  
 
     protected function updateSliderDetails(Request $request)
     {
-        
+        $authUser = Auth::user(); 
             $validate_data =  Validator::make($request->all(),[
             "slider_title"          =>"required|max:50|string",
             "slider_heading"        =>"required|max:100|string",
@@ -59,25 +61,26 @@ class DynamicHomepageController extends Controller
 
                 if ($is_saved){
                     session()->flash("message", "Sucessfully Upload Slider");
-                    return view("admin/home_page/home_slider", compact("sdata"));
+                    return view("admin/home_page/home_slider", compact("sdata", "authUser"));
                 }else{
                     session()->flash("error", "Failed to Upload Slider");
-                    return view("admin/home_page/home_slider", compact("sdata"));
+                    return view("admin/home_page/home_slider", compact("sdata", "authUser"));
                 }
           }
           else{
             session()->flash("error", "Please First Select the Slider Details which you Want to Update");
-            return view("admin/home_page/home_slider", compact("sdata"));
+            return view("admin/home_page/home_slider", compact("sdata", "authUser"));
           }
       
     }
 
     public function editSlide($slider_id)
     { 
+        $authUser = Auth::user(); 
         $sdata = DynamicHomepage::all();
         $eslider = DynamicHomepage::find($slider_id);
     
-        return view("admin/home_page/home_slider", compact("eslider","sdata"));
+        return view("admin/home_page/home_slider", compact("eslider","sdata", "authUser"));
 
     }
 
@@ -86,14 +89,15 @@ class DynamicHomepageController extends Controller
 
 public function showTopHeader()
 {
+    $authUser = Auth::user(); 
      $link = DynamicLinks::all();
-    return view("admin/home_page/home_top_header", compact("link"));
+    return view("admin/home_page/home_top_header", compact("link", "authUser"));
 }  
 
 
 protected function updatetopHeader(Request $request)
     {
-        
+        $authUser = Auth::user(); 
             $validate_data =  Validator::make($request->all(),[
             "shop_contact_number"   =>"required|regex:/(01)[0-9]{9}/|max:16", 
             "shop_email"            =>"required|email",
@@ -123,10 +127,10 @@ protected function updatetopHeader(Request $request)
 
             if ($is_saved){
                 session()->flash("message", "Sucessfully Upload Header Details");
-                return view("admin/home_page/home_top_header", compact("link"));
+                return view("admin/home_page/home_top_header", compact("link", "authUser"));
             }else{
                 session()->flash("message", "Failed to Upload Header Details");
-                return view("admin/home_page/home_top_header", compact("link"));
+                return view("admin/home_page/home_top_header", compact("link", "authUser"));
             }
         
       

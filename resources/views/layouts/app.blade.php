@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('vendors/owl_carousel/owl.carousel.css')}} " media="all">
 <!--Theme Styles CSS-->
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/style.css')}} " media="all" />
-
+   
     <!--Plugins for Blog page-->
 
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
@@ -135,13 +135,15 @@
                                                                     <li><a href="{{ route('register') }}"><i class="fa fa-user-plus"> Register </i></a></li>
                                                             @endif
                                                         @else
-                            
-                                                        <li><a href="{{url('admin/admin')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
+                                                               @if(Auth::user()->role == 1 ) 
+                                                                     <li><a href="{{url('admin/dashboard/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
+                                                                @elseif(aUTH::user()->role == 2)
+                                                                     <li><a href="{{url('doctor/profile/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
+                                                               @else 
+                                                                     <li><a href="{{url('user/profile/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
+                                                               @endif 
 
-                                                                <li> 
-                                                                     <a  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"> Log-out</i> </a>
-                                                                </li>
-
+                                                            <li>  <a  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out"> Log-out</i> </a> </li>
                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                                     @csrf
                                                             </form>
@@ -157,7 +159,7 @@
                                 </div>
                             </div><!-- /.container -->
                         </nav>
-<!-- ============================================================================= End Header_Area  ========================================================================================================================================================================================================= -->
+ <!-- ============================================================================= End Header_Area  ========================================================================================================================================================================================================= -->
                   
 
                     <!-- Extend All page content Here   16-->
@@ -230,6 +232,7 @@
 
                         
                        
+                      
                         <!-- jQuery JS -->
                         <script src="{{ asset('js/jquery-1.12.0.min.js')}} "></script>
                         <!-- Bootstrap JS -->
@@ -253,17 +256,11 @@
                         <script src="app/js/crum-mega-menu.js"></script>
                         <script src="app/js/theme-plugins.js"></script>
                         <script src="app/js/main.js"></script>
-                         <!-- Theme JS -->
+                        <!-- Theme JS -->
                         <script src=" {{ asset('js/theme.js')}}"></script>
-                        
 
-                      
-            <script>
 
-            
-            </script>
-                      
-        
+
           </div> 
    </body>
 </html>

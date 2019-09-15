@@ -1,5 +1,5 @@
 <?php
-
+use App\user;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +72,27 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
         return view('users.index');
     });
     //Route::get('/addFlat','RoomInfoController@showAddFlatForm');
+
+    Route::get("blog/edit/{id}", "BlogPostsController@userBlogEdit");
+    Route::Resource("blogPost", "BlogPostsController");
+    Route::get("show/blog", "BlogPostsController@postBlog");
+    
+    Route::get("trash/{id}", "trashController@destroy");
+    Route::get("trashed", "trashController@trashedUser");
+    Route::get("restore/{id}", "trashController@restore");
+    Route::get("killed/{id}", "trashController@kill");
+
+    
+    Route::get("profile/show", "UserController@showUserProfile");
+    Route::get("profile/setting", "UserController@userProfileSetting");
+
+
+    Route::Post("profile/update", "ProfileController@updateProfile");
+    Route::Post("profile/save", "ProfileController@saveProfile");
+    Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
+    Route::Post("account/password/change", "ProfileController@changeUserPassword");
+
+
    
 });
 
@@ -85,10 +106,9 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
 //Route group for Admin Activities.........................................................................................................................................................................................
 //.................................................................................................................................................................................................................
 Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
-    Route::get('admin', function () {
-        return view('layouts/admin_master');
-    });
-
+   
+    //Route::get("admin/index", "ProfileController@showAdminDashboard");
+       
 
       //Post Blog CRUD Functionaly using Resource Controller......................
           Route::Resource("blogPost", "BlogPostsController");
@@ -100,12 +120,13 @@ Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
           Route::get("trashed", "trashController@trashed");
           Route::get("restore/{id}", "trashController@restore");
           Route::get("killed/{id}", "trashController@kill");
-          Route::get("show/panding", "trashController@showPanding");
-          Route::get("active/{id}", "trashController@active");
+    //only admin can access..................................  
+          Route::get("show/panding", "adminController@showPanding");
+          Route::get("active/{id}", "adminController@active");
 
 
 
-      //Catageries CRUD FunctiConaly Controller......................
+      //Catageries CRUD FunctiConaly Controller only for admin......................
           Route::get("pet/category", "CategoriesController@index");
           Route::post("create/pet/category", "CategoriesController@store");
           Route::get("edit/pet/category/{category_id}", "CategoriesController@edit");
@@ -113,22 +134,25 @@ Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
           Route::get("delete/pet/category/{category_id}", "CategoriesController@delete");
 
      //Admin Profile...............................................................
-        // Route::Resource("profile/show", "ProfileController");
-         Route::get("profile/show", "ProfileController@showAdminProfile");
+        // Route("Admin Profile", "ProfileController");
+         Route::get("profile/show", "adminController@showAdminProfile");
+         Route::get("dashboard/show", "adminController@showAdminDashboard");
+         Route::get("profile/setting", "adminController@settingAdminProfile");
+
          Route::Post("profile/update", "ProfileController@updateProfile");
          Route::Post("profile/save", "ProfileController@saveProfile");
          Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
          Route::Post("account/password/change", "ProfileController@changeUserPassword");
         
       //User Details Show/Block Work...............................................
-          Route::get("make/doctor/{user_id}", "UserController@makeDoctor");
-          Route::get("remove/doctor/{user_id}", "UserController@removeDoctor");
-          Route::get("users/table", "UserController@showUserDetails");
-          Route::post("user/blocked", "UserController@blockedUser");
-          Route::post("user/unblocked", "UserController@unBlockedUser");
-          Route::post("search/user", "UserController@search");
+          Route::get("make/doctor/{user_id}", "adminController@makeDoctor");
+          Route::get("remove/doctor/{user_id}", "adminController@removeDoctor");
+          Route::get("users/table", "adminController@showUserDetails");
+          Route::post("user/blocked", "adminController@blockedUser");
+          Route::post("user/unblocked", "adminController@unBlockedUser");
+          Route::post("search/user", "adminController@search");
 
-      //Top Header Edit Work........................................................
+      //Top Header setting Work........................................................
           Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");
           Route::post("topHeader/update", "DynamicHomepageController@updatetopHeader");
 

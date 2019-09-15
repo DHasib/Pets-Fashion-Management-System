@@ -7,6 +7,11 @@ use Auth;
 use Validator;
 use session;
 
+use App\user;
+use App\BlogPost;
+use App\Category;
+
+
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -23,12 +28,15 @@ class ProfileController extends Controller
 
     }
 
-    //Show Admin Profile.....................................................
-        public function showAdminProfile()
-        {
-            return view("admin/profile/admin_profile")->with('user', Auth::user()); 
-        } 
 
+  
+             
+    //Show Admin Profile Setting.....................................................
+    /*public function showAdminProfileSetting()
+    {
+        return view("admin/profile/setting")->with('user', Auth::user()); 
+    } */
+   
 
 
     /**
