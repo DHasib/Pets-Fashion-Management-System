@@ -1,7 +1,7 @@
 
 @extends("layouts.admin_master")
 
-@section("title","Post a Blog | Pet Fashion Administration" )
+@section("title","Create a Blog | Pet Fashion Administration" )
 
 
  <!-- Bootstrap CSS -->

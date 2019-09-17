@@ -100,7 +100,7 @@
 
                     @foreach ($categories as $category)
                     <li>
-                        <a href="{{ url('category',$category->id ) }}">{{$category->name}}</a>
+                        <a href="{{ url('blog/category',$category->id ) }}">{{$category->name}}</a>
                     </li>
                     @endforeach
                 </ul>

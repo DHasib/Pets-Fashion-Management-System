@@ -1,5 +1,5 @@
 @media (max-width:1920px){
-    
+
 }
 @media (max-width:1700px){
     .slider_area_tow .slider_inner .camera_prev::after {
@@ -14,6 +14,7 @@
     .slider_area .slider_inner .camera_prev::after { 
         left: 105px; 
     }
+
 } 
 @media (max-width:1199px){
     .slider_area .slider_inner .camera_next::after {
@@ -25,12 +26,11 @@
     .slider_area_tow .slider_inner .camera_caption div .container {
         max-width: 940px !important; 
     }
-    .our_team_area .team_row .team_membar img {
-        height: 330px;
-    }
+
     .blog_tow_area .blog_tow_row .renovation .renovation_content .date_comment a { 
         padding-right: 30px;
     }
+
 }
 @media (max-width:991px){
     .top_header_area .top_nav li a{
@@ -118,6 +118,7 @@
     .blog_all .blog_row .main_blog .blog_content .blog_heading{
         padding-left: 20px;
     }
+
 } 
 @media (max-width:800px){
     .slider_area_tow .slider_inner .camera_caption div{
@@ -125,6 +126,8 @@
         margin: 0 auto;
         width: 90%;
     }
+
+
 }
 @media (max-width:767px){
     .top_header_area .top_nav{
@@ -240,7 +243,7 @@
         padding-top: 0 !important;
         padding-bottom: 30px;
     }
-    constructing_right {
+    .constructing_right {
         padding-top: 30px;
     }
     .blog_tow_area .blog_tow_row .renovation {

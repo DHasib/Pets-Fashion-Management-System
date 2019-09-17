@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\user;
 use App\BlogPost;
 use App\Category;
+use App\Pet;
 use Auth;
 use Validator;
 use session;
@@ -33,7 +34,8 @@ class adminController extends Controller
                                             ->with('trashed_count',    BlogPost::onlyTrashed()->get()->count())
                                             ->with('users_count',      User::all()->count())
                                             ->with('categories_count', Category::all()->count())
-                                            ->with('authUser',         Auth::user()); 
+                                            ->with('pets_count',       Pet::all()->count())
+                                            ->with('authUser',         Auth::user());
     } 
 //Panding Blogs list.............................................
         public function showPanding()

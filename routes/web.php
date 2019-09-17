@@ -18,7 +18,7 @@ use App\user;
 //Public Blog Show...................................................
     Route::get("blog", "HomeController@blog");
     Route::get("post/{slug}", "HomeController@singleBlog");
-    Route::get("category/{id}", "HomeController@category");
+    Route::get("blog/category/{id}", "HomeController@blogCategory");
 
 
 
@@ -27,8 +27,13 @@ Auth::routes();
 Route::get('home', 'HomeController@index');
 
 Route::get("pet_products", "HomeController@pet_products");
+Route::get("pets", "HomeController@petsIndex");
+Route::get("about/pet/{slug}", "HomeController@aboutPet");
+Route::get("pets/category/{id}", "HomeController@petsCategory");
 
-Route::get("pets", "HomeController@pets");
+Route::post("pets/search", "HomeController@searchPets");
+
+
 
 Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_cost");
 
@@ -109,10 +114,12 @@ Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
    
     //Route::get("admin/index", "ProfileController@showAdminDashboard");
        
+  //Post Blog CRUD Functionaly using Resource Controller......................
+          Route::Resource("pet", "PetController");
 
-      //Post Blog CRUD Functionaly using Resource Controller......................
+
+    //Post Blog CRUD Functionaly using Resource Controller......................
           Route::Resource("blogPost", "BlogPostsController");
-
           Route::post("search/blog", "BlogPostsController@search");
 
     //Trash and Status Controller......................
@@ -123,6 +130,11 @@ Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
     //only admin can access..................................  
           Route::get("show/panding", "adminController@showPanding");
           Route::get("active/{id}", "adminController@active");
+        //trashed pets by only admin......................................
+          Route::get("trash/{id}/pet", "trashController@destroyPet");
+          Route::get("trashed/pet", "trashController@trashedPet");
+          Route::get("restore/{id}/pet", "trashController@restorePet");
+          Route::get("killed/{id}/pet", "trashController@killPet");
 
 
 

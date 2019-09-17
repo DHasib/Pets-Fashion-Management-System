@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\DynamicHomepage;
 use App\DynamicLinks;
 use App\BlogPost;
+use App\Pet;
+use App\User;
 use App\Category;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -35,7 +38,7 @@ class HomeController extends Controller
 
 
 
-//Latest Blog Show..........................
+//Latest Blog Show................................................................................................................................
     public function blog()
     {
            //$ch = BlogPost::orderBy('created_at', 'desc')->get()->where('status',0)->first();
@@ -53,7 +56,7 @@ class HomeController extends Controller
     }
     
 
-//Blog Single Post Show..........................
+//Selected Blog Post Details Show............................................................................................
     public function singleBlog($slug)
     {
         $post = BlogPost::where('slug', $slug)->first();
@@ -69,8 +72,8 @@ class HomeController extends Controller
                              ->with('prev', BlogPost::find($prev_id));
     }
  
-
-    public function category($id)
+//Category wise Blog  Show..........................................................................................................
+    public function blogCategory($id)
     {
         $category = Category::find($id);
 
@@ -80,18 +83,76 @@ class HomeController extends Controller
                                ->with('categories', Category::all());
     }
 
+//All pets List Show..............................................................................................................
+    public function petsIndex()
+    {
+            return view("shop/pets/index")->with('link',        DynamicLinks::all())
+                                          ->with('categories',  Category::all())
+                                          ->with('pets',        Pet::paginate(9));
+    }
+//Selected Pets Details Show .......................................................................................................
+    public function aboutPet($slug)
+    {
+       $pet = Pet::where('slug', $slug)->first();
 
-    
+        $next_id = Pet::where('id', '>', $pet->id)->min('id');
+        $prev_id = Pet::where('id', '<', $pet->id)->max('id');
+
+        return view('shop/pets/about')->with('pet', $pet)
+                                      ->with('title', $pet->title)
+                                      ->with('link', DynamicLinks::all())
+                                      ->with('categories', Category::take(5)->get())
+                                      ->with('next', Pet::find($next_id))
+                                      ->with('prev', Pet::find($prev_id));
+    }
+//Category-wise Pets  Show .....................................................................................................
+    public function petsCategory($id)
+    {
+        $category = Category::find($id);
+
+        return view("shop/pets/category_pets")->with('category', $category)
+                                                ->with('title', $category->name)
+                                                ->with('link', DynamicLinks::all()) 
+                                                ->with('categories', Category::all());
+    }
+
+  //Pets Search By anyone using title...........................................................................................................
+  protected function searchPets(Request $request)
+  {
+      $categories = Category::all();
+      $link = DynamicLinks::all();
+
+      $validate_data =  Validator::make($request->all(),[
+
+          'search_pets'  => "required|string", 
+
+      ])->validate();
+
+          $search_pets = $request->search_pets;
+
+          if ($search_pets == NULL) 
+          {
+          $pets = Pet::paginate(2);
+          return view("shop/pets/index", compact("pets","categories","link")); 
+          } 
+          else 
+          {
+              $pets = Pet::where('title','LIKE', '%'.$search_pets.'%')
+                              ->paginate(9);
+
+                      return view("shop/pets/index", compact("pets","categories","link"));  
+          }
+  }
+
+
+
 
 
     public function pet_products(){
         $link = DynamicLinks::all();
         return view("html.pet_products", compact('link'));
     }
-    public function pets(){
-        $link = DynamicLinks::all();
-        return view("html.pets", compact('link'));
-    }
+
     public function calculate_pet_keeping_cost(){
         $link = DynamicLinks::all();
         return view("html.calculate_pet_keeping_cost", compact('link'));

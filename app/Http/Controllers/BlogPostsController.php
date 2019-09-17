@@ -167,7 +167,7 @@ class BlogPostsController extends Controller
     }
 
 
-       //Search User by admin..............................
+//Search User by admin....................................................................................................
        protected function search(Request $request)
        {
            $validate_data =  Validator::make($request->all(),[
@@ -196,7 +196,7 @@ class BlogPostsController extends Controller
 
 
 
-//For Onlu User Shoe Their Edit Blog Form..................................
+//For Onlu User Show Their Edit Blog Form..............................................................................................
        public function userBlogEdit($id)
        {
        
@@ -208,7 +208,7 @@ class BlogPostsController extends Controller
    
        }
   
-//Blog post form show for Onlu User...............
+//Blog post form show for Onlu User...................................................................................................
        public function postBlog()
        {
 

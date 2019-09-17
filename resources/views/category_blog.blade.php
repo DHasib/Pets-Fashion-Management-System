@@ -74,7 +74,7 @@
     
                 <div class="panel panel-primary ourPro">
                             <div class="panel-heading text-uppercase  pnlheading">
-                                <h3>Blog Category:  {{ $title }}</h3>
+                                <h3>{ $title }}</h3>
                             </div><br> 
                             <div class="container">
                                @if(isset($category))

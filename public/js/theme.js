@@ -212,3 +212,18 @@ function doctorSupport(evt, details) {
     document.getElementById(details).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+//Items Add to cart quentity select work............................
+$('.quantity-plus-d').on('click', function () {
+    var val = parseInt($(this).prev('input').val());
+    $(this).prev('input').val(val + 1).change();
+    return false;
+});
+
+$('.quantity-minus-d').on('click', function () {
+    var val = parseInt($(this).next('input').val());
+    if (val !== 1) {
+        $(this).next('input').val(val - 1).change();
+    }
+    return false;
+});

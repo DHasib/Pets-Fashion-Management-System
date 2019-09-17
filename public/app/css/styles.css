@@ -4655,7 +4655,7 @@ textarea {
     font-size: 14px;
     transition: all .3s ease; }
   .case-item:hover {
-    background-color: #4cc2c0; }
+    background-color: #f8b81d; }
     .case-item:hover .case-item__title {
       color: #fff; }
     .case-item:hover .case-item__cat a {

@@ -17,7 +17,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$pets_count}}</h3>
 
                         <p>Total Pets</p>
                     </div>

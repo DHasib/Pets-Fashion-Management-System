@@ -866,7 +866,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   padding-top: 15px;
 }
 .our_team_area .team_row .team_membar {
-  height: 528px;
+  height: 520px;
   display: block;
   overflow: hidden;
   position: relative;
@@ -3151,5 +3151,83 @@ img{ max-width:100%;}
 /*--------------------------------------------------*/
 
 /*# End  Chat  area */
+
+/*--------------------------------------------------*/
+
+/*--------------------------------------------------*/
+
+/*# Start   Add to cart  area */
+
+/*--------------------------------------------------*/
+ 
+  .constructing_right .quantity {
+    overflow: hidden; }
+    .constructing_right .quantity .quantity-minus {
+      display: block;
+      float: left;
+      padding: 0 20px;
+      background-color: #f1f3f3;
+      border-radius: 50px 0 0 50px;
+      font-size: 40px;
+      border-right: 2px solid #e3e9e9;
+      color: #cfcfcf;
+      transition: all .3s ease; }
+      @media (max-width: 980px) {
+        .constructing_right .quantity .quantity-minus {
+          font-size: 20px;
+          padding: 0 10px; } }
+      @media (max-width: 480px) {
+        .constructing_right .quantity .quantity-minus {
+          font-size: 14px;
+          padding: 0 5px; } }
+      .constructing_right .quantity .quantity-minus:hover {
+        background-color: #4cc2c0;
+        color: #fff;
+        border-color: #4cc2c0; }
+    .constructing_right .quantity input {
+      max-width: 70px;
+      float: left;
+      background-color: #f7f9f9;
+      padding: 18px 20px;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 0;
+      margin-bottom: 0; }
+      @media (max-width: 980px) {
+        .constructing_right .quantity input {
+          font-size: 18px;
+          padding: 0 10px;
+          max-width: 40px; } }
+      @media (max-width: 480px) {
+        .constructing_right .quantity input {
+          font-size: 14px;
+          padding: 0 5px;
+          max-width: 30px; } }
+    .constructing_right .quantity .quantity-plus {
+      display: block;
+      float: left;
+      padding: 0 20px;
+      background-color: #f1f3f3;
+      border-radius: 0 50px 50px 0;
+      font-size: 40px;
+      border-left: 2px solid #e3e9e9;
+      color: #cfcfcf;
+      transition: all .3s ease; }
+      @media (max-width: 980px) {
+        .constructing_right .quantity .quantity-plus {
+          font-size: 20px;
+          padding: 0 10px; } }
+      @media (max-width: 480px) {
+        .constructing_right .quantity .quantity-plus {
+          font-size: 14px;
+          padding: 0 5px; } }
+      .constructing_right .quantity .quantity-plus:hover {
+        background-color: #4cc2c0;
+        color: #fff;
+        border-color: #4cc2c0; }
+
+    /*--------------------------------------------------*/
+
+/*# End   Add to cart  area */
 
 /*--------------------------------------------------*/
