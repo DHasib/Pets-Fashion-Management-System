@@ -21,7 +21,7 @@ class PetController extends Controller
     public function index()
     {
 
-        return view('admin/pets/index')->with('pets', Pet::all())
+        return view('admin/shop/pets/index')->with('pets', Pet::all())
                                        ->with('Categories', Category::all())
                                        ->with('authUser',   Auth::user());
     }
@@ -39,12 +39,12 @@ class PetController extends Controller
         $authUser = Auth::user();
         if($categories->count() == 0)
         {
-            Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a post.');
+            Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a Sell Pet.');
 
             return redirect()->back();
         }
 
-        return view ('admin/pets/create', compact('categories',"authUser"));
+        return view ('admin/shop/pets/create', compact('categories',"authUser"));
     }
 
     /**
@@ -62,6 +62,7 @@ class PetController extends Controller
 
             "title"             =>"required|string|min:10|max:50", 
             "description"       =>"required|string",
+            "gender"            =>"required|string",
             "category_id"       =>"required|integer",
             "price"             =>"required|integer",
             "discount"          =>"integer|max:100|min:5",
@@ -69,7 +70,7 @@ class PetController extends Controller
             "image"             =>"required|image|mimes:jpeg,jpg|max:2050",
            ])->validate();
 
-      
+      //DD($request->gender);
            $image = $request->image;
            $pet_image_new_name      =  $image->getClientOriginalName();
            $image->move('images/uploads/pets_img', $pet_image_new_name);
@@ -81,6 +82,7 @@ class PetController extends Controller
               'category_id'     =>  $request->category_id,
               'price'           =>  $request->price,
               'stock'           =>  $request->stock,
+              'gender'          =>  $request->gender,
               'image'           => 'images/uploads/pets_img/'.  $pet_image_new_name,
               'discount'        =>  $request->discount,
               'slug'            =>  str_slug($request->title),
@@ -111,7 +113,7 @@ class PetController extends Controller
     {
         $pet = pet::find($id);
 
-        return view('admin/pets/edit')->with('pet', $pet)
+        return view('admin/shop/pets/edit')->with('pet', $pet)
                                            ->with('categories', Category::all())
                                            ->with('authUser',  Auth::user());
     }
@@ -129,6 +131,7 @@ class PetController extends Controller
 
             "title"             =>"required|string|min:10|max:50", 
             "description"       =>"required|string",
+            "gender"            =>"required|string",
             "category_id"       =>"required|integer",
             "discount"          =>"integer|max:100|min:5",
             "price"             =>"required|integer",
@@ -144,6 +147,7 @@ class PetController extends Controller
            
 
               $pet->title           = $request->title;
+              $pet->gender          = $request->gender;
               $pet->description     = $request->description;
               $pet->category_id     = $request->category_id;
               $pet->price           = $request->price;

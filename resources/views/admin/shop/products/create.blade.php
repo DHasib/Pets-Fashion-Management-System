@@ -1,6 +1,6 @@
 @extends("layouts.admin_master")
 
-@section("title","Add Pet for Sell | Pet Fashion Administration" )
+@section("title","Add Product for Sell | Pet Fashion Administration" )
 
 
 <!-- Bootstrap CSS -->
@@ -13,9 +13,9 @@
     <!-- Form Element sizes -->
     <div class="card card-warning">
         <div class="card-header">
-            <h3 class="card-title"> Add Pet </h3>
+            <h3 class="card-title"> Add Product </h3>
             <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a
-                    href="{{url('admin/pet/create')}}" style="color:White;">Refresh</a></div>
+                    href="{{url('admin/product/create')}}" style="color:White;">Refresh</a></div>
         </div>
         @if (Session::has('success'))
         <div class="alert alert-success">
@@ -27,11 +27,11 @@
         </div>
         @endif
         <div class="card-body">
-            <form action="{{url('/admin/pet')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('/admin/product')}}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                    <label for="wname">Pet Title:</label>
+                    <label for="wname">Product Title:</label>
                     <input type="text" class="form-control" id="title" placeholder="Pet Title " name="title"
                         value="{{ old('title') }}">
 
@@ -61,7 +61,7 @@
                 @endif
 
                 <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
-                    <label for="image">select Pet Image:</label>
+                    <label for="image">Select Products Image:</label>
                     <input type="file" class="form-control" name="image" value="{{ old('image') }}">
 
                     @if ($errors->has('image'))
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
-                    <label for="bcontent">Pet Describtion:</label>
+                    <label for="bcontent">Product Describtion:</label>
                     <textarea name="description" id="description" class="form-control" cols="30" rows="10"
                         value="{{ old('description') }}"></textarea>
 
@@ -85,7 +85,7 @@
 
                 </div>
                 <div class="form-group {{ $errors->has('price') ? 'has-error' : '' }}">
-                    <label for="price">Pet Price:</label>
+                    <label for="price">Product Price:</label>
                     <input type="text" class="form-control" id="price" placeholder="Pet Price " name="price"
                         value="{{ old('price') }}">
 
@@ -97,7 +97,7 @@
 
                 </div>
                 <div class="form-group {{ $errors->has('stock') ? 'has-error' : '' }}">
-                    <label for="stock">Pet Stock:</label>
+                    <label for="stock">Product Stock:</label>
                     <input type="text" class="form-control" id="stock" placeholder="Pet Stock " name="stock"
                         value="{{ old('stock') }}">
 
@@ -111,7 +111,7 @@
                 <a class="btn btn-warning btn-sm tablinks" onclick="discountShow()"> Want to Set
                     Discount click here<br></a>
                 <div class="form-group tabcontent {{ $errors->has('discount') ? 'has-error' : '' }}" >
-                    <label for="discount">Pet Discount:</label>
+                    <label for="discount">Product Discount:</label>
                     <input type="text" class="form-control" id="discount" placeholder="Pet Discount " name="discount" value="{{ old('discount') }}"  {{ $errors->has('discount') ? ' ' : 'disabled' }}  >
 
                     @if ($errors->has('discount'))
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info btn-lg">Add Pet</button>
+                    <button type="submit" class="btn btn-info btn-lg">Add Product</button>
                 </div>
 
             </form>

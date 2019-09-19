@@ -1,10 +1,10 @@
 @extends("layouts.app")
 
-@section("title","Pets List | Pet Fashion Management System" )
+@section("title","Products Shop | Pet Fashion Management System" )
 
 @section("content")
 
-    <!-- OUR Pets OFFER [ SLIDE-BAR ] -->
+    <!-- OUR products OFFER [ SLIDE-BAR ] -->
     <section class="our_partners_area offerpage1">
         <div class="panel panel-primary offerpagebdr">
             <div class="panel-heading text-uppercase text-center pnlheading ">
@@ -13,55 +13,22 @@
             <div class="container">
                 <div class="panel-body">
                     <div class="partners offerpage">
+                 @forelse($discountProduct as $disproduct)
+                    @if($disproduct->discount != null) 
                         <div class="item">
                             <div class="row construction_iner offerpage2">
                                 <div class="col-md-6 col-sm-4 construction">
                                     <div class="cns-img">
-                                        <img src="images/cns-1.jpg" alt="">
+                                        <img src="{{asset($disproduct->image)}}" alt="{{$disproduct->title}}" style="width:100%; height:252.5px;">
                                     </div>
                                     <div class="cns-content">
-                                        <i aria-hidden="true"><b>70%off</b></i>
+                                        <a href="{{url('about/product/'.$disproduct->slug)}}"><i aria-hidden="true"><b>{{$disproduct->discount}}%off</b></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row construction_iner offerpage2">
-                                <div class="col-md-6 col-sm-4 construction">
-                                    <div class="cns-img">
-                                        <img src="images/cns-1.jpg" alt="">
-                                    </div>
-                                    <div class="cns-content">
-                                        <i aria-hidden="true"><b>70%off</b></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row construction_iner offerpage2">
-                                <div class="col-md-6 col-sm-4 construction">
-                                    <div class="cns-img">
-                                        <img src="images/cns-1.jpg" alt="">
-                                    </div>
-                                    <div class="cns-content">
-                                        <i aria-hidden="true"><b>70%off</b></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row construction_iner offerpage2">
-                                <div class="col-md-6 col-sm-4 construction">
-                                    <div class="cns-img">
-                                        <img src="images/cns-1.jpg" alt="">
-                                    </div>
-                                    <div class="cns-content">
-                                        <i aria-hidden="true"><b>70%off</b></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    @endif
+                @endforeach
                     </div>
                 </div>
             </div>
@@ -71,10 +38,10 @@
     <!-- End Our pets OFFER Area -->
 
 
-    <!-- Start Our Pets area  -->
+    <!-- Start Our Product area  -->
     <div class="panel panel-primary ourPro">
         <div class="panel-heading text-uppercase  pnlheading">
-            <h4>Pets List  </h4>
+            <h4>Product List  </h4>
         </div><br>
         <div class="container">
             <!-- Content Row -->
@@ -88,16 +55,16 @@
                         </div>
                         @if(isset($categories))
                         @foreach ($categories as $category)
-                        <a href="{{ url('pets/category',$category->id ) }}" class="list-group-item"> <i class="fa fa-chevron-right"></i> {{$category->name}}</a>
+                        <a href="{{ url('products/category',$category->id ) }}" class="list-group-item"> <i class="fa fa-chevron-right"></i> {{$category->name}}</a>
                        @endforeach
                        @endif
                         <br>
                         <div class="panel-heading text-center pnlheading">
                             <h6>Search Products</h6>
                         </div>
-                        <form class="example" action="{{url('pets/search')}}" method="post">
+                        <form class="example" action="{{url('products/search')}}" method="post">
                             {{csrf_field()}}
-                            <input type="text" placeholder="Search.." name="search_pets">
+                            <input type="text" placeholder="Search.." name="search_products">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form><br><br><br><br>
                     </div>
@@ -107,22 +74,22 @@
                         <section class="our_team_area">
                             <div class="container resizecon">
                                 <div class="row team_row">
-                                    @forelse($pets as $pet)
+                                    @forelse($products as $product)
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp ">
                                             <div class="team_membar"  style="background-color:#f8b81d;">
                                                
-                                                <img src="{{asset($pet->image)}}" alt="" style="width:100%; height:252.5px;">
+                                                <img src="{{asset($product->image)}}" alt="" style="width:100%; height:252.5px;">
                                                
                                                 <div class="team_content">
                                                     <ul>
-                                                        <a href="{{url('about/pet/'.$pet->slug)}}" class="btn btn-success ">View Details</a>
+                                                        <a href="{{url('about/product/'.$product->slug)}}" class="btn btn-success ">View Details</a>
                                                     </ul>
-                                                    <a href="{{url('about/pet/'.$pet->slug)}}" class="name">
-                                                        <h4>{{$pet->title}}</h4>
+                                                    <a href="{{url('about/product/'.$product->slug)}}" class="name">
+                                                        <h4>{{$product->title}}</h4>
                                                     </a>
-                                                    <p>{{$pet->category->name}} 
+                                                    <p>{{$product->category->name}} 
                                                     </p>
-                                                    <span class="backcolor"> <b>{{$pet->price}}</b> <i> taka</i> @if($pet->discount != null)<span class="offerD"> <b> {{$pet->discount}}% off</b> </span>@endif </span>
+                                                    <span class="backcolor"> <b>{{$product->price}}</b> <i> taka</i> @if($product->discount != null)<span class="offerD"> <b> {{$product->discount}}% off</b> </span>@endif </span>
                                                     <span class="btn btn-info btn-sm btnorder"> <a href="#"> <b>add to cart</b></a> </span>
                                                 </div>
                                             </div>
@@ -143,7 +110,7 @@
 
             <div class="row pb120 align-center">
                 
-                            <div class="col-lg-12">{{ $pets->links()  }}</div>
+                            <div class="col-lg-12">{{ $products->links()  }}</div>
     
                 </div>
         </div>   <!-- /.container -->

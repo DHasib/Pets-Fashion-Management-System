@@ -12,11 +12,10 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-       
+      // return ('dfdfgfgrfgrg');
         //2nd way to fetch and send data...................
              return view('admin/categories/crud_categories')->with('categories', Category::all())
                                                             ->with('authUser', Auth::user()); 
-
     }
 
 

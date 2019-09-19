@@ -107,7 +107,7 @@
                                         <ul class="nav navbar-nav navbar-right">
                                            
                                             <li><a href="{{ url('/home') }}">Home</a></li>
-                                            <li><a href="{{ url('/pet_products') }}">Pet Products</a></li>
+                                            <li><a href="{{ url('/products') }}">Pet Products</a></li>
                                             <li><a href="{{ url('/pets') }}">Pets</a></li>
                                             <li class="dropdown submenu">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i

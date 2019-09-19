@@ -171,15 +171,21 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{url('/admin/product/create')}}" class="nav-link">
                         <i class="fas fa-plus nav-icon"></i>
                         <p>Add Product</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{url('admin/product')}}" class="nav-link">
                         <i class="fa  fa-list  nav-icon"></i>
                         <p>Products List</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{url('admin/trashed/product')}}" class="nav-link">
+                        <i class="fa fa-trash nav-icon"></i>
+                        <p>Trashed Products</p>
                       </a>
                     </li>
                   </ul>
@@ -272,7 +278,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ asset('admin/show/panding') }}" class="nav-link">
+                  <a href="{{ url('admin/show/panding') }}" class="nav-link">
                     <i class="fa fa-pause-circle  nav-icon"></i>
                     <p>Panding Blogs</p>
                   </a>
@@ -280,7 +286,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ url('admin/pet/category') }}" class="nav-link">
+              <a href="{{ url('admin/category/show') }}" class="nav-link">
                 <i class="nav-icon fas fa-list-alt"></i>
                 <p>
                   Pet Category
@@ -288,7 +294,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="" class="nav-link">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
                   Live Chat
@@ -305,13 +311,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ url('admin/blogPost/create') }}" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>add Boosks </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('admin/blogPost')}}" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="fa fa-list nav-icon"></i>
                     <p>Pet Tips </p>
                   </a>

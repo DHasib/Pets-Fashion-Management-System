@@ -4,15 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pet extends Model
+class Product extends Model
 {
+    
 
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'category_id', 'title', 'description', 'price','stock','discount', 'image', 'slug', 'gender',
+        'name', 'category_id', 'title', 'description', 'price','stock','discount', 'image', 'slug',
     ];
 
     protected $dates = ['deleted_at'];
@@ -23,4 +25,3 @@ class Pet extends Model
     }
 
 }
-
