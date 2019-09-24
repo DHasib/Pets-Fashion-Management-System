@@ -58,8 +58,6 @@
 
                                             {{ $category->name }}</option>
                                         @endforeach
-
-
                                     </select>
 
                                     @if ($errors->has('category_id'))

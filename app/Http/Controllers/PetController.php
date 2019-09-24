@@ -136,15 +136,17 @@ class PetController extends Controller
             "discount"          =>"integer|max:100|min:5",
             "price"             =>"required|integer",
             "stock"             =>"required|integer|min:1|max:100000",
-            "image"             =>"required|image|mimes:jpeg,jpg|max:2050",
+            "image"             =>"image|mimes:jpeg,jpg|max:2050",
            ])->validate();
 
            $pet  =  Pet::find($id);
-
+           if($request->hasFile('image'))
+           {
            $pet_img = $request->image;
            $pet_image_new_name      = $pet_img->getClientOriginalName();
            $pet_img->move('images/uploads/pets_img', $pet_image_new_name);
-           
+           $pet->image           = 'images/uploads/pets_img/'.  $pet_image_new_name;
+           }
 
               $pet->title           = $request->title;
               $pet->gender          = $request->gender;
@@ -154,7 +156,6 @@ class PetController extends Controller
               $pet->stock           = $request->stock;
               $pet->discount        = $request->discount;
               $pet->slug            = str_slug($request->title);
-              $pet->image           = 'images/uploads/pets_img/'.  $pet_image_new_name;
               
               $is_saved = $pet->save();
 

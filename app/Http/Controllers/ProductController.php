@@ -138,15 +138,18 @@ class ProductController extends Controller
             "discount"          =>"integer|max:100|min:5",
             "price"             =>"required|integer",
             "stock"             =>"required|integer|min:1|max:100000",
-            "image"             =>"required|image|mimes:jpeg,jpg|max:2050",
+            "image"             =>"image|mimes:jpeg,jpg|max:2050",
            ])->validate();
 
            $product  =  Product::find($id);
 
+           if($request->hasFile('image'))
+           {
            $product_img = $request->image;
            $product_image_new_name      = $product_img->getClientOriginalName();
            $product_img->move('images/uploads/products_img', $product_image_new_name);
-           
+           $product->image           = 'images/uploads/products_img/'.  $product_image_new_name;
+           }
 
               $product->title           = $request->title;
               $product->description     = $request->description;
@@ -155,7 +158,7 @@ class ProductController extends Controller
               $product->stock           = $request->stock;
               $product->discount        = $request->discount;
               $product->slug            = str_slug($request->title);
-              $product->image           = 'images/uploads/products_img/'.  $product_image_new_name;
+           
               
               $is_saved = $product->save();
 

@@ -36,6 +36,19 @@
                     Route::get("products/category/{id}", "HomeController@productsCategory");
                     Route::post("products/search", "HomeController@searchProducts");
 
+            //Publicly Order Items and store add to cart Show ..............................................................
+                    Route::get("pet/add/cart/{pet_id}", "ShoppingController@petAddToCart");
+                    Route::get("product/add/cart/{product_id}", "ShoppingController@productAddToCart");
+                    Route::get("shopping/cart", "ShoppingController@cart");
+
+                    Route::get("cart/delete/{id}/{status}", "ShoppingController@cart_delete");
+                    Route::get("cart/incr/{rowId}/{id}/{qty}/{status}", "ShoppingController@incr");
+                    Route::get("cart/decr/{rowId}/{qty}/{status}", "ShoppingController@decr");
+
+                  
+
+
+
 
 
                 Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_cost");
@@ -46,9 +59,9 @@
 
                 Route::get("contact_us", "HomeController@contact_us");
 
-                Route::get("cart", "HomeController@cart");
+            //    Route::get("cart", "HomeController@cart");
 
-                Route::get("check_out", "HomeController@check_out");
+             //   Route::get("check_out", "HomeController@check_out");
 
                 Route::get("user_profile", "HomeController@user_profile");
 
@@ -73,36 +86,43 @@
 
 
 
-                //Route group for Registered Users.........................................................................................................................................................................................
-                //.................................................................................................................................................................................................................
-                Route::prefix('user')->middleware(['auth'])->group(function () {
-                    Route::get('/', function () {
-                        return view('users.index');
-                    });
-                    //Route::get('/addFlat','RoomInfoController@showAddFlatForm');
-
-                    Route::get("blog/edit/{id}", "BlogPostsController@userBlogEdit");
-                    Route::Resource("blogPost", "BlogPostsController");
-                    Route::get("show/blog", "BlogPostsController@postBlog");
-                    
-                    Route::get("trash/{id}", "trashController@destroy");
-                    Route::get("trashed", "trashController@trashedUser");
-                    Route::get("restore/{id}", "trashController@restore");
-                    Route::get("killed/{id}", "trashController@kill");
-
-                    
-                    Route::get("profile/show", "UserController@showUserProfile");
-                    Route::get("profile/setting", "UserController@userProfileSetting");
+//Route group for Registered Users.........................................................................................................................................................................................
+//.................................................................................................................................................................................................................
+    Route::prefix('user')->middleware(['auth'])->group(function () {
+        Route::get('/', function () {
+            return view('users.index');
+        });
+        //Route::get('/addFlat','RoomInfoController@showAddFlatForm');
 
 
-                    Route::Post("profile/update", "ProfileController@updateProfile");
-                    Route::Post("profile/save", "ProfileController@saveProfile");
-                    Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
-                    Route::Post("account/password/change", "ProfileController@changeUserPassword");
+        Route::post("cart/checkout", "ChechOutController@cartCheckOut");
+        Route::get("dk", "ChechOutController@dk");
 
 
-                
-                });
+        Route::get("blog/edit/{id}", "BlogPostsController@userBlogEdit");
+        Route::Resource("blogPost", "BlogPostsController");
+        Route::get("show/blog", "BlogPostsController@postBlog");
+        
+        Route::get("trash/{id}", "trashController@destroy");
+        Route::get("trashed", "trashController@trashedUser");
+        Route::get("restore/{id}", "trashController@restore");
+        Route::get("killed/{id}", "trashController@kill");
+
+        
+        Route::get("profile/show", "UserController@showUserProfile");
+        Route::get("profile/setting", "UserController@userProfileSetting");
+
+
+        Route::Post("profile/update", "ProfileController@updateProfile");
+        Route::Post("profile/save", "ProfileController@saveProfile");
+        Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
+        Route::Post("account/password/change", "ProfileController@changeUserPassword");
+
+      
+
+
+    
+    });
 
 
 

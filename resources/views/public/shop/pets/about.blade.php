@@ -49,6 +49,15 @@
     </div>
     <section class="building_construction_area">
         <div class="container">
+             @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger">
+                    <strong>{{ Session::get('error') }}</strong>
+                </div>
+             @endif
             <div class="row building_construction_row">
 
 
@@ -71,39 +80,31 @@
                                     <hr>
                         </li>
                         <li>
-                            <h5>Price: <strong> {{$pet->price}} Taka </strong> </h5>
+                            <h5>Price: <strong> {{$pet->price}} Taka </strong> @if($pet->discount != null)/<small style="font-size:12px;">After Discount</small>@endif </h5>
                             <hr>
                         </li>
                         <li>
-                            <h5>Available : <strong> {{$pet->stock}} Pices </strong> </h5>
+                            <h5>Available : <strong> @if($pet->stock == 0) <small style="color: red; font-size:16px;">Out Of Stock</small> @else {{$pet->stock}} Pices @endif </b></strong> </h5>
+                            <hr>
+                        </li>
+                        <li>
+                            <h5>Gender : <strong> {{$pet->gender}}  </strong> </h5>
                             <hr>
                         </li>
                         @if($pet->discount != null)
                         <li>
-                            <h5>Discount: <strong class="color:red"> {{$pet->discount}}% </strong> </h5>
+                            <h5>Discount: <strong style="color:red;"> {{$pet->discount}}%off </strong> </h5>
                             <hr>
                         </li>
                         @endif
                         <br>
                     </ul>
-                    <form action="#" method="post">
-                        {{ csrf_field() }}
-                        <label for="quentity">Select Quentity</label>
-                        <div class="quantity">
-                            <a href="#" class="quantity-minus quantity-minus-d">-</a>
-                            <input title="Qty" class="email input-text qty text" name="qty" type="text" value="1"
-                                disabled>
-                            <a href="#" class="quantity-plus quantity-plus-d">+</a>
-                        </div><br>
-
-                        <input type="hidden" name="pdt_id" value="">
                         <span class=" col-sm-2">
-                            <a class="btn btn-medium btn-primary">
-                                <span class="text">Add to Cart</span>
+                            <a href="{{url('pet/add/cart',$pet->id)}}"  class="btn btn-medium btn-primary">
+                                <span class="text"> <b>add to cart</b></span>
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                         </span><br><br>
-                    </form>
 
                     <br> <br> <br>
                     <div class="contact_us">

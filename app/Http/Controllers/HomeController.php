@@ -49,7 +49,7 @@ class HomeController extends Controller
                                 //$ch = BlogPost::orderBy('created_at', 'desc')->get()->where('status',0)->first();
                                 // DD($ch);
 
-                                return view("public/blogs/index")->with('link',        DynamicLinks::all())
+                                return view("public/blogs/index")->with('link',       DynamicLinks::all())
                                                                 ->with('categories',  Category::all())
                                                                 ->with('first_post',  BlogPost::orderBy('created_at', 'desc')->get()->where('status',0)->first())
                                                                 ->with('second_post', BlogPost::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->where('status',0)->first())

@@ -126,22 +126,24 @@ class BlogPostsController extends Controller
             "blog_title"              =>"required|string|min:4|max:30", 
             "category_id"             =>"required|integer",
             "blog_content"            =>"required|string|min:50",
-            "blog_image"              =>"required|image|mimes:jpeg,jpg|max:2050",
+            "blog_image"              =>"image|mimes:jpeg,jpg|max:2050",
           
-           ])->validate();
+        ])->validate();
 
 
            $Blog_Post  =  BlogPost::find($id);
-
-           $blog_image = $request->blog_image;
-           $blog_image_new_name      = $blog_image->getClientOriginalName();
-           $blog_image->move('images/uploads/blog_img', $blog_image_new_name);
-           
+           if($request->hasFile('blog_image'))
+           {
+                $blog_image = $request->blog_image;
+                $blog_image_new_name      = $blog_image->getClientOriginalName();
+                $blog_image->move('images/uploads/blog_img', $blog_image_new_name);
+                $Blog_Post->blog_image     = 'images/uploads/blog_img/'.  $blog_image_new_name;
+           }
 
               $Blog_Post->category_id    = $request->category_id;
               $Blog_Post->blog_title     = $request->blog_title;
               $Blog_Post->blog_content   = $request->blog_content;
-              $Blog_Post->blog_image     = 'images/uploads/blog_img/'.  $blog_image_new_name;
+             
               
               $is_saved = $Blog_Post->save();
 

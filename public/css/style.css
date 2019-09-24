@@ -3226,6 +3226,73 @@ img{ max-width:100%;}
         color: #fff;
         border-color: #4cc2c0; }
 
+
+        .cart .product-quantity .quantity {
+          overflow: hidden; }
+          .cart .product-quantity .quantity .quantity-minus {
+            display: block;
+            float: left;
+            padding: 0 10px;
+            background-color: #f1f3f3;
+            border-radius: 50px 0 0 50px;
+            font-size: 20px;
+            border-right: 2px solid #e3e9e9;
+            color: #cfcfcf;
+            transition: all .3s ease; }
+            @media (max-width: 980px) {
+              .cart .product-quantity .quantity .quantity-minus {
+                font-size: 20px;
+                padding: 0 10px; } }
+            @media (max-width: 480px) {
+              .cart .product-quantity .quantity .quantity-minus {
+                font-size: 14px;
+                padding: 0 5px; } }
+            .cart .product-quantity .quantity .quantity-minus:hover {
+              background-color: #4cc2c0;
+              color: #fff;
+              border-color: #4cc2c0; }
+          .cart  .product-quantity .quantity input {
+            max-width: 40px;
+            float: left;
+            background-color: #f7f9f9;
+            padding: 9px 10px;
+            font-size: 11px;
+            text-align: center;
+            border-radius: 0;
+            margin-bottom: 0; }
+            @media (max-width: 980px) {
+              .cart  .product-quantity .quantity input {
+                font-size: 18px;
+                padding: 0 10px;
+                max-width: 40px; } }
+            @media (max-width: 480px) {
+              .cart  .product-quantity .quantity input {
+                font-size: 14px;
+                padding: 0 5px;
+                max-width: 30px; } }
+          .cart  .product-quantity .quantity .quantity-plus {
+            display: block;
+            float: left;
+            padding: 0 10px;
+            background-color: #f1f3f3;
+            border-radius: 0 50px 50px 0;
+            font-size: 20px;
+            border-left: 2px solid #e3e9e9;
+            color: #cfcfcf;
+            transition: all .3s ease; }
+            @media (max-width: 980px) {
+              .cart  .product-quantity .quantity .quantity-plus {
+                font-size: 20px;
+                padding: 0 10px; } }
+            @media (max-width: 480px) {
+              .cart  .product-quantity .quantity .quantity-plus {
+                font-size: 14px;
+                padding: 0 5px; } }
+            .cart  .product-quantity .quantity .quantity-plus:hover {
+              background-color: #4cc2c0;
+              color: #fff;
+              border-color: #4cc2c0; }
+
     /*--------------------------------------------------*/
 
 /*# End   Add to cart  area */

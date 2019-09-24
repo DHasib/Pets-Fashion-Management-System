@@ -49,14 +49,18 @@
     </div>
     <section class="building_construction_area">
         <div class="container">
+                @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger">
+                    <strong>{{ Session::get('error') }}</strong>
+                </div>
+             @endif
             <div class="row building_construction_row">
-
-
-
                 @if(isset($product))
                 <div class="col-lg-8 clo-md-8 col-sm-8 col-xs-12 constructing_laft">
-
-
                     <img src="{{asset($product->image)}}" alt="{{$product->title}}">
                     <a href="#">{{$product->title}}</a>
                     <p>{{$product->description}}</p>
@@ -71,39 +75,27 @@
                                     <hr>
                         </li>
                         <li>
-                            <h5>Price: <strong> {{$product->price}} Taka </strong> </h5>
+                            <h5>Price: <strong> {{$product->price}} Taka @if($product->discount != null)/<small style="font-size:12px;">After Discount</small>@endif </strong> </h5>
                             <hr>
                         </li>
                         <li>
-                            <h5>Available : <strong> {{$product->stock}} Pices </strong> </h5>
+                            <h5>Available : <strong> @if($product->stock == 0) <small style="color: red; font-size:16px;">Out Of Stock</small> @else {{$product->stock}} Pices @endif </b></strong> </strong> </h5>
                             <hr>
                         </li>
                         @if($product->discount != null)
                         <li>
-                            <h5>Discount: <strong class="color:red"> {{$product->discount}}% </strong> </h5>
+                            <h5>Discount: <strong style="color:red;"> {{$product->discount}}% </strong> </h5>
                             <hr>
                         </li>
                         @endif
                         <br>
                     </ul>
-                    <form action="#" method="post">
-                        {{ csrf_field() }}
-                        <label for="quentity">Select Quentity</label>
-                        <div class="quantity">
-                            <a href="#" class="quantity-minus quantity-minus-d">-</a>
-                            <input title="Qty" class="email input-text qty text" name="qty" type="text" value="1"
-                                disabled>
-                            <a href="#" class="quantity-plus quantity-plus-d">+</a>
-                        </div><br>
-
-                        <input type="hidden" name="pdt_id" value="">
                         <span class=" col-sm-2">
-                            <a class="btn btn-medium btn-primary">
+                            <a href="{{url('product/add/cart',$product->id)}}" class="btn btn-medium btn-primary">
                                 <span class="text">Add to Cart</span>
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                         </span><br><br>
-                    </form>
 
                     <br> <br> <br>
                     <div class="contact_us">

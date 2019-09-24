@@ -77,6 +77,15 @@
                 </div><!-- End Sidebar Column -->
                 <!-- Start Content Column -->
                 <div class="col-lg-9 md-8">
+                     @if (Session::has('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ Session::get('success') }}</strong>
+                        </div>
+                    @elseif (Session::has('error'))
+                        <div class="alert alert-danger">
+                            <strong>{{ Session::get('error') }}</strong>
+                        </div>
+                     @endif
                         <section class="our_team_area">
                             <div class="container resizecon">
                                 <div class="row team_row">
@@ -96,7 +105,7 @@
                                                     <p>{{$pet->category->name}} 
                                                     </p>
                                                     <span class="backcolor"> <b>{{$pet->price}}</b> <i> taka</i> @if($pet->discount != null)<span class="offerD"> <b> {{$pet->discount}}% off</b> </span>@endif </span>
-                                                    <span class="btn btn-info btn-sm btnorder"> <a href="#"> <b>add to cart</b></a> </span>
+                                                    <span class="btn btn-info btn-sm btnorder"> <a href="{{url('pet/add/cart',$pet->id)}}"> <b>add to cart @if($pet->stock == 0) <small class="badge badge-light" style="color: red; font-size:11px;">Out Of Stock</small> @endif </b></a> </span>
                                                 </div>
                                             </div>
                                         </div>

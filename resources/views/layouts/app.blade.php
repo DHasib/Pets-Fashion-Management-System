@@ -150,8 +150,12 @@
                                                     @endguest  
                                                 </ul>
                                             </li>
-                                            <li><a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"> </i> Cart <span
-                                                        class="badge badge-light"> 5</span> </a></li>
+                                            <li><a href="{{ url('shopping/cart') }}"><i class="fa fa-shopping-cart"> </i> Cart 
+                                                @if(Cart::instance('pet')->content()->count() > 0 || Cart::instance('product')->content()->count() > 0 ) 
+                                                     <span class="badge badge-light" style="background-color:Green;">{{(Cart::instance('pet')->content()->count() + Cart::instance('product')->content()->count())}}</span></a></li>
+                                                @else 
+                                                     <span class="badge badge-light">0</span></a></li>
+                                                 @endif
 
                                             <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                                         </ul>
