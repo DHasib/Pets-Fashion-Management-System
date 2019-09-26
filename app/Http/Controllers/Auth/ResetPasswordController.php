@@ -17,9 +17,21 @@ class ResetPasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
+    
+ 
+   use ResetsPasswords;
+   
+      public function postReset(Request $request){
 
-    use ResetsPasswords;
-
+        $this->validate($request, [
+              'token'      => 'required',
+              'email'      => 'required|email',
+              "password"   =>"required|string|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",  
+        ],[
+            "password.regex"   => " Your password must be 8 characters long and should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.",
+        ]);
+      //  return $this->postResetTrait($request);
+      }
     /**
      * Where to redirect users after resetting their password.
      *
@@ -36,4 +48,9 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+  
+   
+
+    
 }

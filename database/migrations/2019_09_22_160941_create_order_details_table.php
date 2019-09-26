@@ -17,7 +17,7 @@ class CreateOrderDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('order_list_id');
             $table->integer('payment_details_id');
-            $table->integer('user_id');
+            $table->boolean('order_status')->default(1)->comment('0=active, 1=pending');
 
             
             $table->timestamps();

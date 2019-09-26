@@ -7,18 +7,17 @@
   <!-- Start Sing-up page layout Area -->
   <div class="panel panel-primary ourPro"><br>
             <div class="panel-heading text-uppercase  pnlheading">
-                <h3>Get Register Here </h3>
+                <h3>Reset Your Password </h3>
             </div><br>
 
 
             <main class="my-form col-offset-6">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">{{ __('Reset Password') }}</div>
+                    <div class="row justify content-center">
+                        <div class="col-md-10">
+                            <div class="panel">
 
-                                <div class="card-body">
+                                <div class="panel-body">
                                     <form method="POST" action="{{ route('password.update') }}">
                                         @csrf
 

@@ -19,6 +19,7 @@ class CreateOrderListsTable extends Migration
             $table->integer('total_price')->comment("quentity * (item_price)");
             $table->string('type');
             $table->integer('item_id')->comment("pet/product_id");
+            $table->integer('user_id');
 
             $table->timestamps();
         });

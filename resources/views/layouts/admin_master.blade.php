@@ -77,32 +77,35 @@
 
 
         <!-- Start Notifications Dropdown Menu -->
+        @if(isset($panding_order))
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
+            <span class="badge badge-warning navbar-badge">{{$panding_order}}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <span class="dropdown-item dropdown-header"><strong style="color:red;">{{$panding_order}}</strong> New Order / Delivery Panding</span>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
+            <a  class="dropdown-item">
+              <span>Total Pets</span> 
+              <span class="float-right text-muted text-sm"><strong style="color:red;"> @foreach ($total_panding_pet as $pet)
+                {{$pet->total_pet_type}}
+            @endforeach</strong></span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
+            <a  class="dropdown-item">
+              <span>Total Products</span> 
+              <span class="float-right text-muted text-sm"><strong style="color:red;">@foreach ($total_panding_product as $product)
+                  {{$product->total_product_type}}
+              @endforeach
+                
+              </strong></span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            <a href="{{url('admin/order/panding')}}" class="dropdown-item dropdown-footer ">See All Panding Order / Delivery</a>
           </div>
         </li><!-- Start Notifications Dropdown Menu -->
+        @endif
       </ul>
     </nav>
     <!--==================================== END Navbar ====================================================================================================================================================================================== -->
@@ -126,7 +129,7 @@
               class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="{{ url('admin/profile/show') }}" class="d-block text-uppercase">{{$authUser->name}} profile</a>
+            <a href="{{ url('admin/profile/show') }}" class="d-block text-uppercase">{{$authUser->name}} </a>
           </div>
         </div>
 
@@ -246,9 +249,24 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Sales Detail
+                  Order Details
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ url('admin/order/panding')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Order Panding  </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url('admin/order/list') }}" class="nav-link">
+                    <i class="fa fa-list nav-icon"></i>
+                    <p>Order List </p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('location');
             $table->boolean('role')->default(0)->comment('0-user, 1-admin, 2-doctor');
             $table->string('password');
+            $table->date('blocked_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

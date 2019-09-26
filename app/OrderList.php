@@ -9,7 +9,7 @@ class OrderList extends Model
 
 
     protected $fillable = [
-        'quentity', 'total_price', 'type', 'item_id',
+        'quentity', 'total_price', 'type', 'item_id','user_id',
     ];
     
     public function pets()
@@ -25,6 +25,11 @@ class OrderList extends Model
     public function orderDetails()
     {
         return $this->hasMany('App\OrderDetail');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
  
 }

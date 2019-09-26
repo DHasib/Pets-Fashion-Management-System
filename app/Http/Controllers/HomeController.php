@@ -102,7 +102,7 @@ class HomeController extends Controller
                     //All pets List Show..............................................................................................................
                             public function petsIndex()
                             {
-                                    return view("public/shop/pets/index")->with('link',        DynamicLinks::all())
+                                    return view("public/shop/pets/index")->with('link', DynamicLinks::all())
                                                                   ->with('categories',  Category::all())
                                                                   ->with('pets',        Pet::paginate(9))
                                                                   ->with('discountPet', Pet::all());
