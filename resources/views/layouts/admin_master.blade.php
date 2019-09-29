@@ -263,7 +263,7 @@
                 <li class="nav-item">
                   <a href="{{ url('admin/order/list') }}" class="nav-link">
                     <i class="fa fa-list nav-icon"></i>
-                    <p>Order List </p>
+                    <p>Order Complete </p>
                   </a>
                 </li>
               </ul>
@@ -323,25 +323,31 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fa-smile-o"></i>
                 <p>
-                  Extra Feature
+                  Books
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{url('admin/add/book')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>add Boosks </p>
+                    <p>add Boosk </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-list nav-icon"></i>
-                    <p>Pet Tips </p>
+                  <a href="{{url ('admin/book/list')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Boosk list </p>
                   </a>
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+                <a href="{{url ('admin/salse/report')}}" class="nav-link">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>Sales Report </p>
+                </a>
+              </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

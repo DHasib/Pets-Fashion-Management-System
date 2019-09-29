@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title","My Profile | Pet Fashion Management System" )
+@section("title","Profile | Pet Fashion Management System" )
 
 @section("content")
 
@@ -18,17 +18,18 @@
                     </div><!-- /.card-header -->
                     <div class="panel-body">
                         <!-- My Blogs -->
-                        @if(isset($posts))
-                        @forelse ($posts as $post)
+                        @if(isset($uposts))
+                        @forelse ($uposts as $upost)
+                        @if ($upost->status == 0)
                         <hr>
                         <div class="post">
                             <div class="user-block col-md-12 col-sm-12">
-                                @if(Auth::user()->id == $post->user_id)
+                                @if(Auth::user()->id == $upost->user_id)
                                 <span class="pull-right">
-                                    <a href="{{url('user/blog/edit/'.$post->id)}}"
+                                    <a href="{{url('user/blog/edit/'.$upost->id)}}"
                                         class="btn btn-warning btn-xs">edit</a>
-                                    <a class="btn btn-danger btn-xs" href="{{url('user/trash/'. $post->id)}}">Trash</a>
-                                    @if ($post->status == 1)
+                                    <a class="btn btn-danger btn-xs" href="{{url('user/trash/'. $upost->id)}}">Trash</a>
+                                    @if ($upost->status == 1)
                                         <a class="text-muted" title="Waiting for admin Approval to Post">Panding Post</a>
                                     @endif
                                 </span>
@@ -40,27 +41,32 @@
 
                                 <span><a href="#">{{$user->name}}</a> <span>
 
-                                        <span class="text-muted">{{ $post->created_at->toFormattedDateString() }}</span>
+                                        <span class="text-muted">{{ $upost->created_at->toFormattedDateString() }}</span>
                             </div>
                             <!-- Blog Image -->
                             <div class="col-md-10 text-center" style="padding:5%;">
-                                <img class="mx-auto d-block" src="{{asset($post->blog_image)}}" alt="user image"
+                                <img class="mx-auto d-block" src="{{asset($upost->blog_image)}}" alt="user image"
                                     style="width:55%;">
                             </div><br>
                             <!-- Blog Content -->
                             <div class="col-md-10 justify-center" Style="margin:20px;">
                                 <p>
-                                    {{ $post->blog_content }}
+                                    {{ $upost->blog_content }}
                                 </p>
+
+                                <br><hr><br>
                             </div>
+                         
+                            @endif
                         @empty
                         <span class="btn btn-info">
                             <h3>You Do not Post Any Blog Yet........... </h3>
                         </span>
                         @endforelse
                         @endif
-                        <!-- End My Blogs-->
+                                                <!-- End My Blogs-->
                     </div>
+                  
                 </div>
             </div><!-- /.container-fluid -->
         </div>

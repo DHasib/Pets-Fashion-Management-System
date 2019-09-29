@@ -18,6 +18,8 @@
     Auth::routes();
 
     Route::get('home', 'HomeController@index');
+        //show blog posted user profile....................................
+            Route::get("selected/user/profile/{id}", "ProfileController@pUserShow");
 
             //Publicly Blog Show.....................................................................
                     Route::get("blog", "HomeController@blog");
@@ -63,7 +65,7 @@
 
              //   Route::get("check_out", "HomeController@check_out");
 
-                Route::get("user_profile", "HomeController@user_profile");
+                //Route::get("user_profile", "HomeController@user_profile");
 
                 Route::get("admin_pannel", "HomeController@admin_pannel");
 
@@ -89,34 +91,35 @@
 //Route group for Registered Users.........................................................................................................................................................................................
 //.................................................................................................................................................................................................................
     Route::prefix('user')->middleware(['auth'])->group(function () {
-        Route::get('/', function () {
-            return view('users.index');
-        });
-        //Route::get('/addFlat','RoomInfoController@showAddFlatForm');
+       //read book by user...............................................
+        Route::get("read/books", "BookController@readBooks");
 
+      //User Order Details Show......................................................
+        Route::get("order/details", "OrderDetailController@userOrderDetails");
+         
 
+     //Add to cart Checkout must login as a user..................................   
         Route::post("cart/checkout", "ChechOutController@cartCheckOut");
         Route::get("dk", "ChechOutController@dk");
 
-
+    //User Blog show .......................................................... 
         Route::get("blog/edit/{id}", "BlogPostsController@userBlogEdit");
         Route::Resource("blogPost", "BlogPostsController");
         Route::get("show/blog", "BlogPostsController@postBlog");
-        
+     //User Trashed Blod Details Show..........................................   
         Route::get("trash/{id}", "trashController@destroy");
         Route::get("trashed", "trashController@trashedUser");
         Route::get("restore/{id}", "trashController@restore");
         Route::get("killed/{id}", "trashController@kill");
 
-        
-        Route::get("profile/show", "UserController@showUserProfile");
-        Route::get("profile/setting", "UserController@userProfileSetting");
-
-
-        Route::Post("profile/update", "ProfileController@updateProfile");
-        Route::Post("profile/save", "ProfileController@saveProfile");
-        Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
-        Route::Post("account/password/change", "ProfileController@changeUserPassword");
+    //User Profile  Details Show with settings using UserController..........................................   
+        Route::get("profile/show", "ProfileController@index");
+        Route::get("profile/setting", "ProfileController@userProfileSetting");
+            //using ProfileController..........................................   
+            Route::Post("profile/update", "ProfileController@updateProfile");
+            Route::Post("profile/save", "ProfileController@saveProfile");
+            Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
+            Route::Post("account/password/change", "ProfileController@changeUserPassword");
 
       
 
@@ -136,17 +139,31 @@
                 Route::prefix('admin')->middleware(['auth' , 'auth.admin'])->group(function () {
                 
                     //Route::get("admin/index", "ProfileController@showAdminDashboard");
+
+                //Books add and sho using Book Controller......................
+                      Route::get("add/book", "BookController@index");
+                      Route::POST("store/book", "BookController@store");
+                      Route::get("book/list", "BookController@list");
+                      Route::post("search/book", "BookController@search");
+
                     
                 //Post Pets CRUD Functionaly using Resource Controller......................
                         Route::Resource("pet", "PetController");
+                        Route::POST("pet/search", "PetController@search");
 
-                //Sales details Functionaly using OrderDetail Controller......................
+                //Order Detail  Functionaly using OrderDetail Controller......................
                         Route::get("order/panding", "OrderDetailController@pandingOrder");
                         Route::get("order/list", "OrderDetailController@listOrder");
                         Route::post("order/complete", "OrderDetailController@completeOrder");
 
+                    //to shoe Sales report..........
+                        Route::get("salse/report", "OrderDetailController@salseReport");
+                        Route::get("sales/pdf/convert", "DynamicPDFController@pdf");
+                        
+
                 //Post Product CRUD Functionaly using Resource Controller......................
                         Route::Resource("product", "ProductController");
+                        Route::POST("product/search", "ProductController@search");
 
                     //Post Blog CRUD Functionaly using Resource Controller......................
                         Route::Resource("blogPost", "BlogPostsController");

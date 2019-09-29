@@ -10,6 +10,8 @@ use App\Pet;
 use App\Product;
 use Auth;
 
+use App\DynamicLinks;
+
 
 class trashController extends Controller
 {
@@ -46,7 +48,8 @@ class trashController extends Controller
                 $trashed = BlogPost::onlyTrashed()->where('user_id', Auth::user()->id)->get();
                 
                 return view('user/trashed')->with('trashed', $trashed)
-                                                    ->with('user', Auth::user()); 
+                                                    ->with('user', Auth::user())
+                                                    ->with('link',  DynamicLinks::all()); 
             }
         //Permanently Delete Trashed Blog Post..................................... 
             public function kill($id)

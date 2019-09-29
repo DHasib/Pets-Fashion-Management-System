@@ -42,7 +42,7 @@
 
     <!-- About Me Box -->
     <div class="panel panel-default">
-        <div class="well">
+        <div class="well well-sm" style="background-color:#f8b81d;">
             <h4>About Me</h4>
         </div>
         <!-- /.card-header -->

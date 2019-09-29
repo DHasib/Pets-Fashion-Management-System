@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(PetsTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
+        $this->call(BooksTableSeeder::class);
     }
 }

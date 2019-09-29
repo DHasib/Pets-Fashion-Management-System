@@ -1,6 +1,6 @@
 @extends("layouts.admin_master")
 
-@section("title","Order List | Pet Fashion Administration" )
+@section("title","Order Completeed | Pet Fashion Administration" )
 
 
  <!-- Bootstrap CSS -->
@@ -17,7 +17,7 @@
                 <div class="col-12">
                   <div class="card card-warning">
                     <div class="card-header ">
-                      <h2 class="card-title text-uppercase"> Order List</h2>
+                      <h2 class="card-title text-uppercase"> Order Completeed</h2>
 
                       <div class="card-tools">
                         

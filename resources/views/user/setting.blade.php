@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title","Blogs | Pet Fashion Management System" )
+@section("title","Profile Settings | Pet Fashion Management System" )
 
 @section("content")
 
@@ -14,9 +14,8 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="well">
-                        <h5>Profile Setting</h5>
-                        <div class="btn btn-primary pull-right"><a href="{{url('user/profile/setting')}}"
-                                style="color:White;">Refresh</a></div>
+                       <h5>Profile Setting <a href="{{url('user/profile/setting')}}"
+                                style="color:White;" class="btn btn-primary btn-sm pull-right">Refresh</a></h5>
                     </div><!-- /.card-header -->
                     <div class="panel-body">
                         <!-- /.card-body -->
@@ -120,7 +119,7 @@
                                         <!-- ------------------------------------------- Save  Profile Detrails-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
 
                                         <br><br><br>
-                                        <hr><br>
+                                        
                                         <div class="col-md-10">
                                             <form action="{{ url('user/profile/save') }}" method="POST">
                                                 @csrf
@@ -180,7 +179,6 @@
                                     <!--col-md-6-->
 
                                     <br><br>
-                                    <hr>
 
                                     <!-- ------------------------------------------- Upload Profile Picture-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
 

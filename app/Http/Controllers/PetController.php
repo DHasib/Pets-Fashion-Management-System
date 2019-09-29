@@ -168,7 +168,35 @@ class PetController extends Controller
               }
            
     }
+   //Search Product by admin................................................................................................................................
+            protected function search(Request $request)
+            {
+            
+                $validate_data =  Validator::make($request->all(),[
 
+                    'search'  => "required|string", 
+
+                ])->validate();
+
+                    $search = $request->search;
+
+                    if ($search == NULL) 
+                    {
+                    return view("admin/shop/pets/index")->with('pets',   Pet::all())
+                                                        ->with('Categories', Category::all())
+                                                        ->with('authUser',   Auth::user());
+                    } 
+                    else 
+                    {
+                        $pets = Pet::where('title','LIKE', '%'.$search.'%')
+                                        ->get(); 
+
+                                
+                        return view('admin/shop/pets/index')->with('pets',    $pets)
+                                                            ->with('Categories', Category::all())
+                                                            ->with('authUser',   Auth::user());
+                    }
+            }
     /**
      * Remove the specified resource from storage.
      *

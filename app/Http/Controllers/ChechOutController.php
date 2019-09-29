@@ -26,16 +26,20 @@ class ChechOutController extends Controller
 
     public function dk()
     {  
-       /* //count Panding Order (Same user Multiple order count)...................
-            $total_user_order = DB::table('order_details')
+      //count Panding Order (Same user Multiple order count)...................
+            $total_user_order = DB::table('order_lists')
+                        ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
                         ->select('user_id', DB::raw('count(user_id)  as last_order_created_at'))
                         ->where('order_details.order_status', '=',  '1')
+                        ->where(function ($query) {
+                            $query->where('order_status', '=',  '1');
+                        })
                         ->groupBy('user_id')
                          ->get();
  
-                       // DD( $total_user_order->count());
+                      // DD( $total_user_order->count());
 
-        //count Panding totl Pet Order...................            
+      /*    //count Panding totl Pet Order...................            
              $total_pet_order =DB::table('users')
                                 ->join('order_details', 'users.id', '=', 'order_details.user_id')
                                 ->join('order_lists', 'order_details.order_list_id', '=', 'order_lists.id')
@@ -110,29 +114,53 @@ class ChechOutController extends Controller
 
                             
                             
-         
-      
+         //count Panding Order (Same user Multiple order count)...................
+         $dk = DB::table('users')
+                                ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
+                                ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
+                                ->join('payment_details', 'order_details.payment_details_id', '=', 'payment_details.id')
+                                ->select( DB::raw('sum(total_price)  as total_Price'))
+                                ->where('users.id', '=', Auth::user()->id)
+                                ->where(function ($query) {
+                                    $query->where('order_status', '=',  '1');
+                                })
+                                ->get();
+
+                               
+      dd($dk);
 
              $product_order_details = DB::table('users')
                                         ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                         ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
                                         ->join('payment_details', 'order_details.payment_details_id', '=', 'payment_details.id')
                                         ->join('products', 'order_lists.item_id', '=', 'products.id')
-                                        ->select('users.name', 'order_lists.type', 'products.title', 'order_lists.quentity','order_details.id as order_details_id',  'order_lists.total_price','order_lists.item_id', 'payment_details.received_amount','users.location','users.PhoneNum', 'payment_details.created_at')       
+                                        ->select('users.name', 'order_lists.type', 'products.title', 'order_lists.quentity',  'order_lists.total_price',  'payment_details.email', 'payment_details.created_at','order_lists.item_id')                       
                                         ->where('order_lists.type', '=',  'product')
-                                        ->latest();
+                                        ->where(function ($query) {
+                                           $query->where('users.id', '=', Auth::user()->id);
+                                        })
+                                        ->where(function ($query) {
+                                            $query->where('order_status', '=',  '1');
+                                        });
+
+                                        //DD($product_order_details);
 
              $pet_order_details  = DB::table('users')
                                        ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                        ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
                                        ->join('payment_details', 'order_details.payment_details_id', '=', 'payment_details.id')
                                        ->join('pets', 'order_lists.item_id', '=', 'pets.id')
-                                       ->select('users.name', 'order_lists.type', 'pets.title', 'order_lists.quentity','order_details.id as order_details_id',  'order_lists.total_price','order_lists.item_id', 'payment_details.received_amount', 'users.location','users.PhoneNum', 'payment_details.created_at')                       
+                                       ->select('users.name', 'order_lists.type', 'pets.title', 'order_lists.quentity',  'order_lists.total_price',  'payment_details.email', 'payment_details.created_at','order_lists.item_id')                                 
                                        ->where('order_lists.type', '=',  'pet')
+                                       ->where(function ($query) {
+                                            $query->where('users.id', '=', Auth::user()->id);
+                                        })
+                                        ->where(function ($query) {
+                                            $query->where('order_status', '=',  '1');
+                                        })
                                        ->union($product_order_details)
-                                       ->latest()
+                                      // ->latest()
                                       ->get();
-
                           DD( $pet_order_details);
                            // return view("public/shop/shopping_cart/cart",  compact("pet_order_details"));
             }

@@ -135,8 +135,8 @@
                                     </span>
 
                                     <span class="post__comments text-uppercase">
-                                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                        {{ $first_post->user->name }}
+                                        <a href="{{url('selected/user/profile',$first_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                        {{ $first_post->user->name }}</a>
                                     </span>
 
                                 </div>
@@ -192,8 +192,8 @@
                                     </span>
 
                                     <span class="post__comments text-uppercase">
-                                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                        {{ $second_post->user->name }}
+                                        <a href="{{url('selected/user/profile',$second_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                        {{ $second_post->user->name }}</a>
                                     </span>
 
                                 </div>
@@ -246,8 +246,8 @@
                                     </span>
 
                                     <span class="post__comments text-uppercase">
-                                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                        {{ $third_post->user->name }}
+                                        <a href="{{url('selected/user/profile',$third_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                        {{ $third_post->user->name }}</a>
                                     </span>
 
                                 </div>
@@ -295,8 +295,8 @@
                                             <div class="post-additional-info col-sm-12 text-small">
 
                                                 <span class="post__comments text-uppercase col-sm-6 small">
-                                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                                    {{ $post->user->name }}
+                                                    <a href="{{url('selected/user/profile',$post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                                    {{ $post->user->name }}</a>
                                                 </span>
                                                 <span class="col-sm-6 small">
                                                     <i class="seoicon-clock"></i>
@@ -343,8 +343,8 @@
                                             <div class="post-additional-info col-sm-12 text-small">
 
                                                 <span class="post__comments text-uppercase float-left col-sm-6 small">
-                                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                                    {{ $post->user->name }}
+                                                    <a href="{{url('selected/user/profile',$post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                                    {{ $post->user->name }}</a>
                                                 </span>
                                                 <span class="float-right col-sm-6 small">
                                                     <i class="seoicon-clock"></i>
@@ -392,8 +392,8 @@
                                             <div class="post-additional-info col-sm-12 text-small">
 
                                                 <span class="post__comments text-uppercase float-left col-sm-6 small">
-                                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                                    {{ $post->user->name }}
+                                                    <a href="{{url('selected/user/profile',$post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                                    {{ $post->user->name }}</a>
                                                 </span>
                                                 <span class="float-right col-sm-6 small">
                                                     <i class="seoicon-clock"></i>
@@ -441,8 +441,8 @@
                                             <div class="post-additional-info col-sm-12 text-small">
 
                                                 <span class="post__comments text-uppercase float-left col-sm-6 small">
-                                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                                    {{ $post->user->name }}
+                                                    <a href="{{url('selected/user/profile',$post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
+                                                    {{ $post->user->name }}</a>
                                                 </span>
                                                 <span class="float-right col-sm-6 small">
                                                     <i class="seoicon-clock"></i>

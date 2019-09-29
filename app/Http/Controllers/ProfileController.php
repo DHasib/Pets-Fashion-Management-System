@@ -7,6 +7,8 @@ use Auth;
 use Validator;
 use session;
 
+
+use App\DynamicLinks;
 use App\user;
 use App\BlogPost;
 use App\Category;
@@ -24,19 +26,32 @@ class ProfileController extends Controller
     //Show User Profile............................................................
     public function index()
     {
-    
+        return view("user/profile")->with('user',        Auth::user())
+                                    ->with('posts',       BlogPost::where('user_id', Auth::user()->id)->get())
+                                    ->with('link',        DynamicLinks::all());
 
     }
 
 
-  
-             
-    //Show Admin Profile Setting.....................................................
-    /*public function showAdminProfileSetting()
+//Show Admin Profile.....................................................
+    public function userProfileSetting()
     {
-        return view("admin/profile/setting")->with('user', Auth::user()); 
-    } */
-   
+        return view("user/setting")->with('user', Auth::user())
+                                   ->with('link', DynamicLinks::all()); 
+    }
+
+
+    //Show blog posted user profile....................
+        public function pUserShow($id){
+
+            $user = user::find($id);
+        
+            return view("public/profile")->with('user',    $user)
+                                        ->with('uposts',   BlogPost::where('user_id',$id)->get())
+                                        ->with('link',    DynamicLinks::all());
+
+        }
+
 
 
     /**
@@ -210,7 +225,7 @@ class ProfileController extends Controller
                     $is_saved = $user->save();
         
                     if ($is_saved){
-                        session()->flash("message", "Sucessfully Change user Password");
+                        session()->flash("message", "Successfuly Change Tour Password");
                         return redirect()->back();
                     }
 

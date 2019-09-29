@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title","Blogs | Pet Fashion Management System" )
+@section("title","My trash Blogs | Pet Fashion Management System" )
 
 @section("content")
 
@@ -14,8 +14,8 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="well">
-                        <h5>Trashed Blogs</h5>
-                                <div class="btn btn-primary pull-right"><a href="{{url('user/trashed')}}" style="color:White;">Refresh</a></div>
+                        <h5>Trashed Blogs
+                                <div class="btn btn-primary pull-right"><a href="{{url('user/trashed')}}" style="color:White;">Refresh</a></div></h5>
                     </div><!-- /.card-header -->
                         <div class="panel-body">
                                 @if (Session('success'))

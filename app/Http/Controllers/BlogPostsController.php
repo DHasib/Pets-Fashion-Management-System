@@ -10,6 +10,8 @@ use Session;
 use App\BlogPost;
 use App\Category;
 
+use App\DynamicLinks;
+
 class BlogPostsController extends Controller
 {
     /**
@@ -198,35 +200,37 @@ class BlogPostsController extends Controller
 
 
 
-//For Onlu User Show Their Edit Blog Form..............................................................................................
-       public function userBlogEdit($id)
-       {
-       
-           $blog_post = BlogPost::find($id);
-   
-           return view('user/edit')->with('blog_post',   $blog_post)
-                                    ->with('categories', Category::all())
-                                    ->with('user',       Auth::user());
-   
-       }
-  
-//Blog post form show for Onlu User...................................................................................................
-       public function postBlog()
-       {
+    //For Only User Show Their Edit Blog Form..............................................................................................
+            public function userBlogEdit($id)
+            {
 
-        $categories = Category::all();
-        //$tags = Tag::all();
+                $blog_post = BlogPost::find($id);
 
-        $user = Auth::user();
-        if($categories->count() == 0)
-        {
-            Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a post.');
+                return view('user/edit')->with('blog_post',   $blog_post)
+                                        ->with('categories', Category::all())
+                                        ->with('user',       Auth::user())
+                                        ->with('link',       DynamicLinks::all());
 
-            return redirect()->back();
-        }
+            }
 
-        return view ('user/post', compact('categories', "user"));
-        
-       }
+ //Blog post form show for Only User...................................................................................................
+            public function postBlog()
+            {
+
+            $categories  =  Category::all();
+            $link        =  DynamicLinks::all();
+
+            $user = Auth::user();
+            if($categories->count() == 0)
+            {
+                Session::flash('info', 'Empty Category!! You must have some categories before attempting to create a post.');
+
+                return redirect()->back();
+            }
+
+            return view ('user/post', compact('categories', "user","link"));
+            
+            }
+
 
 }

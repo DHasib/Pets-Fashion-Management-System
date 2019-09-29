@@ -132,7 +132,7 @@
                         <td><a href="{{url('user/dk')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                         </td>
                         <td colspan="2" class="hidden-xs"></td>
-                        <td class=" "><strong>Total Cost: {{ number_format(Cart::instance('pet')->Total() + Cart::instance('product')->Total() ) }} </strong></td>
+                        <td ><strong>Total Cost: {{ number_format(Cart::instance('pet')->Total() + Cart::instance('product')->Total() ) }} </strong></td>
                         @if(Auth::user())
                         <td>
                             <span style="float: right;">

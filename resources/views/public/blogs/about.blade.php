@@ -70,7 +70,7 @@
                                                             Posted by
 
                                                             <div class="post__author-name fn">
-                                                                <a href="#" class="post__author-link">{{$post->user->name }}</a>
+                                                                <a href="{{url('selected/user/profile',$post->user->id )}}" class="post__author-link">{{$post->user->name }}</a>
                                                             </div>
 
                                                     </div>
@@ -87,7 +87,7 @@
 
                                                     <span class="category">
                                                             <i class="seoicon-tags"></i>
-                                                            <a href="{{ url('category', $post->category->id) }}">{{ $post->category->name }}</a>
+                                                            <a href="{{ url('blog/category', $post->category->id) }}">{{ $post->category->name }}</a>
                                                     </span>
 
                                                 </div>

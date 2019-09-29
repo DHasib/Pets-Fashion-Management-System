@@ -171,7 +171,35 @@ class ProductController extends Controller
               }
            
     }
+     //Search Product by admin................................................................................................................................
+            protected function search(Request $request)
+            {
+            
+                $validate_data =  Validator::make($request->all(),[
 
+                    'search'  => "required|string", 
+
+                ])->validate();
+
+                    $search = $request->search;
+
+                    if ($search == NULL) 
+                    {
+                    return view("admin/shop/products/index")->with('products',   Product::all())
+                                                            ->with('Categories', Category::all())
+                                                            ->with('authUser',   Auth::user());
+                    } 
+                    else 
+                    {
+                        $products = Product::where('title','LIKE', '%'.$search.'%')
+                                        ->get(); 
+
+                               
+                        return view('admin/shop/products/index')->with('products',     $products)
+                                                                ->with('Categories', Category::all())
+                                                                ->with('authUser',   Auth::user());
+                    }
+            }
     /**
      * Remove the specified resource from storage.
      *

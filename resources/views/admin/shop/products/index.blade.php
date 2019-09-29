@@ -23,17 +23,17 @@
                       <div class="card-tools">
                         
                           <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/product')}}" style="color:White;">Refresh</a></div>
-                            <div class="input-group input-group-sm  {{ $errors->has('search_user') ? 'has-error' : '' }}" style="width: 150px;">
-                               <form class="form-inline" action="{{url('admin/search/blog')}}" method="POST">
+                            <div class="input-group input-group-sm  {{ $errors->has('search') ? 'has-error' : '' }}" style="width: 150px;">
+                               <form class="form-inline" action="{{url('admin/product/search')}}" method="POST">
                                 {{ csrf_field() }}
                                       <div class="input-group-append">
-                                          <input type="text" name="search_user" value="{{ old('search_user') }}" class="form-control" size="8" placeholder="Search" >
+                                          <input type="text" name="search" value="{{ old('search') }}" class="form-control" size="8" placeholder="Search" >
                                         <button type="submit" class="form-control btn btn-default"><i class="fas fa-search"></i></button>
                                       </div>
                                       
-                                      @if ($errors->has('search_user'))
+                                      @if ($errors->has('search'))
                                       <span class="help-block">
-                                        <strong>  {{ $errors->first('search_user') }}</strong>
+                                        <strong>  {{ $errors->first('search') }}</strong>
                                       </span>
                                     @endif
                               </form>
@@ -78,7 +78,7 @@
                                       <td>{{ $i++ }}</td>
                                       <td>{{ $product->category->name }}</td>
                                       <td>{{ $product->title }}</td>
-                                      <td>{{ $product->price }}/taka</td>
+                                      <td>{{ $product->price }}</td>
                                       <td>{{ $product->stock }}</td>
                                  @if($product->discount == null)
                                       <td><h5>No discount Set Yet...</h5></td>

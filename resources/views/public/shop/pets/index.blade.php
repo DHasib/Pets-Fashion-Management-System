@@ -105,7 +105,7 @@
                                                     <p>{{$pet->category->name}} 
                                                     </p>
                                                     <span class="backcolor"> <b>{{$pet->price}}</b> <i> taka</i> @if($pet->discount != null)<span class="offerD"> <b> {{$pet->discount}}% off</b> </span>@endif </span>
-                                                    <span class="btn btn-info btn-sm btnorder"> <a href="{{url('pet/add/cart',$pet->id)}}"> <b>add to cart @if($pet->stock == 0) <small class="badge badge-light" style="color: red; font-size:11px;">Out Of Stock</small> @endif </b></a> </span>
+                                                     <a href="{{url('pet/add/cart',$pet->id)}}" class="btn btn-info btn-sm btnorder"> <b style="color:black;">add to cart @if($pet->stock == 0) <small class="badge badge-light" style="color: red; font-size:11px;">Out Of Stock</small> @endif </b></a> 
                                                 </div>
                                             </div>
                                         </div>

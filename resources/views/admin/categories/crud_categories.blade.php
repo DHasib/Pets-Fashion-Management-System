@@ -16,7 +16,7 @@
                     <h2 class="card-title text-uppercase">Categories List</h2>
 
                     <div class="card-tools">
-                        <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/pet/category')}}" style="color:White;">Refresh</a></div>
+                        <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/category/show')}}" style="color:White;">Refresh</a></div>
                     </div>
 
                   </div>
@@ -61,7 +61,7 @@
             <div class="card card-warning">
                 <div class="card-header">
                   <h3 class="card-title"> Add Pet Categories </h3>
-                  <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href=" {{url('admin/pet/category')}}" style="color:White;">Refresh</a></div>
+                  <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href=" {{url('admin/category/show')}}" style="color:White;">Refresh</a></div>
                 </div>
                 @if (Session::has('success'))
                       <div class="alert alert-success">

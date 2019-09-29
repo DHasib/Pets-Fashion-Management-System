@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title","Blogs | Pet Fashion Management System" )
+@section("title","Post a Blog | Pet Fashion Management System" )
 
 @section("content")
 

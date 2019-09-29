@@ -82,7 +82,7 @@
                                                                                           <div class="post-additional-info col-sm-12 text-small">
 
                                                                                                 <span class="post__comments text-uppercase float-left col-sm-6 small">
-                                                                                                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                                                                                        <a href="{{url('selected/user/profile',$post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i></a>
                                                                                                         {{ $post->user->name }}
                                                                                                     </span>
                                                                                             <span class="float-right col-sm-6 small">

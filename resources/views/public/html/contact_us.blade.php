@@ -25,6 +25,9 @@
                         alteration in some form, by injected humour, or randomised words which don't look even slightly
                         believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                         anything embarrassing hidden in the middle of text.</p>
+                    
+                </div>
+                <div class="col-sm-6 contact_info send_message">
                     <div class="location">
                         <div class="location_laft">
                             <a class="f_location" href="#">location</a>
@@ -39,16 +42,6 @@
                             <a href="#">info@thethemspro.com</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 contact_info send_message">
-                    <h2>Send Us a Message</h2>
-                    <form class="form-inline contact_box">
-                        <input type="text" class="form-control input_box" placeholder="Full Name *">
-                        <input type="text" class="form-control input_box" placeholder="Your Email *">
-                        <input type="text" class="form-control input_box" placeholder="Subject">
-                        <textarea class="form-control input_box" placeholder="Message"></textarea>
-                        <button type="submit" class="btn btn-default">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>

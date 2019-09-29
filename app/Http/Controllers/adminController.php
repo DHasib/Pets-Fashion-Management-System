@@ -12,6 +12,7 @@ use App\user;
 use App\BlogPost;
 use App\Category;
 use App\Pet;
+use App\Product;
 use Auth;
 use Validator;
 use session;
@@ -65,15 +66,17 @@ class adminController extends Controller
     public function showAdminProfile()
     {
         return view("admin/profile/profile")->with('user', Auth::user())
+                                            ->with('authUser', Auth::user())
                                             ->with('posts', BlogPost::where('user_id', Auth::user()->id)->get())
                                             ->with('panding_order',          $this->total_user_order()->count())
                                             ->with('total_panding_pet',      $this->total_pet_order())
                                             ->with('total_panding_product',  $this->total_product_order()); 
     }
-//Show Admin Profile.......................................................
+//Show Admin Profile..........................................................................................................
      public function settingAdminProfile()
      {
          return view("admin/profile/setting")->with('user', Auth::user())
+                                             ->with('authUser', Auth::user())
                                             ->with('panding_order',          $this->total_user_order()->count())
                                             ->with('total_panding_pet',      $this->total_pet_order())
                                             ->with('total_panding_product',  $this->total_product_order()); 
@@ -81,18 +84,22 @@ class adminController extends Controller
 //Show Admin Dashboard............................................................................................................
     public function showAdminDashboard() 
     {
+
         return view("admin/profile/dashboard")->with('posts_count',          BlogPost::all()->count())
                                             ->with('panding_count',          BlogPost::where('status', 1)->get()->count())
                                             ->with('trashed_count',          BlogPost::onlyTrashed()->get()->count())
                                             ->with('users_count',            User::all()->count())
                                             ->with('categories_count',       Category::all()->count())
                                             ->with('pets_count',             Pet::all()->count())
+                                            ->with('product_count',          Product::all()->count())
+                                            ->with('total_item_sale',        OrderList::all('quentity')->Sum('quentity'))
                                             ->with('authUser',               Auth::user())
                                             ->with('panding_order',          $this->total_user_order()->count())
                                             ->with('total_panding_pet',      $this->total_pet_order())
+                                            ->with('total_panding_product',  $this->total_product_order())
                                             ->with('total_panding_product',  $this->total_product_order());
     } 
-//Panding Blogs list.............................................
+//Panding Blogs list...............................................................................................................................
         public function showPanding()
         {
             $authUser = Auth::user(); 
@@ -104,7 +111,7 @@ class adminController extends Controller
             return view('admin/blog_post/panding_blog', compact('panding', "authUser","panding_order","total_panding_pet","total_panding_product"));                                 
 
         }
-//Astive user Blog.............................................
+//Astive user Blog....................................................................
         public function active($id)
         {
             $status = BlogPost::find($id);
@@ -122,19 +129,19 @@ class adminController extends Controller
             }
         }
 
- //Show User Management Form..............................
+ //Show User Management Form............................................................................................................................
             public function showUserDetails()
             {
                 $users = User::all();
                 $authUser = Auth::user(); 
                 $panding_order           =  $this->total_user_order()->count();
-                $total_panding_pet       =    $this->total_pet_order();
-                $total_panding_product   = $this->total_product_order();
+                $total_panding_pet       =  $this->total_pet_order();
+                $total_panding_product   =  $this->total_product_order();
 
                 return view("admin/manage_users/manage_user", compact("users", "authUser",  "panding_order","total_panding_pet","total_panding_product")); 
             } 
 
-//Block User By admin..............................
+//Block User By admin..........................................................................................................................................
             protected function blockedUser(Request $request)
             {
                 $users = User::all();
@@ -185,7 +192,7 @@ class adminController extends Controller
  
 }
 
-//Unblock user by admin..............................
+//Unblock user by admin..........................................................................................................................................
             protected function unBlockedUser(Request $request)
             {
                     $users = User::all();
@@ -219,7 +226,7 @@ class adminController extends Controller
             
             }
 
-//Search User by admin..............................
+//Search User by admin................................................................................................................................
         protected function search(Request $request)
         {
             $authUser = Auth::user(); 
@@ -251,7 +258,7 @@ class adminController extends Controller
                             return view("admin/manage_users/manage_user", compact("users", "authUser","panding_order","total_panding_pet","total_panding_product"));  
                 }
         }
-//Access granted as a  Doctor..............................
+//Access granted as a  Doctor............................................................................................................................................
             protected function makeDoctor($user_id) 
             {
 
@@ -285,7 +292,7 @@ class adminController extends Controller
             }
 
             }
-//Remove Doctor Access..............................
+//Remove Doctor Access.......................................................................................................................................................
             protected function removeDoctor($user_id) 
             {
                 $authUser = Auth::user(); 
@@ -319,54 +326,6 @@ class adminController extends Controller
 
             }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Admin Profile Update...........................................................
-            protected function updateAdminProfile(Request $request)
-            {
-                $authUser = Auth::user(); 
-                $panding_order           =  $this->total_user_order()->count();
-                $total_panding_pet       =  $this->total_pet_order();
-                $total_panding_product   =  $this->total_product_order();
-
-                    $validate_data =  Validator::make($request->all(),[
-                    "shop_contact_number"   =>"required|regex:/(01)[0-9]{9}/|max:16", 
-                    "shop_email"            =>"required|email",
-                    "shop_open_details"     =>"required|max:50|string",
-                    "shop_fb_link"          =>"required|url",
-                    "shop_tw_link"          =>"required|url",
-                    "shop_glg_link"         =>"required|url",
-                    "shop_pint_link"        =>"required|url",
-                    "shop_instrsg_link"     =>"required|url",
-                    "shop_lnkd_link"        =>"required|url",
-                ])->validate();
-
-                    $link = DynamicLinks::all();
-                    $headerDerails = DynamicLinks::find($request->id) ;
-                
-                    $headerDerails->shop_contact_number     = $request->shop_contact_number;
-                    $headerDerails->shop_email              = $request->shop_email;
-                    $headerDerails->shop_open_details       = $request->shop_open_details;
-                    $headerDerails->shop_fb_link            = $request->shop_fb_link;
-                    $headerDerails->shop_tw_link            = $request->shop_tw_link;
-                    $headerDerails->shop_glg_link           = $request->shop_glg_link;
-                    $headerDerails->shop_pint_link          = $request->shop_pint_link;
-                    $headerDerails->shop_instrsg_link       = $request->shop_instrsg_link;
-                    $headerDerails->shop_lnkd_link          = $request->shop_lnkd_link;
-                    
-                    $is_saved = $headerDerails->save();
-
-                    if ($is_saved){
-                        session()->flash("success", "Sucessfully Upload Header Details");
-                        return view("admin/home_page/home_top_header", compact("link", "authUser","panding_order","total_panding_pet","total_panding_product"));
-                    }else{
-                        session()->flash("error", "Failed to Upload Header Details");
-                        return view("admin/home_page/home_top_header", compact("link", "authUser","panding_order","total_panding_pet","total_panding_product"));
-                    }
-                
-            
-            }
 
 
 

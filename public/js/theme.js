@@ -227,3 +227,12 @@ $('.quantity-minus-d').on('click', function () {
     }
     return false;
 });
+
+//to read PDF file .............................
+$(document).ready(function() {
+    $(".book").fancybox({
+     'width': 600, 
+     'height': 320,
+     'type': 'iframe'
+    });
+   });
