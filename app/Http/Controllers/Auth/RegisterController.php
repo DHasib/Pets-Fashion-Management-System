@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -57,6 +57,7 @@ class RegisterController extends Controller
             "password"          =>"required|string|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",      
         ],[
             "password.regex"    =>" Your password must be 8 characters long and should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.",
+            "PhoneNum.regex"    =>" Your Phone Number Must Be must be 11 Digit and start with (o1) and max Phone Number of Digit 16 .",
         ]);
     }
 
@@ -68,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $user = User::create([
+         $user = User::create([
             'name'             => $data['name'],
             'email'            => $data['email'],
             'PhoneNum'         => $data['PhoneNum'],
@@ -77,12 +78,12 @@ class RegisterController extends Controller
             'role'             =>    0,
         ]);
 
-        return  $profile = Profile::create([
-            'user_id' => $user->id,
-            'avatar' => 'uploads/avatars/1.png'
+          $profile = Profile::create([
+            'user_id'    => $user->id,
         ]);
 
-       
+        return $user;
+
     }
 }
 

@@ -162,7 +162,7 @@
                                                     <label for="comment"> About your Self:</label>
                                                     <textarea name="your_self" cols="5" rows="3" class="form-control"
                                                         placeholder="Write About Your Self"
-                                                        value="@if( $user->profile->about != null){{$user->profile->about}}@else{{ old('your_self') }}@endif"></textarea>
+                                                        value="{{ old('your_self') }}">@if( $user->profile->about != null){{$user->profile->about}}@endif</textarea>
                                                     @if ($errors->has('your_self'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('your_self') }}</strong>

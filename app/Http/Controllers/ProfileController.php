@@ -46,6 +46,7 @@ class ProfileController extends Controller
 
             $user = user::find($id);
         
+            //dd($id);
             return view("public/profile")->with('user',    $user)
                                         ->with('uposts',   BlogPost::where('user_id',$id)->get())
                                         ->with('link',    DynamicLinks::all());

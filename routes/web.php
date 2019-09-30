@@ -17,7 +17,7 @@
 
     Auth::routes();
 
-    Route::get('home', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
         //show blog posted user profile....................................
             Route::get("selected/user/profile/{id}", "ProfileController@pUserShow");
 
@@ -38,7 +38,7 @@
                     Route::get("products/category/{id}", "HomeController@productsCategory");
                     Route::post("products/search", "HomeController@searchProducts");
 
-            //Publicly Order Items and store add to cart Show ..............................................................
+            //Publicly Order Items and store add to cart Show ................................................
                     Route::get("pet/add/cart/{pet_id}", "ShoppingController@petAddToCart");
                     Route::get("product/add/cart/{product_id}", "ShoppingController@productAddToCart");
                     Route::get("shopping/cart", "ShoppingController@cart");

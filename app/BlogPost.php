@@ -11,7 +11,7 @@ class BlogPost extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'blog_title', 'category_id', 'blog_content', 'blog_image', 'slug','user_id','status',
+       'blog_title', 'category_id', 'blog_content', 'blog_image', 'slug','user_id','status',
     ];
 
     protected $dates = ['deleted_at'];

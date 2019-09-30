@@ -97,7 +97,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="index.html"><img src=" {{url('images/logo.png')}} " alt=""></a>
+                                        <a class="navbar-brand" href="{{url('/')}}"><img src=" {{url('images/logo.png')}} " alt=""></a>
                                     </div>
                                 </div>
 
@@ -106,7 +106,7 @@
                                     <div class="collapse navbar-collapse" id="min_navbar">
                                         <ul class="nav navbar-nav navbar-right">
                                            
-                                            <li><a href="{{ url('/home') }}">Home</a></li>
+                                            <li><a href="{{ url('/') }}">Home</a></li>
                                             <li><a href="{{ url('/products') }}">Pet Products</a></li>
                                             <li><a href="{{ url('/pets') }}">Pets</a></li>
                                             <li class="dropdown submenu">

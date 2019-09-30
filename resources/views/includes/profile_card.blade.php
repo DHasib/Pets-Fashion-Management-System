@@ -5,7 +5,7 @@
         <div class="panel-body">
             <div class="text-center">
                 <img class="img-fluid img-circle" style="width:50%;"
-                    src="@if ($user->profile->user_img != null) {{asset($user->profile->user_img)}} @else {{url('images/avater.jpg')}} @endif"
+                    src="@if ($user->profile->user_img != null) {{asset($user->profile->user_img)}} @else {{asset('images/avater.jpg')}} @endif"
                     alt="User profile picture">
             </div><br>
 
@@ -30,7 +30,7 @@
                 </li>
             </ul>
 
-            <a href="{{$user->profile->facebook}}" class="btn btn-primary btn-block" target="_blank"><b>Follow on
+            <a href="@if ($user->profile->facebook != null) {{$user->profile->facebook}} @else # @endif" class="btn btn-primary btn-block" target="_blank"><b>Follow on
                     Facebook
                 </b></a><hr>
             <a href="{{$user->profile->youtube}}" class="btn btn-danger btn-block" target="_blank"><b>Follow on

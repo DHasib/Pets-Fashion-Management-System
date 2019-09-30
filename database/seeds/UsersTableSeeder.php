@@ -32,8 +32,8 @@ class UsersTableSeeder extends Seeder
               $prof = new Profile;
               $prof->user_id      = $user->id;
               $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-              $prof->facebook     = 'facebook.com';
-              $prof->youtube      = 'youtube.com';
+              $prof->facebook     ='https://www.facebook.com/';
+              $prof->youtube      ='https://www.youtube.com/';
               $prof->save();
 
         //For insert User Data.......................................
@@ -49,8 +49,8 @@ class UsersTableSeeder extends Seeder
           $prof = new Profile;
           $prof->user_id      = $user->id;
           $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-          $prof->facebook     = 'facebook.com';
-          $prof->youtube      = 'youtube.com';
+          $prof->facebook     ='https://www.facebook.com/';
+          $prof->youtube      ='https://www.youtube.com/';
           $prof->save();
 
         $user = new User;
@@ -65,8 +65,8 @@ class UsersTableSeeder extends Seeder
           $prof = new Profile;
           $prof->user_id      = $user->id;
           $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-          $prof->facebook     = 'facebook.com';
-          $prof->youtube      = 'youtube.com';
+          $prof->facebook     ='https://www.facebook.com/';
+          $prof->youtube      ='https://www.youtube.com/';
           $prof->save();
 
         $user = new User;
@@ -81,8 +81,8 @@ class UsersTableSeeder extends Seeder
          $prof = new Profile;
          $prof->user_id      = $user->id;
          $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-         $prof->facebook     = 'facebook.com';
-         $prof->youtube      = 'youtube.com';
+         $prof->facebook     ='https://www.facebook.com/';
+         $prof->youtube      ='https://www.youtube.com/';
          $prof->save();
 
         //For insert Doctor Data.......................................
@@ -98,8 +98,8 @@ class UsersTableSeeder extends Seeder
           $prof = new Profile;
           $prof->user_id      = $user->id;
           $prof->about        = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim in molestiae maiores aperiam quia blanditiis esse eum, optio incidunt laudantium distinctio possimus! Recusandae nihil eum, eaque sequi corrupti quia numquam non? Incidunt, sequi laudantium aspernatur, quia sunt velit, quas laborum quae hic commodi odio soluta voluptatum corrupti deleniti adipisci mollitia. ';
-          $prof->facebook     = 'facebook.com';
-          $prof->youtube      = 'youtube.com';
+          $prof->facebook     ='https://www.facebook.com/';
+          $prof->youtube      ='https://www.youtube.com/';
           $prof->save();
 
     }
