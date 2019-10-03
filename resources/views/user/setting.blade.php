@@ -48,47 +48,27 @@
                                                             class="form-control  @error('name') is-invalid @enderror"
                                                             name="name" value="{{ $user->name }}">
 
-
                                                         @if ($errors->has('name'))
                                                         <span class="help-block">
                                                             <strong>{{ $errors->first('name') }}</strong>
                                                         </span>
                                                         @endif
-
                                                     </div>
                                                 </div>
-
-                                                <div
-                                                    class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="email_address"
-                                                        class="col-md-4 text-right text-xs">E-Mail:</label>
+                                                <div class="form-group row {{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                        <label for="gender" class="col-md-4 text-right">Gender</label>
                                                     <div class="col-md-8">
-                                                        <input type="email" id="email_address" class="form-control"
-                                                            name="email" value="{{$user->email}}">
-
-                                                        @if ($errors->has('email'))
+                                                        <select name="gender" class="form-control">
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                        </select>
+                                    
+                                                        @if ($errors->has('gender'))
                                                         <span class="help-block">
-                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                            <strong>{{ $errors->first('gender') }}</strong>
                                                         </span>
                                                         @endif
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
-                                                    <label for="PhoneNum" class="col-md-4 text-right">Phone
-                                                        Number:</label>
-                                                    <div class="col-md-8">
-                                                        <input type="text" id="PhoneNum"
-                                                            class="form-control @error('PhoneNum') is-invalid @enderror"
-                                                            name="PhoneNum" value="{{$user->PhoneNum}}">
-
-                                                        <!-- For Error Messages Show  -->
-                                                        @if ($errors->has('PhoneNum'))
-                                                        <span class="help-block">
-                                                            <strong>{{ $errors->first('PhoneNum') }}</strong>
-                                                        </span>
-                                                        @endif
-
+                                    
                                                     </div>
                                                 </div>
 
@@ -249,6 +229,60 @@
                                                     Change Password
                                                 </button><br>
                                             </form>
+
+                                            <br>
+                                            <hr>
+                                            <br>
+                                 <!-- ------------------------------------------- Change User Email-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+
+                                              <form action="{{url('user/change/email') }}" method="post">
+                                                @csrf
+                                            <div
+                                            class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <label for="email_address"
+                                                class="col-md-4 text-right text-xs">E-Mail:</label>
+                                            <div class="col-md-8">
+                                                <input type="email" id="email_address"
+                                                    class="form-control" name="email"
+                                                    value="{{$user->email}}">
+
+                                                @if ($errors->has('email'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                                @endif
+                                                <button type="submit" class="btn btn-warning btn-xs btn-block">
+                                                        Change Email
+                                                    </button>
+                                            </div>
+                                        </div>
+                                       
+                                    </form>
+                  <!-- ------------------------------------------- Change User Phone Number-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+                                           <hr>
+                                    <form action="{{url('user/change/phonenumber') }}" method="post">
+                                        @csrf
+                                        <div
+                                            class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
+                                            <label for="PhoneNum" class="col-md-4 text-right">Phone
+                                                Number:</label>
+                                            <div class="col-md-8">
+                                                <input type="text" id="PhoneNum"
+                                                    class="form-control @error('PhoneNum') is-invalid @enderror"
+                                                    name="PhoneNum" value="{{$user->PhoneNum}}">
+
+                                                <!-- For Error Messages Show  -->
+                                                @if ($errors->has('PhoneNum'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('PhoneNum') }}</strong>
+                                                </span>
+                                                @endif
+                                                <button type="submit" class="btn btn-warning btn-xs btn-block">
+                                                        Change Contact Number
+                                                    </button>
+                                            </div>
+                                        </div>
+                                        </form>
                                         </div>
 
                                     </div><!-- col-6 -->

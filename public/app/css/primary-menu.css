@@ -126,7 +126,7 @@ License: http://codecanyon.net/licenses
 	display: block;
 	width: 80%;
 	height: 2px;
-	background-color: #4cc2c0;
+	background-color: #f8b81d;
 	position: absolute;
 	right: 0;
 	bottom: -10px;
@@ -140,7 +140,7 @@ License: http://codecanyon.net/licenses
 	position: absolute;
 	width: 15%;
 	height: 2px;
-	background-color: #4cc2c0;
+	background-color: #f8b81d;
 	left: 0;
 	bottom: -10px;
 	opacity: 0;
@@ -157,7 +157,7 @@ License: http://codecanyon.net/licenses
 .primary-menu-menu > li.active > a,
 .primary-menu-menu > li:hover > a,
 .primary-menu-menu > li:hover > i {
-	color: #4cc2c0;
+	color: #f8b81d;
 }
 
 .primary-menu-menu > li > i {
@@ -222,7 +222,7 @@ License: http://codecanyon.net/licenses
 .primary-menu-menu ul.dropdown a:hover > i,
 .primary-menu-menu > li.has-megamenu .megamenu ul > li a:hover i {
 	opacity: 1;
-	color: #4cc2c0;
+	color: #f8b81d;
 }
 
 .primary-menu-menu ul.dropdown li ul.dropdown{
@@ -270,7 +270,7 @@ License: http://codecanyon.net/licenses
 	position: absolute;
 	left: 0;
 	top: 0;
-	background-color: #4cc2c0;
+	background-color: #f8b81d;
 	opacity: 0;
 	transition: all .3s ease;
 }
@@ -305,7 +305,7 @@ License: http://codecanyon.net/licenses
 
 /* Hover state (dropdown items) */
 .primary-menu-menu ul.dropdown li:hover > a{
-	color: #4cc2c0;
+	color: #f8b81d;
 	transition: all .3s ease;
 }
 
@@ -334,11 +334,11 @@ License: http://codecanyon.net/licenses
 }
 
 .primary-menu-menu li ul.dropdown li:hover > a .indicator{
-	color: #4cc2c0;
+	color: #f8b81d;
 }
 
 .primary-menu-menu > li:hover > a > .indicator {
-	color: #4cc2c0;;
+	color: #f8b81d;;
 }
 
 /* 6 - MEGAMENU
@@ -642,7 +642,7 @@ License: http://codecanyon.net/licenses
 .primary-menu.blue .primary-menu-menu > li.active > a,
 .primary-menu.blue .primary-menu-menu > li:hover > a,
 .primary-menu.blue .primary-menu-menu ul.dropdown li:hover > a{
-	color: #4A89DC; 
+	color: #f8b81d; 
 }
 /* green */
 .primary-menu.green .primary-menu-menu > li.active > a,

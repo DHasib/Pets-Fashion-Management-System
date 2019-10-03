@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('PhoneNum')->unique();
             $table->string('location');
+            $table->string('gender');
             $table->boolean('role')->default(0)->comment('0-user, 1-admin, 2-doctor');
             $table->string('password');
             $table->date('blocked_date')->nullable();

@@ -58,6 +58,12 @@
                                     <span class="tag tag-danger">{{$user->email}}</span>
                                 </p>
                             </li>
+                            <li class="list-group-item">
+                                    <b> <i class="fa fa-mars-stroke-v"></i> Gender</b>
+                                    <p class="text-muted">
+                                        <span class="tag tag-danger">{{$user->gender}}</span>
+                                    </p>
+                                </li>
                         </ul>
 
                         <a href="{{$user->profile->facebook}}" class="btn btn-primary btn-block"
@@ -135,41 +141,6 @@
                                                         </div>
 
                                                         <div
-                                                            class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                                                            <label for="email_address"
-                                                                class="col-md-4 text-right text-xs">E-Mail:</label>
-                                                            <div class="col-md-8">
-                                                                <input type="email" id="email_address"
-                                                                    class="form-control" name="email"
-                                                                    value="{{$user->email}}">
-
-                                                                @if ($errors->has('email'))
-                                                                <span class="help-block">
-                                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                                </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
-                                                            <label for="PhoneNum" class="col-md-4 text-right">Phone
-                                                                Number:</label>
-                                                            <div class="col-md-8">
-                                                                <input type="text" id="PhoneNum"
-                                                                    class="form-control @error('PhoneNum') is-invalid @enderror"
-                                                                    name="PhoneNum" value="{{$user->PhoneNum}}">
-
-                                                                <!-- For Error Messages Show  -->
-                                                                @if ($errors->has('PhoneNum'))
-                                                                <span class="help-block">
-                                                                    <strong>{{ $errors->first('PhoneNum') }}</strong>
-                                                                </span>
-                                                                @endif
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div
                                                             class="form-group row {{ $errors->has('location') ? ' has-error' : '' }}">
                                                             <label for="location"
                                                                 class="col-md-4 text-right">Location:</label>
@@ -187,16 +158,33 @@
 
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row {{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                                <label for="gender" class="col-md-4 text-right">Gender</label>
+                                                            <div class="col-md-8">
+                                                                <select name="gender" class="form-control">
+                                                                    <option value="male">Male</option>
+                                                                    <option value="female">Female</option>
+                                                                </select>
+                                            
+                                                                @if ($errors->has('gender'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('gender') }}</strong>
+                                                                </span>
+                                                                @endif
+                                            
+                                                            </div>
+                                                        </div>
                                                         <br>
                                                         <button type="submit" class="btn btn-warning btn-md btn-block">
                                                             Update Profile
-                                                        </button><br><br><br>
+                                                        </button><br>
 
                                                     </form>
+                        
                                                 </div>
-                                                <!-- ------------------------------------------- Save  Profile Detrails-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+                                <!-- ------------------------------------------- Save  Profile Detrails-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
 
-                                                <br><br><br>
+                                                <br>
                                                 <hr><br>
                                                 <div class="col-md-10">
                                                     <form action="{{  url('admin/profile/save') }}" method="POST">
@@ -250,13 +238,12 @@
                                                         </div>
                                                         <button type="submit" class="btn btn-warning btn-md btn-block">
                                                             Save Profile Details
-                                                        </button><br><br><br>
+                                                        </button><br>
                                                     </form>
                                                 </div>
                                             </div>
                                             <!--col-md-6-->
-
-                                            <br><br>
+                                            <br>
                                             <hr>
 
                                             <!-- ------------------------------------------- Upload Profile Picture-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
@@ -333,7 +320,62 @@
                                                             Change Password
                                                         </button><br>
                                                     </form>
+
+                                                    <br><br>
+
+
+                          <!-- ------------------------------------------- Change User Email-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+
+                                                       <form action="{{url('admin/change/email') }}" method="post">
+                                                        @csrf
+                                                    <div
+                                                    class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                                                    <label for="email_address"
+                                                        class="col-md-4 text-right text-xs">E-Mail:</label>
+                                                    <div class="col-md-8">
+                                                        <input type="email" id="email_address"
+                                                            class="form-control" name="email"
+                                                            value="{{$user->email}}">
+
+                                                        @if ($errors->has('email'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </span>
+                                                        <br>
+                                                        @endif<br>
+                                                        <button type="submit" class="btn btn-warning btn-xs btn-block">
+                                                                Change Email
+                                                            </button>
+                                                    </div>
                                                 </div>
+                                               
+                                            </form>
+                          <!-- ------------------------------------------- Change User Phone Number-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+                                                   <hr>
+                                            <form action="{{url('admin/change/phonenumber') }}" method="post">
+                                                @csrf
+                                                <div
+                                                    class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
+                                                    <label for="PhoneNum" class="col-md-4 text-right">Phone
+                                                        Number:</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="PhoneNum"
+                                                            class="form-control @error('PhoneNum') is-invalid @enderror"
+                                                            name="PhoneNum" value="{{$user->PhoneNum}}">
+
+                                                        <!-- For Error Messages Show  -->
+                                                        @if ($errors->has('PhoneNum'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('PhoneNum') }}</strong>
+                                                        </span><br>
+                                                        @endif<br>
+                                                        <button type="submit" class="btn btn-warning btn-xs btn-block">
+                                                                Change Contact Number
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                             </div><br><br><br><br><br>
 
                                             </div><!-- col-6 -->
 

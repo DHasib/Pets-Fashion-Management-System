@@ -75,16 +75,7 @@
 
                 Route::get("page_not_found", "HomeController@page_not_found");
 
-                //Route group for registered user
-                Route::prefix('user')->middleware(['auth'])->group(function () {
                 
-                //  Route::get("doctor_support", "HomeController@doctor_support");
-                });
-
-
-                //Route::get('admin', function () {
-                    //return view('layouts/admin_master');
-                //});
 
 
 
@@ -120,6 +111,8 @@
             Route::Post("profile/save", "ProfileController@saveProfile");
             Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
             Route::Post("account/password/change", "ProfileController@changeUserPassword");
+            Route::Post("change/email", "ProfileController@changeEmail");
+            Route::Post("change/phonenumber", "ProfileController@changePhoneNumber");
 
       
 
@@ -202,6 +195,9 @@
                         Route::get("profile/setting", "adminController@settingAdminProfile");
 
                         Route::Post("profile/update", "ProfileController@updateProfile");
+                        Route::Post("change/email", "ProfileController@changeEmail");
+                        Route::Post("change/phonenumber", "ProfileController@changePhoneNumber");
+
                         Route::Post("profile/save", "ProfileController@saveProfile");
                         Route::Post("profile/image/upload", "ProfileController@uloadProfileImage");
                         Route::Post("account/password/change", "ProfileController@changeUserPassword");

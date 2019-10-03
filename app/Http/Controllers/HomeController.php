@@ -33,9 +33,14 @@ class HomeController extends Controller
     {
         $sdata = DynamicHomepage::all();
         $link = DynamicLinks::all();
-        return view('public/html/index', compact('sdata','link'));
-
-    }
+        return view('public/html/index')->with('sdata',              $sdata)
+                                        ->with('link',               $link)
+                                        ->with('pet_collection',     Pet::orderBy('created_at', 'desc')->take(4)->get())
+                                        ->with('product_collection', Product::orderBy('created_at', 'desc')->take(4)->get())
+                                        ->with('discountPet',        Pet::orderBy('created_at', 'desc')->get()->where('discount',!null))
+                                        ->with('discountProduct',    Product::orderBy('created_at', 'desc')->get()->where('discount',!null))
+                                        ->with('blogs',              BlogPost::orderBy('created_at', 'desc')->get()->where('status',0)->take(3));
+    } 
 
 //==================================================================================================================================================================================================================
 
@@ -104,7 +109,7 @@ class HomeController extends Controller
                             {
                                     return view("public/shop/pets/index")->with('link', DynamicLinks::all())
                                                                   ->with('categories',  Category::all())
-                                                                  ->with('pets',        Pet::paginate(9))
+                                                                  ->with('pets',        Pet::orderBy('created_at', 'desc')->paginate(9))
                                                                   ->with('discountPet', Pet::all());
                             }
                     //Selected Pets Details Show .......................................................................................................
@@ -128,11 +133,11 @@ class HomeController extends Controller
                             {
                                 $category = Category::find($id);
 
-                                return view("public/shop/pets/category_pets")->with('category',     $category)
-                                                                        ->with('title',      $category->name)
-                                                                        ->with('link',       DynamicLinks::all()) 
-                                                                        ->with('categories', Category::all())
-                                                                        ->with('discountPet', Pet::all());
+                                return view("public/shop/pets/category_pets")->with('category',  $category)
+                                                                            ->with('title',      $category->name)
+                                                                            ->with('link',       DynamicLinks::all()) 
+                                                                            ->with('categories', Category::all())
+                                                                            ->with('discountPet', Pet::all());
                             }
 
                   //Pets Search By anyone using title...........................................................................................................
@@ -174,9 +179,9 @@ class HomeController extends Controller
                 //All product List Show..............................................................................................................
                         public function productIndex()
                         {
-                                return view("public/shop/pet_products/index")->with('link',        DynamicLinks::all())
-                                                                      ->with('categories',  Category::all())
-                                                                      ->with('products',    Product::paginate(9))
+                                return view("public/shop/pet_products/index")->with('link',      DynamicLinks::all())
+                                                                      ->with('categories',       Category::all())
+                                                                      ->with('products',         Product::orderBy('created_at', 'desc')->paginate(9))
                                                                       ->with('discountProduct',  Product::all());
                         }
                 //Selected product Details Show .......................................................................................................
@@ -187,12 +192,12 @@ class HomeController extends Controller
                             $next_id = Product::where('id', '>', $product->id)->min('id');
                             $prev_id = Product::where('id', '<', $product->id)->max('id');
 
-                            return view('public/shop/pet_products/about')->with('product',    $product)
-                                                                  ->with('title',      $product->title)
-                                                                  ->with('link',       DynamicLinks::all())
-                                                                  ->with('categories', Category::take(5)->get())
-                                                                  ->with('next',       Product::find($next_id))
-                                                                  ->with('prev',       Product::find($prev_id))
+                            return view('public/shop/pet_products/about')->with('product',   $product)
+                                                                  ->with('title',            $product->title)
+                                                                  ->with('link',             DynamicLinks::all())
+                                                                  ->with('categories',       Category::take(5)->get())
+                                                                  ->with('next',             Product::find($next_id))
+                                                                  ->with('prev',             Product::find($prev_id))
                                                                   ->with('discountProduct',  Product::all());
                         }
                 //Category-wise product  Show .....................................................................................................
@@ -200,10 +205,10 @@ class HomeController extends Controller
                         {
                             $category = Category::find($id);
 
-                            return view("public/shop/pet_products/category_products")->with('category',    $category)
-                                                                              ->with('title',       $category->name)
-                                                                              ->with('link',        DynamicLinks::all()) 
-                                                                              ->with('categories',  Category::all())
+                            return view("public/shop/pet_products/category_products")->with('category',  $category)
+                                                                              ->with('title',            $category->name)
+                                                                              ->with('link',             DynamicLinks::all()) 
+                                                                              ->with('categories',       Category::all())
                                                                               ->with('discountProduct',  Product::all());
                         }
 
@@ -255,18 +260,7 @@ class HomeController extends Controller
         $link = DynamicLinks::all();
         return view("public/html.contact_us" , compact('link'));
     }
-    public function cart(){
-        $link = DynamicLinks::all();
-        return view("public/html.cart" , compact('link'));
-    }
-    public function check_out(){
-        $link = DynamicLinks::all();
-        return view("public/html.check_out" , compact('link'));// DUE.............
-    }
-    public function doctor_management(){
-        $link = DynamicLinks::all();
-        return view("public/html.doctor_management", compact('link'));// DUE.............
-    }
+   
     public function page_not_found (){
         $link = DynamicLinks::all();
         return view("public/html.page_not_found", compact('link'));// DUE.............

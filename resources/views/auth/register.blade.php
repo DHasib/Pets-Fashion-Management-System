@@ -51,6 +51,26 @@
                                                             @enderror
                                                 </div>
                                             </div>
+
+                                            <div class="form-group row {{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                    <label for="gender" class="col-md-4 text-right">Select Your Gender</label>
+                                                <div class="col-md-6">
+                                                    <select name="gender" class="form-control" >
+                                                        <option value="" selected>--Select--</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                
+                                                     <!-- For Error Messages Show  -->
+                                                     @error('gender')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong class="text-danger">{{ $message }}</strong>
+                                                        </span>
+                                                     @enderror
+                                                   
+                                                </div>
+                                            </div>
+
                                             <div class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
                                                 <label for="PhoneNum" class="col-md-4 text-right">{{ __('Phone Number') }}</label>
                                                 <div class="col-md-6">

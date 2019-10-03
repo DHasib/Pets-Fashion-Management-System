@@ -110,7 +110,7 @@
 
                                         <div class="blog-details-author-content">
                                                 <div class="author-info">
-                                                <h5 class="author-name">{{ $post->user->name }}</h5>
+                                                <h5 class="author-name"><a href="{{url('selected/user/profile',$post->user->id )}}">{{ $post->user->name }}</a></h5>
                                                 </div>
                                                 <p class="text">{{ $post->user->profile->about }}
                                                 </p>

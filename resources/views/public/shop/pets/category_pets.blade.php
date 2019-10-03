@@ -68,10 +68,11 @@
                            @endif
                             <br>    
                             <div class="panel-heading text-center pnlheading">
-                                <h6>Search Products</h6>
+                                <h6>Search Pet By Name/Title</h6>
                             </div>
-                            <form class="example" action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search2">
+                            <form class="example" action="{{url('pets/search')}}" method="post">
+                                {{csrf_field()}}
+                                <input type="text" placeholder="Search.." name="search_pets">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form><br><br><br><br>
                         </div>
@@ -94,7 +95,10 @@
                                             //DD($category);
                                         @endphp
                                        @if(isset($category))
-                                            @foreach($category->pets as $pet)
+                                       @php
+                                            $ctgry = $category->pets()->paginate(6);
+                                        @endphp
+                                            @foreach($ctgry as $pet)
                                             @php
                                               //  DD($pet);
                                             @endphp
@@ -118,17 +122,18 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        
+                                        <div class="row pb120 align-center">
+                
+                                                <div class="col-lg-12">{{ $ctgry->links()  }}</div>
+                        
+                                       </div>
                                         @endif
                                      </div>
                                    </div>
                             </section>
                         </div> <!-- End Content Column -->
-                </div> <!-- /.row 
-                <div class="row pb120 align-center">
-                
-                        <div class="col-lg-12">//{//{ //$category->links() // }}</div>
-
-            </div>-->
+                </div> 
     
               
             </div>   <!-- /.container -->

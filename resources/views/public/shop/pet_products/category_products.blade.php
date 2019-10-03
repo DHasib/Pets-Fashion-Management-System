@@ -64,12 +64,13 @@
                            @endif
                             <br>    
                             <div class="panel-heading text-center pnlheading">
-                                <h6>Search Products</h6>
+                                <h6>Search Product by Name/Title</h6>
                             </div>
-                            <form class="example" action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search2">
+                            <form class="example" action="{{url('products/search')}}" method="post">
+                                {{csrf_field()}}
+                                <input type="text" placeholder="Search.." name="search_products">
                                 <button type="submit"><i class="fa fa-search"></i></button>
-                            </form><br><br><br><br>
+                            </form><br>
                         </div>
                     </div><!-- End Sidebar Column -->
                     <!-- Start Content Column -->
@@ -91,7 +92,10 @@
                                             //DD($category);
                                         @endphp
                                        @if(isset($category))
-                                            @foreach($category->products as $product)
+                                       @php
+                                           $ctgry = $category->products()->paginate(6);
+                                       @endphp
+                                            @foreach( $ctgry  as $product)
                                             @php
                                               //  DD($pet);
                                             @endphp
@@ -115,6 +119,12 @@
                                                 </div>
                                             </div>
                                         @endforeach
+
+                                        <div class="row pb120 align-center">
+                
+                                                <div class="col-lg-12">{{ $ctgry->links()  }}</div>
+                        
+                                       </div>
                                         @endif
                                      </div>
                                    </div>

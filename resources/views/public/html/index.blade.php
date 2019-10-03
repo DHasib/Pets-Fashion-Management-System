@@ -13,7 +13,7 @@
                 <div class="camera_caption">
                     <div class="container">
                         <h5 class=" wow fadeInUp animated">{{ $slider->slider_title}}</h5>
-                        <h3 class=" wow fadeInUp animated" data-wow-delay="0.5s">{{ $slider->slider_heading}}</h3>
+                        <h3 class=" wow fadeInUp animated" data-wow-delay="0.5s" style="color:black;">{{ $slider->slider_heading}}</h3>
                         <p class=" wow fadeInUp animated" data-wow-delay="0.8s">{{ $slider->slider_desc}}</p>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="feature_row row">
                 <div class="col-md-6 feature_img">
-                    <img src="images/feature-man.jpg" alt="">
+                    <img src="{{asset('images/about.jpg')}}" alt="">
                 </div>
                 <div class="col-md-6 feature_content">
                     <div class="subtittle">
@@ -88,62 +88,25 @@
             <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
         </div>
         <div class="featured_gallery">
+            @foreach ($pet_collection as $pet)
             <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-1.jpg" alt="">
+                <img src="{{asset($pet->image)}}" alt="" style="height:307px;">
                 <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
+                    <h4>{{$pet->title}}</h4>
+                    <a href="{{url('pets')}}">VIEW More</a>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-2.jpg" alt="">
+            @endforeach
+            @foreach ($product_collection as $product)
+            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0" style="margin-top:30px;">
+                <img src="{{asset($product->image)}}" alt="" style="height:307px;">
                 <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
+                    <h4>{{$product->title}}</h4>
+                    <a href="{{url('products')}}">VIEW More</a>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-3.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-4.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-5.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-6.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-7.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-                <img src="images/gallery/gl-8.jpg" alt="">
-                <div class="gallery_hover">
-                    <h4>Bolt Apartments</h4>
-                    <a href="#">VIEW PROJECT</a>
-                </div>
-            </div>
+            @endforeach
+           
         </div>
     </section>
     <!-- End Our Featured Works Area -->
@@ -156,67 +119,40 @@
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
             </div>
             <div class="partners">
+                @if(isset($discountPet))
+                @foreach ($discountPet as $dpet)
                 <div class="item">
                     <div class="row construction_iner">
                         <div class="col-md-6 col-sm-4 construction">
                             <div class="cns-img">
-                                <img src="images/cns-1.jpg" alt="">
+                                <img src="{{asset($dpet->image)}}" alt="" style="height:257px;">
                             </div>
                             <div class="cns-content">
-                                <i aria-hidden="true"><b>70%off</b></i>
-                                <a href="#">BUILDING--1 CONSTRUCTION</a>
-                                <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry.Lorem
-                                    Ipsum is simply dummy text of the print-ing </p>
+                                <i aria-hidden="true"><b>{{$dpet->discount}}%off</b></i>
+                                <a href="#">{{$dpet->title}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @endif
+            @if(isset($discountProduct))
+            @foreach ($discountProduct as $dproduct)
                 <div class="item">
                     <div class="row construction_iner">
                         <div class="col-md-6 col-sm-4 construction">
                             <div class="cns-img">
-                                <img src="images/cns-1.jpg" alt="">
+                                <img src="{{asset($dproduct->image)}}" alt=""  style="height:257px;">
                             </div>
                             <div class="cns-content">
-                                <i aria-hidden="true"><b>70%off</b></i>
-                                <a href="#">BUILDING--2 CONSTRUCTION</a>
-                                <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy </p>
+                                <i aria-hidden="true"><b>{{$dproduct->discount}}%off</b></i>
+                                <a href="#">{{$dproduct->title}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="row construction_iner">
-                        <div class="col-md-6 col-sm-4 construction">
-                            <div class="cns-img">
-                                <img src="images/cns-1.jpg" alt="">
-                            </div>
-                            <div class="cns-content">
-                                <i aria-hidden="true"><b>70%off</b></i>
-                                <a href="#">BUILDING--3 CONSTRUCTION</a>
-                                <p class="text-center">Lorem Ipsum is simply dummy text of the print-ing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="row construction_iner">
-                        <div class="col-md-6 col-sm-4 construction">
-                            <div class="cns-img">
-                                <img src="images/cns-1.jpg" alt="">
-                            </div>
-                            <div class="cns-content">
-                                <i aria-hidden="true"><b>70%off</b></i>
-                                <a href="#">BUILDING--4 CONSTRUCTION</a>
-                                <p>Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            @endforeach
+            @endif
             </div>
         </div>
 
@@ -264,33 +200,18 @@
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
             </div>
             <div class="row latest_blog">
+                @if(isset($blogs))
+                @foreach ($blogs as $blog)
                 <div class="col-md-4 col-sm-6 blog_content">
-                    <img src="images/blog/lb-1.jpg" alt="">
-                    <a href="#" class="blog_heading">Our Latest Project</a>
-                    <h4><small>by </small><a href="#">Emran Khan</a><span>/</span><small>ON </small> October 15, 2016
+                    <img src="{{asset($blog->blog_image)}}" alt=""  style="height:270px;">
+                    <a href="#" class="blog_heading">{{$blog->blog_title}}</a>
+                    <h4><small>by </small><a href="#">{{$blog->user->name}}</a><span>/</span><small>ON </small> {{ $blog->created_at->toFormattedDateString() }}
                     </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis iaculis velit in
-                        tristique. Curabitur ac urna urna. Sed sollicitudin at nisi sed accumsan... <a href="#">Read
+                    <p>{{str_limit($blog->blog_content,200, '&raquo;' )}}.. <a href="{{url ('post',['slug' => $blog->slug ]) }}">Read
                             More</a></p>
                 </div>
-                <div class="col-md-4 col-sm-6 blog_content">
-                    <img src="images/blog/lb-2.jpg" alt="">
-                    <a href="#" class="blog_heading">Our Latest Project</a>
-                    <h4><small>by </small><a href="#">Prodip Ghosh</a><span>/</span><small>ON </small> October 15, 2016
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis iaculis velit in
-                        tristique. Curabitur ac urna urna. Sed sollicitudin at nisi sed accumsan... <a href="#">Read
-                            More</a></p>
-                </div>
-                <div class="col-md-4 col-sm-6 blog_content">
-                    <img src="images/blog/lb-3.jpg" alt="">
-                    <a href="#" class="blog_heading">Our Latest Project</a>
-                    <h4><small>by </small><a href="#">Prodip Ghosh</a><span>/</span><small>ON </small> October 15, 2016
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis iaculis velit in
-                        tristique. Curabitur ac urna urna. Sed sollicitudin at nisi sed accumsan... <a href="#">Read
-                            More</a></p>
-                </div>
+                @endforeach
+                @endif
             </div>
         </div>
     </section>

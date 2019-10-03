@@ -15,7 +15,7 @@ use App\Pet;
 use App\Product;
 use Auth;
 use Validator;
-use session;
+use Session;
 
 
 class adminController extends Controller

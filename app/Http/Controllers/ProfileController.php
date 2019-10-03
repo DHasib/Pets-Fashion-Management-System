@@ -110,29 +110,72 @@ class ProfileController extends Controller
 //Update profile details.............................................................................................
     public function updateProfile(Request $request) 
     {
-      $validate_data =  Validator::make($request->all(),[
-            "name"           =>"required|min:5|string",
-            "email"          =>"required|email|unique:users",
-            "PhoneNum"       =>"required|regex:/(01)[0-9]{9}/|max:16|unique:users",
-            "location"       =>"required|string|max:30",
-        ])->validate();
+            $validate_data =  Validator::make($request->all(),[
+                "name"           =>"required|min:5|string",
+                "gender"         =>"required|string",
+                "location"       =>"required|string|max:30",
+            ])->validate();
 
-           $user = Auth::user();
+            $user = Auth::user();
 
-           $user->name        = $request->name;
-           $user->email       = $request->email;
-           $user->PhoneNum    = $request->PhoneNum;
-           $user->location    = $request->location;
-            
-            $is_saved = $user->save();
+            $user->name        = $request->name;
+            $user->gender      = $request->gender;
+            $user->location    = $request->location;
+             
+             $is_saved = $user->save();
+ 
+             if ($is_saved){
+                 session()->flash("message", "Sucessfully Update Profile");
+                 return redirect()->back();
+             }else{
+                 session()->flash("error", "Failed to Update Profile");
+                 return redirect()->back();
+             }
+    }
 
-            if ($is_saved){
-                session()->flash("message", "Sucessfully Update Profile");
-                return redirect()->back();
-            }else{
-                session()->flash("error", "Failed to Update Profile");
-                return redirect()->back();
-            }
+    //Change Email address.....................................................
+    public function changeEmail(Request $request){
+       
+            $validate_data =  Validator::make($request->all(),[
+                "email"          =>"required|email|unique:users",
+            ])->validate();
+
+            $user = Auth::user();
+
+            $user->email       = $request->email;
+             
+             $is_saved = $user->save();
+ 
+             if ($is_saved){
+                 session()->flash("message", "Sucessfully Change Your Email");
+                 return redirect()->back();
+             }else{
+                 session()->flash("error", "Failed toChange Your Email");
+                 return redirect()->back();
+             }
+        }
+       
+//Change Phone Number ...................................................
+    public function changePhoneNumber(Request $request){
+      
+            $validate_data =  Validator::make($request->all(),[
+                    "PhoneNum"       =>"required|regex:/(01)[0-9]{9}/|max:16|unique:users",
+                ])->validate();
+
+                $user = Auth::user();
+
+                $user->PhoneNum    = $request->PhoneNum;
+                    
+                    $is_saved = $user->save();
+
+                    if ($is_saved){
+                        session()->flash("message", "Sucessfully Change your Phone Number ");
+                        return redirect()->back();
+                    }else{
+                        session()->flash("error", "Failed to Change your Phone Number");
+                        return redirect()->back();
+                    }
+       
     }
 
 //Save profile details.............................................................................................

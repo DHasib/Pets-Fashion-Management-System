@@ -60,13 +60,13 @@
                        @endif
                         <br>
                         <div class="panel-heading text-center pnlheading">
-                            <h6>Search Products</h6>
+                            <h6>Search Product by Name/Title</h6>
                         </div>
                         <form class="example" action="{{url('products/search')}}" method="post">
                             {{csrf_field()}}
                             <input type="text" placeholder="Search.." name="search_products">
                             <button type="submit"><i class="fa fa-search"></i></button>
-                        </form><br><br><br><br>
+                        </form><br>
                     </div>
                 </div><!-- End Sidebar Column -->
                 <!-- Start Content Column -->
@@ -94,7 +94,7 @@
                                                         <a href="{{url('about/product/'.$product->slug)}}" class="btn btn-success ">View Details</a>
                                                     </ul>
                                                     <a href="{{url('about/product/'.$product->slug)}}" class="name">
-                                                        <h4>{{$product->title}}</h4>
+                                                        <h5>{{$product->title}}</h5>
                                                     </a>
                                                     <p>{{$product->category->name}} 
                                                     </p>

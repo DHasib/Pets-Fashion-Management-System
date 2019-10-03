@@ -2600,11 +2600,11 @@ body.author .blog-details-author {
         font-size: 12px;
         margin: 0 8px 0 0; } }
     .navigation a:hover {
-      color: #4cc2c0; }
+      color: #f8b81d; }
     .navigation a.current {
-      border-color: #4cc2c0;
+      border-color: #f8b81d;
       background-color: transparent;
-      color: #4cc2c0; }
+      color: #f8b81d; }
     .navigation a span {
       position: relative; }
     .navigation a.bg-border-color {

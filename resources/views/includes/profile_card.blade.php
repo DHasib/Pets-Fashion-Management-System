@@ -2,6 +2,9 @@
 <div class="col-md-3">
     <!-- Profile Image card -->
     <div class="panel panel-default">
+        <div class="panel heading-primary">
+
+        </div>
         <div class="panel-body">
             <div class="text-center">
                 <img class="img-fluid img-circle" style="width:50%;"
@@ -25,15 +28,21 @@
                 <li class="list-group-item">
                     <b> <i class="fa fa-envelope "></i> Email</b>
                     <p class="text-muted">
-                        <span class="tag tag-danger">{{$user->email}}</span>
+                        <span class="tag tag-danger text-capitalize">{{$user->email}}</span>
                     </p>
                 </li>
+                <li class="list-group-item">
+                        <b> <i class="fa fa-mars-stroke-v"></i> Gender</b>
+                        <p class="text-muted">
+                            <span class="tag tag-danger">{{$user->gender}}</span>
+                        </p>
+                    </li>
             </ul>
 
             <a href="@if ($user->profile->facebook != null) {{$user->profile->facebook}} @else # @endif" class="btn btn-primary btn-block" target="_blank"><b>Follow on
                     Facebook
                 </b></a><hr>
-            <a href="{{$user->profile->youtube}}" class="btn btn-danger btn-block" target="_blank"><b>Follow on
+            <a href="@if ($user->profile->youtube != null) {{$user->profile->youtube}}@else # @endif" class="btn btn-danger btn-block" target="_blank"><b>Follow on
                     Youtube</b></a>
         </div>
         <!-- /.card-body -->

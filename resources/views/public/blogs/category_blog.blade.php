@@ -70,7 +70,10 @@
                                           <main class="main">
                                                       <div class="row">
                                                                   <div class="case-item-wrap">
-                                                                        @forelse($category->blogPosts()->where('status',0)->get() as $post)
+                                                                      @php
+                                                                          $ctgry = $category->blogPosts()->where('status',0)->paginate(6);
+                                                                      @endphp
+                                                                        @forelse($ctgry as $post)
                                                                        
                                                                     
                                                                               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -91,14 +94,23 @@
                                                                                                         {{ $post->created_at->toFormattedDateString() }}
                                                                                                 </time>
                                                                                             </span>
-                                                                                    </div><br>
-                                                                                    <a href="{{ url('post',$post->slug ) }}"><h6 class="case-item__title">{{ $post->blog_title }}</h6></a>
+                                                                                    </div><br><br>
+                                                                                   <span> <a href="{{ url('post',$post->slug ) }}"><h6 class="case-item__title">{{ $post->blog_title }}</h6></a></span>
+                                                                                   <br>
+                                                                                   <span><p>{{str_limit($post->blog_content,105)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
+                                                                                             More</b></a></p></span>
                                                                                     </div>
                                                                               </div>
                                                                           @empty
                                                                           <h5>This Category Blogsd Are not Available.......or Panding</h5>
                                                                         @endforelse
                                                                   </div>
+
+                                                                  <div class="row pb120 align-center">
+                
+                                                                        <div class="col-lg-12">{{ $ctgry->links()  }}</div>
+                                                
+                                                            </div>
                                                       </div>
                         
                                                 </main>

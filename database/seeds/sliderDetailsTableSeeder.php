@@ -15,24 +15,24 @@ class sliderDetailsTableSeeder extends Seeder
     public function run()
     {
         $DH = new DynamicHomepage;
-        $DH->slider_title      = 'DK Hasib';
-        $DH->slider_heading    ='Lalbagh Dhaka';
-        $DH->slider_desc       = 'ljkaieruedwfdjbfureydferfbherdefhedgfyegfyhuedfyewsmhdafvbjdhfgyueuh';
-        $DH->slider_image      = '/images/Slider_img/1568120200Penguins.jpg';
+        $DH->slider_title      = 'Welcome to Our Pets Fashion';
+        $DH->slider_heading    = 'At vero eos et accusamus et iusto odio dignissimos.';
+        $DH->slider_desc       = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium';
+        $DH->slider_image      = '/images/Slider_img/img-1.jpg';
         $DH->save();
 
         $DH = new DynamicHomepage;
-        $DH->slider_title      = 'Ismail';
-        $DH->slider_heading    ='gatrabari';
-        $DH->slider_desc       = 'ljkaieruedwfdjbfureydferfbherdefhedgfyegfyhuedfyewsmhdafvbjdhfgyueuh';
-        $DH->slider_image      = '/images/Slider_img/1568120317Desert.jpg';
+        $DH->slider_title      =  'Welcome to Our Pets Fashion';
+        $DH->slider_heading    ='At vero eos et accusamus et iusto odio dignissimos.';
+        $DH->slider_desc       = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium';
+        $DH->slider_image      = '/images/Slider_img/img-2.jpg';
         $DH->save();
 
         $DH = new DynamicHomepage;
-        $DH->slider_title      = 'tamim';
-        $DH->slider_heading    ='dhanmondhia';
-        $DH->slider_desc       = 'ljkaieruedwfdjbfureydferfbherdefhedgfyegfyhuedfyewsmhdafvbjdhfgyueuh';
-        $DH->slider_image      = '/images/Slider_img/1568120317Desert.jpg';
+        $DH->slider_title      =  'Welcome to Our Pets Fashion';
+        $DH->slider_heading    ='At vero eos et accusamus et iusto odio dignissimos.';
+        $DH->slider_desc       = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium';
+        $DH->slider_image      = '/images/Slider_img/img-3.jpg';
         $DH->save();
     }
 }

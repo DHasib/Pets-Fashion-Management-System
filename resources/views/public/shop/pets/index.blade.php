@@ -66,7 +66,7 @@
                        @endif
                         <br>
                         <div class="panel-heading text-center pnlheading">
-                            <h6>Search Products</h6>
+                            <h6>Search Pet By Name/Title</h6>
                         </div>
                         <form class="example" action="{{url('pets/search')}}" method="post">
                             {{csrf_field()}}

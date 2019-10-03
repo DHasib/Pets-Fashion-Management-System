@@ -52,25 +52,8 @@
             @if(isset($categories))
             <!-- Category wise navbar and search area  -->
             <div class="col-lg-12" style="margin-bottom:100px; background-color:aliceblue">
-                <div class="subscribe scrollme">
-                    <div class="col-xs-12 {{ $errors->has('search_user') ? 'has-error' : '' }}">
-                        <form class="subscribe-form" method="post" action="">
-                            <input class="email input-standard-grey input-white" name="email" required="required"
-                                placeholder="Search by Category Name" type="email">
-                            <button class="subscr-btn">Search
-                                <span class="semicircle--right"></span>
-                            </button>
-                        </form>
-                        @if ($errors->has('search_user'))
-                        <span class="help-block">
-                            <strong> {{ $errors->first('search_user') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
                 <!--Category List  -->
                 <ul class="primary-menu-menu" style="overflow: hidden;">
-
                     @foreach ($categories as $category)
                     <li>
                         <a href="{{ url('blog/category',$category->id ) }}">{{$category->name}}</a>
@@ -137,8 +120,9 @@
                                     <span class="post__comments text-uppercase">
                                         <a href="{{url('selected/user/profile',$first_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
                                         {{ $first_post->user->name }}</a>
-                                    </span>
-
+                                    </span><br><br>
+                                    <span><p>{{str_limit($first_post->blog_content,300)}} <a href="{{url ('post',['slug' => $first_post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +178,9 @@
                                     <span class="post__comments text-uppercase">
                                         <a href="{{url('selected/user/profile',$second_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
                                         {{ $second_post->user->name }}</a>
-                                    </span>
+                                    </span><br><br>
+                                    <span><p>{{str_limit($second_post->blog_content,200)}} <a href="{{url ('post',['slug' => $second_post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
 
                                 </div>
                             </div>
@@ -248,7 +234,9 @@
                                     <span class="post__comments text-uppercase">
                                         <a href="{{url('selected/user/profile',$third_post->user->id )}}"><i class="fa fa-user" aria-hidden="true"></i>
                                         {{ $third_post->user->name }}</a>
-                                    </span>
+                                    </span><br><br>
+                                    <span><p>{{str_limit($third_post->blog_content,200)}} <a href="{{url ('post',['slug' => $third_post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
 
                                 </div>
                             </div>
@@ -282,11 +270,10 @@
 
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @foreach($dog->blogPosts()->orderBy('created_at',
-                                    'desc')->take(10)->where('status',0)->get() as $post)
                                     @php
-                                    //dd($post);
+                                        $dogs = $dog->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
                                     @endphp
+                                    @foreach( $dogs as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -304,14 +291,21 @@
                                                         {{ $post->created_at->toFormattedDateString() }}
                                                     </time>
                                                 </span>
-                                            </div><br>
-                                            <h6 class="case-item__title"><a
+                                            </div><br><br>
+                                            <span><h6 class="case-item__title"><a
                                                     href="{{url ('post',['slug' => $post->slug ]) }}">{{ $post->blog_title }}</a>
-                                            </h6>
+                                            </h6></span>
+                                            <br>
+                                            <span><p>{{str_limit($post->blog_content,101)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
 
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="row pb120 align-center">
+                
+                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $dogs->links()  }}</div>
+                                </div><br>
                                 </div>
                             </div>
                             @endif
@@ -333,8 +327,11 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @foreach($cat->blogPosts()->orderBy('created_at',
-                                    'desc')->take(20)->where('status',0)->get() as $post)
+                                    @php
+                                       $cats = $cat->blogPosts()->orderBy('created_at',
+                                    'desc')->where('status',0)->paginate(3);
+                                    @endphp
+                                    @foreach($cats as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -352,13 +349,21 @@
                                                         {{ $post->created_at->toFormattedDateString() }}
                                                     </time>
                                                 </span>
-                                            </div><br>
-                                            <h6 class="case-item__title"><a
+                                            </div><br><br>
+                                            <span><h6 class="case-item__title"><a
                                                     href="{{url ('post',['slug' => $post->slug ]) }}">{{ $post->blog_title }}</a>
-                                            </h6>
+                                            </h6></span>
+                                            <br>
+                                            <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="row pb120 align-center">
+                
+                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $cats->links()  }}</div>
+                                   </div><br>
+
                                 </div>
                             </div>
                             @endif
@@ -382,8 +387,10 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @foreach($birds->blogPosts()->orderBy('created_at',
-                                    'desc')->take(10)->where('status',0)->get() as $post)
+                                    @php
+                                        $bird = $birds->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
+                                    @endphp
+                                    @foreach($bird as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -401,13 +408,20 @@
                                                         {{ $post->created_at->toFormattedDateString() }}
                                                     </time>
                                                 </span>
-                                            </div><br>
-                                            <h6 class="case-item__title "><a
+                                            </div><br><br>
+                                            <span><h6 class="case-item__title "><a
                                                     href="{{url ('post',['slug' => $post->slug ]) }}">{{ $post->blog_title }}</a>
-                                            </h6>
+                                            </h6></span>
+                                            <br>
+                                            <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="row pb120 align-center">
+                
+                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $bird->links()  }}</div>
+                                   </div><br>
                                 </div>
                             </div>
                             @endif
@@ -431,8 +445,10 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @foreach($rabbit->blogPosts()->orderBy('created_at',
-                                    'desc')->take(10)->where('status',0)->get() as $post)
+                                    @php
+                                        $rabbits = $rabbit->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
+                                    @endphp
+                                    @foreach($rabbits as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -450,15 +466,22 @@
                                                         {{ $post->created_at->toFormattedDateString() }}
                                                     </time>
                                                 </span>
-                                            </div><br>
-                                            <h6 class="case-item__title"><a
+                                            </div><br><br>
+                                           <span> <h6 class="case-item__title"><a
                                                     href="{{url ('post',['slug' => $post->slug ]) }}">{{ $post->blog_title }}</a>
-                                            </h6>
+                                            </h6></span>
+                                            <br>
+                                            <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
+                                            More</b></a></p></span>
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="row pb120 align-center">
+                
+                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $rabbits->links()  }}</div>
+                                   </div><br>
+                                   
                                 </div>
-                            </div>
                             @endif
                         </div>
                         <div class="padded-50"></div><br><br><br>
