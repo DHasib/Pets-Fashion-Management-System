@@ -176,52 +176,43 @@
                         <footer class="footer_area">
                             <div class="container">
                                 <div class="footer_row row">
-                                    <div class="col-md-3 col-sm-6 footer_about">
-                                        <h2>ABOUT OUR COMPANY</h2>
+                                    <div class="col-md-5 col-sm-6 footer_about">
+                                        <h2>ABOUT OUR Shop</h2>
                                         <img src=" {{url('images/footer-logo.png')}} " alt="">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                            labore et dolore magna aliqua.</p>
+                                            labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore et dolore magna.</p>
                                         @if(isset($link))
                                         @foreach ($link as $data)
                                         <ul class="socail_icon">
-                                                <li><a href="{{$data->shop_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="{{$data->shop_tw_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="{{$data->shop_glg_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="{{$data->shop_lnkd_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_fb_link}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_tw_link}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_glg_link}}" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="{{$data->shop_lnkd_link}}" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                         </ul>
                                         @endforeach
                                         @endif 
                                     </div>
-                                    <div class="col-md-3 col-sm-6 footer_about quick">
+                                    <div class="col-md-4 col-sm-6 footer_about quick">
                                         <h2>Quick links</h2>
                                         <ul class="quick_link">
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Building Construction</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Home Renovation</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Hardwood Flooring</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Repairing Of Roof</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Commercial Construction</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i>Concreate Transport</a></li>
+                                            <li><a href="{{url('pets')}}"><i class="fa fa-chevron-right"></i>Our Pets and the Hot Offer</a></li>
+                                            <li><a href="{{url('products')}}"><i class="fa fa-chevron-right"></i>Our Pet Products and the Hot Offer</a></li>
+                                            <li><a href="{{url('blog')}}"><i class="fa fa-chevron-right"></i>Our Latest Helpful Blogs</a></li>
+                                            <li><a href="{{url('calculate_pet_keeping_cost')}}"><i class="fa fa-chevron-right"></i>Tools</a></li>
                                         </ul>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 footer_about">
-                                        <h2>Twitter Feed</h2>
-                                        <a href="#" class="twitter">@colorlib: Duis aute irure dolor in reprehenderit in voluptate velit
-                                            esse cillum dolore eu fugiat.</a>
-                                        <a href="#" class="twitter">@colorlib: Duis aute irure dolor in reprehenderit in voluptate velit
-                                            esse cillum dolore eu fugiat.</a>
                                     </div>
                                     <div class="col-md-3 col-sm-6 footer_about">
                                         <h2>CONTACT US</h2>
                                         <address>
-                                            <p>Have questions, comments or just want to say hello:</p>
                                             <ul class="my_address">
                                             @if(isset($link))
                                             @foreach ($link as $data)
-                                                   <li><a href="#"><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
-                                                   <li><a href="#"><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>   
+                                                   <li><a ><i class="fa fa-phone"></i>{{$data->shop_contact_number}}</a></li>
+                                                   <li><a ><i class="fa fa-envelope-o"></i>{{$data->shop_email}}</a></li>   
                                             @endforeach
                                             @endif 
-                                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span> Road #
+                                                <li><a href="{{url('contact_us')}}" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i><span> Road #
                                                             05, Shop # 31, Katabon, Dhaka 1230 </span></a></li>
                                             </ul>
                                         </address>
@@ -229,7 +220,7 @@
                                 </div>
                             </div>
                             <div class="copyright_area">
-                                Copyright 2017 All rights reserved. Designed by <a href="https://colorlib.com">Colorlib.</a>
+                                Copyright 2019 All rights reserved.<a href="{{url('/')}}">Pets Fashion Online Shop.</a>
                             </div>
                         </footer>
                         <!-- End Footer Area -->

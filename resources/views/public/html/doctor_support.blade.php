@@ -5,69 +5,9 @@
 @section("content")
 
  
-    <!-- OUR OFFER [ SLIDE-BAR ] -->
-    <section class="our_partners_area offerpage1">
-            <div class="panel panel-primary offerpagebdr">
-                <div class="panel-heading text-uppercase text-center pnlheading ">
-                    <h3>HOT OFFERS</h3>
-                </div>
-                <div class="container">
-                    <div class="panel-body">
-                        <div class="partners offerpage">
-                            <div class="item">
-                                <div class="row construction_iner offerpage2">
-                                    <div class="col-md-6 col-sm-4 construction">
-                                        <div class="cns-img">
-                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
-                                        </div>
-                                        <div class="cns-content">
-                                            <i aria-hidden="true"><b>70%off</b></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row construction_iner offerpage2">
-                                    <div class="col-md-6 col-sm-4 construction">
-                                        <div class="cns-img">
-                                            <img src="{{url('images/cns-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cns-content">
-                                            <i aria-hidden="true"><b>70%off</b></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row construction_iner offerpage2">
-                                    <div class="col-md-6 col-sm-4 construction">
-                                        <div class="cns-img">
-                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
-                                        </div>
-                                        <div class="cns-content">
-                                            <i aria-hidden="true"><b>70%off</b></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row construction_iner offerpage2">
-                                    <div class="col-md-6 col-sm-4 construction">
-                                        <div class="cns-img">
-                                            <img src="{{url('images/cns-1.jpg')}}"  alt="">
-                                        </div>
-                                        <div class="cns-content">
-                                            <i aria-hidden="true"><b>70%off</b></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-    <!-- End Our OFFER Area -->
+<!-- Start OUR products and pet OFFER  -->
+        @include('includes.hot_offers')
+<!--  End OUR products and pet OFFER-->
     
     
     <!-- Start Doctor Support Area  -->

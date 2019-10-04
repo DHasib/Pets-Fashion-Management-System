@@ -96,6 +96,7 @@
                     <a href="{{url('pets')}}">VIEW More</a>
                 </div>
             </div>
+
             @endforeach
             @foreach ($product_collection as $product)
             <div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0" style="margin-top:30px;">
@@ -129,13 +130,16 @@
                             </div>
                             <div class="cns-content">
                                 <i aria-hidden="true"><b>{{$dpet->discount}}%off</b></i>
-                                <a href="#">{{$dpet->title}}</a>
+                                <a href="{{url('about/pet/'.$dpet->slug)}}">{{$dpet->title}}</a>
+                                <p>{{str_limit($dpet->description,85 )}}.. <a href="{{url('about/pet/'.$dpet->slug)}}">Read
+                                        More</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
                 @endif
+
             @if(isset($discountProduct))
             @foreach ($discountProduct as $dproduct)
                 <div class="item">
@@ -146,7 +150,9 @@
                             </div>
                             <div class="cns-content">
                                 <i aria-hidden="true"><b>{{$dproduct->discount}}%off</b></i>
-                                <a href="#">{{$dproduct->title}}</a>
+                                <a href="{{url('about/product/'.$dproduct->slug)}}">{{$dproduct->title}}</a>
+                                <p>{{str_limit($dproduct->description,79 )}}.. <a href="{{url('about/product/'.$dproduct->slug)}}">Read
+                                    More</a></p>
                             </div>
                         </div>
                     </div>
@@ -204,10 +210,10 @@
                 @foreach ($blogs as $blog)
                 <div class="col-md-4 col-sm-6 blog_content">
                     <img src="{{asset($blog->blog_image)}}" alt=""  style="height:270px;">
-                    <a href="#" class="blog_heading">{{$blog->blog_title}}</a>
-                    <h4><small>by </small><a href="#">{{$blog->user->name}}</a><span>/</span><small>ON </small> {{ $blog->created_at->toFormattedDateString() }}
+                    <a href="{{url ('post',['slug' => $blog->slug ]) }}" class="blog_heading">{{$blog->blog_title}}</a>
+                    <h4><small>by </small><a href="{{url('selected/user/profile',$blog->user->id )}}">{{$blog->user->name}}</a><span>/</span><small>ON </small> {{ $blog->created_at->toFormattedDateString() }}
                     </h4>
-                    <p>{{str_limit($blog->blog_content,200, '&raquo;' )}}.. <a href="{{url ('post',['slug' => $blog->slug ]) }}">Read
+                    <p>{{str_limit($blog->blog_content,210 )}}.. <a href="{{url ('post',['slug' => $blog->slug ]) }}">Read
                             More</a></p>
                 </div>
                 @endforeach

@@ -51,8 +51,6 @@ class HomeController extends Controller
                      //Latest Blog Show................................................................................................................................
                           public function blog()
                             {
-                                //$ch = BlogPost::orderBy('created_at', 'desc')->get()->where('status',0)->first();
-                                // DD($ch);
 
                                 return view("public/blogs/index")->with('link',       DynamicLinks::all())
                                                                 ->with('categories',  Category::all())
@@ -63,10 +61,11 @@ class HomeController extends Controller
                                                                 ->with('cat',         Category::find(2))
                                                                 ->with('birds',       Category::find(3))
                                                                 ->with('rabbit',      Category::find(4))
-                                                                ->with('discountPet',      Pet::all());
+                                                                ->with('discountPet',      Pet::all())
+                                                                ->with('discountProduct',  Product::all());
                             }
                             
-
+                          
                     //Selected Blog Post Details Show............................................................................................
                             public function singleBlog($slug)
                             {
@@ -81,7 +80,8 @@ class HomeController extends Controller
                                                                         ->with('categories', Category::take(5)->get())
                                                                         ->with('next',       BlogPost::find($next_id))
                                                                         ->with('prev',       BlogPost::find($prev_id))
-                                                                        ->with('discountPet',      Pet::all());
+                                                                        ->with('discountPet',      Pet::all())
+                                                                        ->with('discountProduct',  Product::all());
                             }
                         
                     //Category wise Blog  Show..........................................................................................................
@@ -93,7 +93,8 @@ class HomeController extends Controller
                                                             ->with('title',      $category->name)
                                                             ->with('link',       DynamicLinks::all()) 
                                                             ->with('categories', Category::all())
-                                                            ->with('discountPet',      Pet::all());
+                                                            ->with('discountPet',      Pet::all())
+                                                            ->with('discountProduct',  Product::all());
                             }
 
 
@@ -110,7 +111,8 @@ class HomeController extends Controller
                                     return view("public/shop/pets/index")->with('link', DynamicLinks::all())
                                                                   ->with('categories',  Category::all())
                                                                   ->with('pets',        Pet::orderBy('created_at', 'desc')->paginate(9))
-                                                                  ->with('discountPet', Pet::all());
+                                                                  ->with('discountPet', Pet::all())
+                                                                  ->with('discountProduct',  Product::all());
                             }
                     //Selected Pets Details Show .......................................................................................................
                             public function aboutPet($slug)
@@ -126,7 +128,8 @@ class HomeController extends Controller
                                                               ->with('categories',  Category::take(5)->get())
                                                               ->with('next',        Pet::find($next_id))
                                                               ->with('prev',        Pet::find($prev_id))
-                                                              ->with('discountPet', Pet::all());
+                                                              ->with('discountPet', Pet::all())
+                                                              ->with('discountProduct',  Product::all());
                             }
                      //Category-wise Pets  Show .....................................................................................................
                             public function petsCategory($id)
@@ -137,7 +140,8 @@ class HomeController extends Controller
                                                                             ->with('title',      $category->name)
                                                                             ->with('link',       DynamicLinks::all()) 
                                                                             ->with('categories', Category::all())
-                                                                            ->with('discountPet', Pet::all());
+                                                                            ->with('discountPet', Pet::all())
+                                                                            ->with('discountProduct',  Product::all());
                             }
 
                   //Pets Search By anyone using title...........................................................................................................
@@ -146,6 +150,7 @@ class HomeController extends Controller
                             $categories = Category::all();
                             $link = DynamicLinks::all();
                            $discountPet = Pet::all();
+                           $discountProduct = Product::all();
 
                             $validate_data =  Validator::make($request->all(),[
 
@@ -158,14 +163,14 @@ class HomeController extends Controller
                                 if ($search_pets == NULL) 
                                 {
                                 $pets = Pet::paginate(2);
-                                return view("public/shop/pets/index", compact("pets","categories","link","discountPet")); 
+                                return view("public/shop/pets/index", compact("pets","categories","link","discountProduct","discountPet")); 
                                 } 
                                 else 
                                 {
                                     $pets = Pet::where('title','LIKE', '%'.$search_pets.'%')
                                                     ->paginate(9);
 
-                                            return view("public/shop/pets/index", compact("pets","categories","link","discountPet"));  
+                                            return view("public/shop/pets/index", compact("pets","discountProduct","categories","link","discountPet"));  
                                 }
                         }
 
@@ -182,7 +187,8 @@ class HomeController extends Controller
                                 return view("public/shop/pet_products/index")->with('link',      DynamicLinks::all())
                                                                       ->with('categories',       Category::all())
                                                                       ->with('products',         Product::orderBy('created_at', 'desc')->paginate(9))
-                                                                      ->with('discountProduct',  Product::all());
+                                                                      ->with('discountProduct',  Product::all())
+                                                                      ->with('discountPet',       Pet::all());
                         }
                 //Selected product Details Show .......................................................................................................
                         public function aboutProduct($slug)
@@ -198,8 +204,9 @@ class HomeController extends Controller
                                                                   ->with('categories',       Category::take(5)->get())
                                                                   ->with('next',             Product::find($next_id))
                                                                   ->with('prev',             Product::find($prev_id))
-                                                                  ->with('discountProduct',  Product::all());
-                        }
+                                                                  ->with('discountProduct',  Product::all())
+                                                                  ->with('discountPet',      Pet::all());
+                        } 
                 //Category-wise product  Show .....................................................................................................
                         public function productsCategory($id)
                         {
@@ -209,7 +216,8 @@ class HomeController extends Controller
                                                                               ->with('title',            $category->name)
                                                                               ->with('link',             DynamicLinks::all()) 
                                                                               ->with('categories',       Category::all())
-                                                                              ->with('discountProduct',  Product::all());
+                                                                              ->with('discountProduct',  Product::all())
+                                                                              ->with('discountPet',      Pet::all());
                         }
 
                 //product Search By anyone using title...........................................................................................................
@@ -218,6 +226,7 @@ class HomeController extends Controller
                         $categories = Category::all();
                         $link = DynamicLinks::all();
                         $discountProduct = Product::all();
+                        $discountPet = Pet::all();
 
                         $validate_data =  Validator::make($request->all(),[
 
@@ -230,27 +239,41 @@ class HomeController extends Controller
                             if ($search_products == NULL) 
                             {
                             $products = Product::paginate(2);
-                            return view("public/shop/pet_products/index", compact("products","categories","link","discountProduct")); 
+                            return view("public/shop/pet_products/index", compact("products","discountPet","categories","link","discountProduct")); 
                             } 
                             else 
                             {
                                 $products = Product::where('title','LIKE', '%'.$search_products.'%')
                                                 ->paginate(9);
 
-                                        return view("public/shop/pet_products/index", compact("products","categories","link","discountProduct"));  
+                                        return view("public/shop/pet_products/index", compact("products","discountPet","categories","link","discountProduct"));  
                             }
                         }
 
+//==================================================================================================================================================================================================================
+
+              //.......................................................Start Pet Keeping cost calculator Function..................................................................................................................
+
+//==================================================================================================================================================================================================================
+
+              //Pet Keeping cost index.................................................
+                    public function calculate_pet_keeping_cost()
+                    {
+                      
+                        return view("public/html.calculate_pet_keeping_cost") ->with('link',           DynamicLinks::all()) 
+                                                                              ->with('categories',       Category::all())
+                                                                              ->with('discountProduct',  Product::all())
+                                                                              ->with('discountPet',      Pet::all());
+                    }
 
 
 
 
 
 
-    public function calculate_pet_keeping_cost(){
-        $link = DynamicLinks::all();
-        return view("public/html.calculate_pet_keeping_cost", compact('link'));
-    }
+
+
+
     public function doctor_support(){
         $link = DynamicLinks::all();
         return view("public/html.doctor_support", compact('link'));
