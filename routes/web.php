@@ -25,6 +25,7 @@
                     Route::get("blog", "HomeController@blog");
                     Route::get("post/{slug}", "HomeController@singleBlog");
                     Route::get("blog/category/{id}", "HomeController@blogCategory");
+                    Route::Post("blog/comment", "BlogCommentController@blogComment");
 
             //Publicly Pets Show in Shop..............................................................
                     Route::get("pets", "HomeController@petsIndex");

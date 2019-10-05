@@ -68,7 +68,7 @@
                                                                                     </div>
                                                                               </div>
                                                                           @empty
-                                                                          <h5>This Category Blogsd Are not Available.......or Panding</h5>
+                                                                          <h5>This Category Blogs Are not Available.......or Panding</h5>
                                                                         @endforelse
                                                                   </div>
 

@@ -8,10 +8,7 @@ use Cart;
 use Session;
 use App\Pet;
 use App\Product;
-use App\DynamicLinks;
 
-
-use Illuminate\Support\Facades\DB;
 use Auth;
 use Mail;
 use App\OrderDetail;

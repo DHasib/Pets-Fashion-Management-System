@@ -9,7 +9,10 @@ use App\BlogPost;
 use App\Pet;
 use App\Product;
 use App\User;
+use Auth;
 use App\Category;
+
+use App\BlogComment;
 use Validator;
 
 class HomeController extends Controller
@@ -74,14 +77,16 @@ class HomeController extends Controller
                                 $next_id = BlogPost::where('id', '>', $post->id)->min('id');
                                 $prev_id = BlogPost::where('id', '<', $post->id)->max('id');
 
-                                return view('public/blogs/about')->with('post',       $post)
-                                                                        ->with('title',      $post->title)
-                                                                        ->with('link',       DynamicLinks::all())
-                                                                        ->with('categories', Category::take(5)->get())
-                                                                        ->with('next',       BlogPost::find($next_id))
-                                                                        ->with('prev',       BlogPost::find($prev_id))
-                                                                        ->with('discountPet',      Pet::all())
-                                                                        ->with('discountProduct',  Product::all());
+                                return view('public/blogs/about')->with('post',            $post)
+                                                                ->with('title',            $post->title)
+                                                                ->with('link',             DynamicLinks::all())
+                                                                ->with('categories',       Category::take(5)->get())
+                                                                ->with('next',             BlogPost::find($next_id))
+                                                                ->with('prev',             BlogPost::find($prev_id))
+                                                                ->with('discountPet',      Pet::all())
+                                                                ->with('discountProduct',  Product::all())
+                                                                ->with('comments',         BlogComment::orderBy('created_at', 'desc')->get()->where('blog_id', $post->id))
+                                                                ->with('authUser',         Auth::user());
                             }
                         
                     //Category wise Blog  Show..........................................................................................................
@@ -96,7 +101,8 @@ class HomeController extends Controller
                                                             ->with('discountPet',      Pet::all())
                                                             ->with('discountProduct',  Product::all());
                             }
-
+                            
+                            
 
 //==================================================================================================================================================================================================================
 

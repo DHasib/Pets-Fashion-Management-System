@@ -223,8 +223,6 @@ function doctorSupport(evt, details) {
         });
     });
 
-
-
 //to Calculate Pet keeping Cost...................................
 
 //$(document).ready(function(){
