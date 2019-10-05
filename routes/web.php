@@ -54,6 +54,7 @@
 
 
                 Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_cost");
+                Route::post("test", "HomeController@test");
 
                 Route::get("user/doctor_support", "HomeController@doctor_support");
 
@@ -91,7 +92,7 @@
 
      //Add to cart Checkout must login as a user..................................   
         Route::post("cart/checkout", "ChechOutController@cartCheckOut");
-        Route::get("dk", "ChechOutController@dk");
+      //  Route::get("dk", "ChechOutController@dk");
 
     //User Blog show .......................................................... 
         Route::get("blog/edit/{id}", "BlogPostsController@userBlogEdit");

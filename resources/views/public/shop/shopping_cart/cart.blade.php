@@ -28,7 +28,7 @@
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th style="width:40%">Product Images and Title</th>
+                        <th style="width:40%">Items Images and Title</th>
                         <th style="width:12%">Price</th>
                         <th style="width:14%">Quantity</th>
                         <th style="width:22%" class="text-center">Subtotal</th>
@@ -43,7 +43,7 @@
                                 <div class="col-sm-2 hidden-xs"><img src="{{ asset($items->model->image) }}" alt="Pet"
                                         class="img-responsive" /></div>
                                 <div class="col-sm-10">
-                                    <h4 class="nomargin">{{ $items->name }}</h4>
+                                    <h6 class="nomargin">{{ $items->name }}</h6>
                                 </div>
                             </div>
                         </td>
@@ -69,7 +69,7 @@
                             <div class="col-sm-2 hidden-xs"><img src="{{ asset($items->model->image) }}" alt="Pet"
                                     class="img-responsive" /></div>
                             <div class="col-sm-10">
-                                <h4 class="nomargin">{{ $items->name }}</h4>
+                                <h6 class="nomargin">{{ $items->name }}</h6>
                             </div>
                         </div>
                     </td>
@@ -95,7 +95,7 @@
                         <td class="text-center"><strong> </strong></td>
                     </tr>
                     <tr>
-                        <td><a href="{{url('user/dk')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                        <td><a href="{{url('pets')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                         </td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td ><strong>Total Cost: {{ number_format(Cart::instance('pet')->Total() + Cart::instance('product')->Total() ) }} </strong></td>

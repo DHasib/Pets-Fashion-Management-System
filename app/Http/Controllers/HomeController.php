@@ -259,14 +259,23 @@ class HomeController extends Controller
               //Pet Keeping cost index.................................................
                     public function calculate_pet_keeping_cost()
                     {
-                      
+                     // DD($request->value);
                         return view("public/html.calculate_pet_keeping_cost") ->with('link',           DynamicLinks::all()) 
                                                                               ->with('categories',       Category::all())
                                                                               ->with('discountProduct',  Product::all())
                                                                               ->with('discountPet',      Pet::all());
                     }
 
+                    public function test(Request $request)
+                    {
+                        /*if($request->get('name') == 'dog' ){
 
+                        }*/
+                        $id = $request->get('name');
+                      //DD( $id);
+                      return response()->json(['success'=>'Data is successfully added'.$id]);
+                       
+                    }
 
 
 

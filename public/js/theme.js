@@ -213,26 +213,47 @@ function doctorSupport(evt, details) {
     evt.currentTarget.className += " active";
 }
 
-//Items Add to cart quentity select work............................
-$('.quantity-plus-d').on('click', function () {
-    var val = parseInt($(this).prev('input').val());
-    $(this).prev('input').val(val + 1).change();
-    return false;
-});
-
-$('.quantity-minus-d').on('click', function () {
-    var val = parseInt($(this).next('input').val());
-    if (val !== 1) {
-        $(this).next('input').val(val - 1).change();
-    }
-    return false;
-});
 
 //to read PDF file .............................
-$(document).ready(function() {
-    $(".book").fancybox({
-     'width': 600, 
-     'height': 320,
-     'type': 'iframe'
+    $(document).ready(function() {
+        $(".book").fancybox({
+        'width': 600, 
+        'height': 320,
+        'type': 'iframe'
+        });
     });
-   });
+
+
+
+//to Calculate Pet keeping Cost...................................
+
+//$(document).ready(function(){
+    $('#selectrole').change(function(e){
+       e.preventDefault();
+       $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+      //alert( "Handler for .change() called." );
+      $.ajax({
+          url: 'test' ,
+          method: 'post',
+          data: {
+             name: $('#selectrole').val()
+          },
+          success: function(result){
+             $('.alert').show();
+             $('.alert').html(result.success);
+          }
+        });
+       });
+
+  //  });
+
+
+
+$( "#selectrole" ).change(function() {
+  //alert( "Handler for .change() called." );
+});

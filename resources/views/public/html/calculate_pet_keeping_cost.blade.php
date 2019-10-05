@@ -47,42 +47,45 @@
                             <h4>Select Your Pet </h4>
                         </div>
                     <section class="col-md-12 calculate"><br>
-                            <form  action="" method="">
+                       
+                           <form action="">
+                        {{csrf_field()}}
                                 <div class="col-md-6 col-sm-3">
                                     <!-- for diveded section1 -->
                                     <label for="sel2">Select Your Pet Category</label>
-                                    <select class="form-control" id="sel2">
-                                        <option class="disable">--Select--</option>
-                                        <option>Dog</option>
-                                        <option>Cat</option>
-                                        <option>Birds</option>
-                                        <option>Rabbit</option>
+                                    <select class="form-control" id="selectrole" name="selectrole">
+                                        <option value="" class="disable">--Select--</option>
+                                        <option value="Dog">Dog</option>
+                                        <option value="Cat">Cat</option>
+                                        <option value="Birds">Birds</option>
+                                        <option value="Rabbit">Rabbit</option>
                                     </select><br>
+                                    
                                     <label for="sel2">Pet Medical</label>
                                     <div class="chkbox form-control form-checkbox">
                                         <span class="col-sm-2 float-right"><input type="checkbox" name="a"
                                                 value=""></span>
-                                        <strong class="col-sm-10 text-uppercase ">Option </strong>
+                                        <strong class="col-sm-10 text-uppercase ">Pet needs vaccines </strong>
                                         <strong class="col-sm-10 "> 250 taka</strong>
                                     </div>
                                     <div class="chkbox form-control">
                                         <span class="col-sm-2 float-right"><input type="checkbox" value=""></span>
-                                        <strong class="col-sm-10 text-uppercase">Option </strong>
+                                        <strong class="col-sm-10 text-uppercase">Pet needs flea control </strong>
                                         <strong class="col-sm-10 "> 250 taka</strong>
                                     </div>
                                     <div class="chkbox form-control">
                                         <span class="col-sm-2 float-right"><input type="checkbox" value=""></span>
-                                        <strong class="col-sm-10 text-uppercase">Option </strong>
+                                        <strong class="col-sm-10 text-uppercase">Pet needs  prevention </strong>
                                         <strong class="col-sm-10 "> 250 taka</strong>
                                     </div>
                                     <label for="sel2">Pet Food</label>
                                     <div class="chkbox2 form-control">
                                         <span class="col-sm-2 float-right"><input type="radio" name="a" value=""></span>
-                                        <strong class="col-sm-10 text-uppercase">Option </strong>
+                                        <strong class="col-sm-10 text-uppercase">Regular Food </strong>
                                         <strong class="col-sm-10 "> 250 taka</strong>
-                                        <hr>
+                                        <hr><br>
                                         <span class="col-sm-2 float-right"><input type="radio" name="a" value=""></span>
-                                        <strong class="col-sm-10 text-uppercase">Option </strong>
+                                        <strong class="col-sm-10 text-uppercase">Premium Food </strong>
                                         <strong class="col-sm-10 "> 250 taka</strong>
                                     </div>
                                 </div>
@@ -117,7 +120,7 @@
                                 </div>
                                 <button class="btn btn-success btn-lg col-md-6 col-md-offset-2">Submit </button>
                                 <!--  for diveded section1 -->
-                            </form> 
+                            </form>
                      </section>
                 </div>
             </div><!-- .Row --> 
