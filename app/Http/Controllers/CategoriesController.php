@@ -87,10 +87,6 @@ class CategoriesController extends Controller
 
         if($category){
 
-        /* foreach($category->posts as $post){
-                $post->forceDelete();
-            }*/
-
             $category->delete();
 
             Session::flash('success', 'You succesfully deleted the category.');

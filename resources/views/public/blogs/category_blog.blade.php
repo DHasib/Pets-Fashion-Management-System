@@ -34,7 +34,7 @@
                                @if(isset($category))
                                     <div class="row medium-padding120">
                                           <main class="main">
-                                                      <div class="row">
+                                                      <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                   <div class="case-item-wrap">
                                                                       @php
                                                                           $ctgry = $category->blogPosts()->where('status',0)->paginate(6);
@@ -65,6 +65,26 @@
                                                                                    <br>
                                                                                    <span><p>{{str_limit($post->blog_content,105)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
                                                                                              More</b></a></p></span>
+                                          
+                                                                                            <!--  Start Blog Comment and Like  Show Here-->
+                                                                                            <hr>
+                                                                                            <span>
+                                                                                                    <span> 
+                                                                                                        @if(isset($LikeBlog) && Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                                                                            <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                                                                        @else
+                                                                                                            <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
+                                                                                                        @endif
+                                                                                                    </span>   
+
+                                                                                                    @if(isset($BlogComment))
+                                                                                                    <span class="pull-right text-muted">
+                                                                                                          <a href="{{url ('post',['slug' => $post->slug ]) }}">  {{ $BlogComment->where('blog_id', $post->id)->count() }} Comments</a>
+                                                                                                    </span>
+                                                                                                    @endif
+                                                                                                </span>
+                                                                                        <!--  End Blog Comment and Like  Show Here-->
+
                                                                                     </div>
                                                                               </div>
                                                                           @empty
@@ -72,7 +92,7 @@
                                                                         @endforelse
                                                                   </div>
 
-                                                                  <div class="row pb120 align-center">
+                                                                  <div class="row pbm20 align-center">
                 
                                                                         <div class="col-lg-12">{{ $ctgry->links()  }}</div>
                                                 

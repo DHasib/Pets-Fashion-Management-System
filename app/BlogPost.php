@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Auth;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,6 +31,13 @@ class BlogPost extends Model
     public function comments()
     {
         return $this->hasMany('App\BlogComment');
+    } 
+
+    public function likes()
+    {
+        return $this->hasMany('App\LikeBlog');
     }
+
+   
 
 }

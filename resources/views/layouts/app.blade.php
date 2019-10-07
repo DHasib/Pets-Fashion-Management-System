@@ -97,7 +97,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="{{url('/')}}"><img src=" {{ asset('/images/petsfashion.png')}} " alt="" style="height:80px;"></a>
+                                        <a class="navbar-brand" href="{{url('/')}}"><b style="color:Green;">Pets<strong style="color:Red;">Fashion</strong></b></a>
                                     </div>
                                 </div>
 
@@ -178,7 +178,7 @@
                                 <div class="footer_row row">
                                     <div class="col-md-5 col-sm-6 footer_about">
                                         <h2>ABOUT OUR Shop</h2>
-                                        <img src=" {{url('images/footer-logo.png')}} " alt="">
+                                        <a href="{{url('/')}}"><b style="color:Green;">Pets<strong style="color:Red;">Fashion</strong></b></a>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                             labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                             labore et dolore magna.</p>

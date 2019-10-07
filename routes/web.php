@@ -25,8 +25,8 @@
                     Route::get("blog", "HomeController@blog");
                     Route::get("post/{slug}", "HomeController@singleBlog");
                     Route::get("blog/category/{id}", "HomeController@blogCategory");
-                    Route::Post("blog/comment", "BlogCommentController@blogComment");
 
+                
             //Publicly Pets Show in Shop..............................................................
                     Route::get("pets", "HomeController@petsIndex");
                     Route::get("about/pet/{slug}", "HomeController@aboutPet");
@@ -84,13 +84,21 @@
 //Route group for Registered Users.........................................................................................................................................................................................
 //.................................................................................................................................................................................................................
     Route::prefix('user')->middleware(['auth'])->group(function () {
-       //read book by user...............................................
+
+       //Like and unlike a Blog.....................................................
+            Route::get("blog/like/{id}", "LikeBlogController@blogLike");
+            Route::get("blog/unlike/{id}", "LikeBlogController@blogUnlike");
+      //Comment a blog .............................................................
+            Route::Post("blog/comment", "BlogCommentController@blogComment");
+            Route::get("delete/comment/{id}", "BlogCommentController@deleteComment");
+
+            
+       //read book by user.......................................................
         Route::get("read/books", "BookController@readBooks");
 
       //User Order Details Show......................................................
         Route::get("order/details", "OrderDetailController@userOrderDetails");
          
-
      //Add to cart Checkout must login as a user..................................   
         Route::post("cart/checkout", "ChechOutController@cartCheckOut");
       //  Route::get("dk", "ChechOutController@dk");

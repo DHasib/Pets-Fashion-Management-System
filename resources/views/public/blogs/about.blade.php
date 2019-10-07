@@ -61,18 +61,31 @@
 
                             </div>
 
-                            <!--  Blog Content Show Here-->
+                            <!--  Start Blog Content Show Here-->
                             <div class="post__content-info">
 
                                 {!! $post->blog_content !!}
                             </div><br>
+                             <!--  Start Blog Content Show Here-->
+
+
+                              <!--  Start Blog Comment and Like  Show Here-->
                             <div class="panel-footer">
-                                    <span class="pull-right text-muted">
-                                           11 Comments
-                                    </span>
-                                       <span> <a href="#" class=" btn btn-success btn-xs">Like</a></span>
-                                    
-                          </div>
+                                       <span> 
+                                            @if(isset($LikeBlog) && Auth::user() && ($LikeBlog->where('user_id' , Auth::user()->id)->count() > 0))
+                                                <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                            @else
+                                                <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                            @endif
+                                       </span>   
+
+                                       @if(isset($BlogComment))
+                                       <span class="pull-right text-muted">
+                                             <a href="{{url ('post',['slug' => $post->slug ]) }}">  {{ $BlogComment->count() }} Comments</a>
+                                       </span>
+                                       @endif
+                            </div>
+                              <!--  End Blog Comment and Like  Show Here-->
                         </div>
 
                     </article>
@@ -161,7 +174,7 @@
                                                 User Name @endif</a></h5> <br>
                                         <span class="text-muted">{{now()->toFormattedDateString()}}</span>
                                     </div><br>
-                                    <form action="{{ url ('blog/comment')}}" method="post">
+                                    <form action="{{ url ('user/blog/comment')}}" method="post">
                                         {{ csrf_field() }}
                                         <div class="form-group {{ $errors->has('comment') ? 'has-error' : '' }}">
                                             <textarea name="comment" id="content" cols="7" rows="3"
@@ -173,7 +186,7 @@
                                             </span>
                                             @endif
                                         </div>
-                                        <input type="text" name="user_id" value="{{$authUser->id}}" hidden>
+                                        <input type="text" name="user_id" value="@if (isset($authUser) && $authUser->count() > 0) {{$authUser->id}} @else # @endif" hidden>
                                         <input type="text" name="blog_id" value="{{$post->id}}" hidden>
                                         <div class="form-group">
                                             @if(auth::user())
@@ -203,16 +216,20 @@
                                         <div class="author-info">
                                             <h6 class="author-name"><a
                                                     href="{{url('selected/user/profile',$comment->user->id )}}">{{ $comment->user->name }}</a>
-                                            </h6> <br>
+                                            </h6>
+                                            @if(auth::user() && $comment->user_id == Auth::user()->id)
+                                            
+                                            <span class="pull-right btn btn-danger btn-xs"><a href="{{url('user/delete/comment',$comment->id)}}">Delete</a></span>
+                                           
+                                            @endif
+                                            <br>
                                             <span class="text-muted">{{$comment->created_at->diffForHumans() }}</span>
+                                            
                                         </div><br>
                                         <span class="panel-body">
                                             <p> {{$comment->comment}} </p>
                                         </span>
                                     </div>
-                                </div>
-                                <div class="panel-footer">
-                                    
                                 </div>
                             </div>
                             @endforeach

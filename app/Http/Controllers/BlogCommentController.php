@@ -34,4 +34,20 @@ class BlogCommentController extends Controller
             session::flash("success", "Sucessfully Post a Comment");
             return redirect()->back();
        }
+
+    //Delete User Comment From Blog.............................................................................................
+       public function deleteComment($id){
+
+        $Comment = BlogComment::find($id);
+
+
+            $Comment->delete();
+
+            Session::flash('success', ' succesfully deleted the Comment.');
+
+            return redirect()->back();
+     
+
+
+       }
 }

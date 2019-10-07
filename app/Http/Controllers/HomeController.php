@@ -11,6 +11,7 @@ use App\Product;
 use App\User;
 use Auth;
 use App\Category;
+use App\LikeBlog;
 
 use App\BlogComment;
 use Validator;
@@ -65,7 +66,9 @@ class HomeController extends Controller
                                                                 ->with('birds',       Category::find(3))
                                                                 ->with('rabbit',      Category::find(4))
                                                                 ->with('discountPet',      Pet::all())
-                                                                ->with('discountProduct',  Product::all());
+                                                                ->with('discountProduct',  Product::all())
+                                                                ->with('LikeBlog',         LikeBlog::all())
+                                                                ->with('BlogComment',        BlogComment::all());
                             }
                             
                           
@@ -86,7 +89,9 @@ class HomeController extends Controller
                                                                 ->with('discountPet',      Pet::all())
                                                                 ->with('discountProduct',  Product::all())
                                                                 ->with('comments',         BlogComment::orderBy('created_at', 'desc')->get()->where('blog_id', $post->id))
-                                                                ->with('authUser',         Auth::user());
+                                                                ->with('authUser',         Auth::user())
+                                                                ->with('LikeBlog',         LikeBlog::where('blog_id', $post->id)->get())
+                                                                ->with('BlogComment',        BlogComment::where('blog_id', $post->id)->get());
                             }
                         
                     //Category wise Blog  Show..........................................................................................................
@@ -99,7 +104,9 @@ class HomeController extends Controller
                                                             ->with('link',       DynamicLinks::all()) 
                                                             ->with('categories', Category::all())
                                                             ->with('discountPet',      Pet::all())
-                                                            ->with('discountProduct',  Product::all());
+                                                            ->with('discountProduct',  Product::all())
+                                                            ->with('LikeBlog',         LikeBlog::all())
+                                                            ->with('BlogComment',        BlogComment::all());
                             }
                             
                             

@@ -89,6 +89,24 @@
                                     </span><br><br>
                                     <span><p>{{str_limit($first_post->blog_content,300)}} <a href="{{url ('post',['slug' => $first_post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+
+                                        <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $first_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $first_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $first_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $first_post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                      <a href="{{url ('post',['slug' => $first_post->slug ]) }}">  {{ $BlogComment->where('blog_id', $first_post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
                                 </div>
                             </div>
                         </div>
@@ -148,6 +166,25 @@
                                     <span><p>{{str_limit($second_post->blog_content,200)}} <a href="{{url ('post',['slug' => $second_post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
 
+                                            <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $second_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $second_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $second_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $second_post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                       <a href="{{url ('post',['slug' => $second_post->slug ]) }}"> {{ $BlogComment->where('blog_id', $second_post->id)->count() }} Comments </a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
+
                                 </div>
                             </div>
                         </div>
@@ -203,6 +240,25 @@
                                     </span><br><br>
                                     <span><p>{{str_limit($third_post->blog_content,200)}} <a href="{{url ('post',['slug' => $third_post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+
+                                     <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $third_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $third_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $third_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $third_post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                       <a href="{{url ('post',['slug' => $third_post->slug ]) }}"> {{ $BlogComment->where('blog_id', $third_post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
 
                                 </div>
                             </div>
@@ -264,6 +320,25 @@
                                             <br>
                                             <span><p>{{str_limit($post->blog_content,101)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+                                            
+                                     <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                     <a href="{{url ('post',['slug' => $post->slug ]) }}">   {{ $BlogComment->where('blog_id', $post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
 
                                         </div>
                                     </div>
@@ -322,6 +397,26 @@
                                             <br>
                                             <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+
+                                             <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                             
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                    <a href="{{url ('post',['slug' => $post->slug ]) }}">    {{ $BlogComment->where('blog_id', $post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
                                         </div>
                                     </div>
                                     @endforeach
@@ -381,6 +476,26 @@
                                             <br>
                                             <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+
+                                             <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                               
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                        <a href="{{url ('post',['slug' => $post->slug ]) }}">{{ $BlogComment->where('blog_id', $post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
                                         </div>
                                     </div>
                                     @endforeach
@@ -439,6 +554,26 @@
                                             <br>
                                             <span><p>{{str_limit($post->blog_content,115)}} <a href="{{url ('post',['slug' => $post->slug ]) }}"><b>Read
                                             More</b></a></p></span>
+
+                                    <!--  Start Blog Comment and Like  Show Here-->
+                                        <hr>
+                                        <span>
+                                                <span> 
+                                                    @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                    @else
+                                                        <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
+                                                    @endif
+                                                </span>   
+
+                                               
+                                                @if(isset($BlogComment))
+                                                <span class="pull-right text-muted">
+                                                       <a href="{{url ('post',['slug' => $post->slug ]) }}"> {{ $BlogComment->where('blog_id', $post->id)->count() }} Comments</a>
+                                                </span>
+                                                @endif
+                                            </span>
+                                    <!--  End Blog Comment and Like  Show Here-->
                                         </div>
                                     </div>
                                     @endforeach
