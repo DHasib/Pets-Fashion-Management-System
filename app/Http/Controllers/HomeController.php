@@ -90,8 +90,7 @@ class HomeController extends Controller
                                                                 ->with('discountProduct',  Product::all())
                                                                 ->with('comments',         BlogComment::orderBy('created_at', 'desc')->get()->where('blog_id', $post->id))
                                                                 ->with('authUser',         Auth::user())
-                                                                ->with('LikeBlog',         LikeBlog::where('blog_id', $post->id)->get())
-                                                                ->with('BlogComment',        BlogComment::where('blog_id', $post->id)->get());
+                                                                ->with('LikeBlog',         LikeBlog::where('blog_id', $post->id)->get());
                             }
                         
                     //Category wise Blog  Show..........................................................................................................

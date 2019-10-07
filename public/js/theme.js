@@ -225,33 +225,4 @@ function doctorSupport(evt, details) {
 
 //to Calculate Pet keeping Cost...................................
 
-//$(document).ready(function(){
-    $('#selectrole').change(function(e){
-       e.preventDefault();
-       $.ajaxSetup({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
 
-      //alert( "Handler for .change() called." );
-      $.ajax({
-          url: 'test' ,
-          method: 'post',
-          data: {
-             name: $('#selectrole').val()
-          },
-          success: function(result){
-             $('.alert').show();
-             $('.alert').html(result.success);
-          }
-        });
-       });
-
-  //  });
-
-
-
-$( "#selectrole" ).change(function() {
-  //alert( "Handler for .change() called." );
-});

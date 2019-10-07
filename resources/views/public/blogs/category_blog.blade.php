@@ -71,7 +71,7 @@
                                                                                             <span>
                                                                                                     <span> 
                                                                                                         @if(isset($LikeBlog) && Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                                                                            <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                                                                            <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                                                                         @else
                                                                                                             <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                                                                         @endif

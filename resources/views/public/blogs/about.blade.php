@@ -79,9 +79,9 @@
                                             @endif
                                        </span>   
 
-                                       @if(isset($BlogComment))
+                                       @if(isset($comments))
                                        <span class="pull-right text-muted">
-                                             <a href="{{url ('post',['slug' => $post->slug ]) }}">  {{ $BlogComment->count() }} Comments</a>
+                                             <a href="{{url ('post',['slug' => $post->slug ]) }}">  {{ $comments->count() }} Comments</a>
                                        </span>
                                        @endif
                             </div>
@@ -204,7 +204,10 @@
 
                             <!-- Start Show user Comment  Area -->
                             @if(isset($comments) && $comments->count() > 0 )
+                          <hr>  <h5>Others Comments.........</h5><br>
+                            <div class="pre-scrollable" >
                             @foreach ($comments as $comment)
+
                             <div class="panel panel-default">
                                 <div class="panel-heading overflow-auto">
                                     <div class="blog-details-author-thumb">
@@ -226,13 +229,14 @@
                                             <span class="text-muted">{{$comment->created_at->diffForHumans() }}</span>
                                             
                                         </div><br>
-                                        <span class="panel-body">
+                                        <span class="panel-body ">
                                             <p> {{$comment->comment}} </p>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
+                        </div>
                             
                             @endif
                             <!-- End Show user Comment Area -->

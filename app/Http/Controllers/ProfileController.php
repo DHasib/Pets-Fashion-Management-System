@@ -12,7 +12,8 @@ use App\DynamicLinks;
 use App\user;
 use App\BlogPost;
 use App\Category;
-
+use App\LikeBlog;
+use App\BlogComment;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -26,9 +27,11 @@ class ProfileController extends Controller
     //Show User Profile............................................................
     public function index()
     {
-        return view("user/profile")->with('user',        Auth::user())
-                                    ->with('posts',       BlogPost::where('user_id', Auth::user()->id)->get())
-                                    ->with('link',        DynamicLinks::all());
+        return view("user/profile")->with('user',           Auth::user())
+                                    ->with('posts',         BlogPost::where('user_id', Auth::user()->id)->get())
+                                    ->with('link',          DynamicLinks::all())
+                                    ->with('LikeBlog',      LikeBlog::all())
+                                    ->with('BlogComment',   BlogComment::all());
 
     }
 
@@ -36,8 +39,8 @@ class ProfileController extends Controller
 //Show Admin Profile.....................................................
     public function userProfileSetting()
     {
-        return view("user/setting")->with('user', Auth::user())
-                                   ->with('link', DynamicLinks::all()); 
+        return view("user/setting")->with('user',             Auth::user())
+                                   ->with('link',             DynamicLinks::all());
     }
 
 
@@ -49,7 +52,9 @@ class ProfileController extends Controller
             //dd($id);
             return view("public/profile")->with('user',    $user)
                                         ->with('uposts',   BlogPost::where('user_id',$id)->get())
-                                        ->with('link',    DynamicLinks::all());
+                                        ->with('link',    DynamicLinks::all())
+                                        ->with('LikeBlog',         LikeBlog::all())
+                                        ->with('BlogComment',      BlogComment::all());
 
         }
 

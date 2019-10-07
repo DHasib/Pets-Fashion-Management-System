@@ -95,7 +95,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $first_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $first_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $first_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $first_post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $first_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $first_post->id)->count() }} Likes</span>
                                                     @endif
@@ -171,7 +171,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $second_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $second_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $second_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $second_post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $second_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $second_post->id)->count() }} Likes</span>
                                                     @endif
@@ -246,7 +246,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $third_post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $third_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $third_post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $third_post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $third_post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $third_post->id)->count() }} Likes</span>
                                                     @endif
@@ -292,10 +292,7 @@
 
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @php
-                                        $dogs = $dog->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
-                                    @endphp
-                                    @foreach( $dogs as $post)
+                                    @foreach( $dog->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->take(3)->get() as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -326,7 +323,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @endif
@@ -343,12 +340,9 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <div class="row pb120 align-center">
-                
-                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $dogs->links()  }}</div>
-                                </div><br>
+                                    <br>
                                 </div>
-                            </div>
+                            </div><br><br>
                             @endif
                         </div>
                         <div class="padded-50"></div>
@@ -368,11 +362,8 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @php
-                                       $cats = $cat->blogPosts()->orderBy('created_at',
-                                    'desc')->where('status',0)->paginate(3);
-                                    @endphp
-                                    @foreach($cats as $post)
+                                    @foreach($cat->blogPosts()->orderBy('created_at',
+                                    'desc')->where('status',0)->take(3)->get() as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -403,7 +394,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @endif
@@ -420,13 +411,9 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <div class="row pb120 align-center">
-                
-                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $cats->links()  }}</div>
-                                   </div><br>
-
+                                    <br>
                                 </div>
-                            </div>
+                            </div><br><br>
                             @endif
                         </div>
                         <div class="padded-50"></div>
@@ -448,10 +435,7 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @php
-                                        $bird = $birds->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
-                                    @endphp
-                                    @foreach($bird as $post)
+                                    @foreach($birds->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->take(3)->get() as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -482,7 +466,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @endif
@@ -499,12 +483,9 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <div class="row pb120 align-center">
-                
-                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $bird->links()  }}</div>
-                                   </div><br>
+                                    <br>
                                 </div>
-                            </div>
+                            </div>  <br>  <br>
                             @endif
                         </div>
                         <div class="padded-50"></div>
@@ -526,10 +507,7 @@
                             </div>
                             <div class="row">
                                 <div class="case-item-wrap">
-                                    @php
-                                        $rabbits = $rabbit->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->paginate(3);
-                                    @endphp
-                                    @foreach($rabbits as $post)
+                                    @foreach( $rabbit->blogPosts()->orderBy('created_at', 'desc')->where('status',0)->take(3)->get() as $post)
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="case-item">
                                             <div class="case-item__thumb">
@@ -560,7 +538,7 @@
                                         <span>
                                                 <span> 
                                                     @if(isset($LikeBlog) &&  Auth::user() &&  ($LikeBlog->where('blog_id', $post->id)->where('user_id' , Auth::user()->id)->count() > 0))
-                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->count() }} Likes</span>
+                                                        <a href="{{ url('user/blog/unlike', $post->id ) }}" class="btn btn-danger btn-xs">Unlike </a> <span class=" text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @else
                                                         <a href="{{ url('user/blog/like', $post->id ) }}" class="btn btn-success btn-xs">Like</a> <span class="text-muted">{{ $LikeBlog->where('blog_id', $post->id)->count() }} Likes</span>
                                                     @endif
@@ -577,12 +555,8 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <div class="row pb120 align-center">
-                
-                                            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">{{ $rabbits->links()  }}</div>
-                                   </div><br>
-                                   
-                                </div>
+                                    <br>
+                                </div> <br> <br>
                             @endif
                         </div>
                         <div class="padded-50"></div><br><br><br>
