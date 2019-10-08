@@ -222,7 +222,7 @@ class ProfileController extends Controller
       ],[
         "profile_pic.image"       =>"File Must be a Image",
         "profile_pic.mimes"       =>"File only accept jpeg,jpg formate",
-        "profile_pic.max"       =>"Image can't be larger then 1 MB ",
+        "profile_pic.max"         =>"Image can't be larger then 1 MB ",
       ])->validate();
 
          $user = Auth::user();

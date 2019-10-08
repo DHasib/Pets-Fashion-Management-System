@@ -19,7 +19,8 @@ class CreateOrderListsTable extends Migration
             $table->integer('total_price')->comment("quentity * (item_price)");
             $table->string('type');
             $table->integer('item_id')->comment("pet/product_id");
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -33,5 +34,6 @@ class CreateOrderListsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('order_lists');
+        Schema::enableForeignKeyConstraints();
     }
 }

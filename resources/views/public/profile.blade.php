@@ -29,8 +29,8 @@
                         @if ($upost->status == 0)
                         <div class="post">
                             <div class="user-block col-md-12 col-sm-12">
-                                @if(Auth::user())
-                                    @if(Auth::user()->id == $upost->user_id)
+                               
+                                    @if(Auth::user() && Auth::user()->id == $upost->user_id)
                                         <span class="pull-right">
                                                 <a href="{{url('user/blog/edit/',$upost->id)}}"
                                                     class="btn btn-warning btn-xs">edit</a>
@@ -40,7 +40,7 @@
                                             @endif
                                         </span>
                                     @endif
-                         @endif
+                              
                                 <img class="img-circle img-bordered-sm"
                                     src="@if ($user->profile->user_img != null) {{asset($user->profile->user_img)}} @else {{url('images/avater.jpg')}} @endif"
                                     alt="user image" style="width:7%;">
@@ -63,7 +63,7 @@
                                 </p>
                                 <br>
                                  <!--  Start Blog Comment and Like  Show Here-->
-                            <div class="col-md-12" Style="padding:20px; background-color:#f5f5f5;">
+                            <div class="col-md-12" Style="padding:20px; background-color:#f5f5f5; margin-bottom:75px;">
                                 <!--show  Like -->
                                  <span> 
                                       @if(isset($LikeBlog) && auth::user() && ($LikeBlog->where('blog_id', $upost->id)->where('user_id' , Auth::user()->id)->count() > 0))

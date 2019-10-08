@@ -15,8 +15,10 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->string('blog_title');
             $table->text('blog_content');
@@ -37,5 +39,6 @@ class CreateBlogPostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('blog_posts');
+        Schema::enableForeignKeyConstraints();
     }
 }

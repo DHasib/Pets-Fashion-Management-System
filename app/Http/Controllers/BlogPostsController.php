@@ -65,7 +65,11 @@ class BlogPostsController extends Controller
             "blog_content"            =>"required|string|min:50",
             "blog_image"              =>"required|image|mimes:jpeg,jpg|max:2050",
           
-           ])->validate();
+           ],[
+            "blog_image.image"       =>"File Must be a Image",
+            "blog_image.mimes"       =>"File only accept jpeg,jpg formate",
+            "blog_image.max"         =>"Image can't be larger then 1 MB ",
+          ])->validate();
 
            $blog_image = $request->blog_image;
            $blog_image_new_name      =  $blog_image->getClientOriginalName();
@@ -130,7 +134,11 @@ class BlogPostsController extends Controller
             "blog_content"            =>"required|string|min:50",
             "blog_image"              =>"image|mimes:jpeg,jpg|max:2050",
           
-        ])->validate();
+        ],[
+            "blog_image.image"       =>"File Must be a Image",
+            "blog_image.mimes"       =>"File only accept jpeg,jpg formate",
+            "blog_image.max"         =>"Image can't be larger then 1 MB ",
+          ])->validate();
 
 
            $Blog_Post  =  BlogPost::find($id);

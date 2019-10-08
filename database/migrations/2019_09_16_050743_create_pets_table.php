@@ -15,7 +15,9 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            
             
             $table->string('title');
             $table->string('gender');
@@ -24,7 +26,7 @@ class CreatePetsTable extends Migration
             $table->integer('stock');
             $table->integer('discount')->nullable();
             
-
+        
             $table->string('image');
 
             $table->string('slug');
@@ -40,6 +42,9 @@ class CreatePetsTable extends Migration
      */
     public function down()
     {
+   
         Schema::dropIfExists('pets');
+        Schema::enableForeignKeyConstraints();
+        
     }
 }

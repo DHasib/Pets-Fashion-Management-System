@@ -16,9 +16,10 @@ class CreateLikeBlogsTable extends Migration
         Schema::create('like_blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-
-            $table->integer('blog_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('blog_id')->unsigned();
+            $table->foreign('blog_id')->references('id')->on('blog_posts')->onDelete('cascade');
             
             $table->timestamps();
         });
@@ -32,5 +33,6 @@ class CreateLikeBlogsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('like_blogs');
+        Schema::enableForeignKeyConstraints();
     }
 }

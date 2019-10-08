@@ -30,7 +30,11 @@ class BookController extends Controller
             "image"             =>"required|image|mimes:jpeg,jpg",
             "books"             =>"required|mimes:pdf",           
           
-        ])->validate();
+        ],[
+            "image.image"       =>"File Must be a Image",
+            "image.mimes"       =>"File only accept jpeg,jpg formate",
+            "books.mimes"         =>"File Must Be a PDF  ",
+          ])->validate();
 
            $image = $request->image;
            $image_new_name      =  $image->getClientOriginalName();

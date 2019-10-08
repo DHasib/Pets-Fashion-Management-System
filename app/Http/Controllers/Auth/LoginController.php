@@ -27,6 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+   
     protected $redirectTo = '/';
 
     /**
@@ -48,4 +49,13 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/login');
       }
+
+      protected function authenticated(Request $request, $user)
+        {
+            if ( $user->role == 1 ) {
+                return redirect()->intended('/admin/dashboard/show');
+            }
+
+            return redirect()->intended('/');
+       }
 }

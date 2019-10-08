@@ -15,12 +15,20 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
             $table->text('about')->nullable();
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
             $table->string('user_img')->nullable();
+
+  
+           
             $table->timestamps();
+
+
         });
     }
 
@@ -32,6 +40,7 @@ class CreateProfilesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('profiles');
+        Schema::enableForeignKeyConstraints();
     }
 }
 

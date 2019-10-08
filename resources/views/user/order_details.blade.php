@@ -28,7 +28,7 @@
                     <div class="panel-body">    <!-- panel body -->
                                 
          <!-- Recent Order Details -->
-         <div class="well well-sm" style="background-color:#f8b81d;" ><h5>Recent Order</h5></div>
+         <div class="well well-sm" style="background-color:#f8b81d;" ><h5>Recent/Panding Order</h5></div>
           <div class="card-body table-responsive p-0" style="height:300px;" id="result">
     @if(isset($recent_order) && $recent_order->count() > 0 )
 
@@ -100,7 +100,7 @@
           </div><br><hr><br>
    <!-- Past Order Details -->
    
-   <div class="well well-sm" style="background-color:deepskyblue;"><h5>Past Order</h5></div>
+   <div class="well well-sm" style="background-color:deepskyblue;"><h5>Previous/Received Order</h5></div>
           <div class="card-body table-responsive p-0" style="height:500px;" id="result">
     @if(isset($ordered) && $ordered->count() > 0)
             <table class="table table-head-fixed">

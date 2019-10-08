@@ -18,8 +18,9 @@
                         <th>No</th>
                         <th>Items Title</th>
                         <th>Type</th>
+                        <th>Unit Price</th>
                         <th>Quentity</th>
-                        <th>Price</th>
+                        <th>Sub Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -33,8 +34,9 @@
                               <td>{{ $i++ }}</td>
                               <td>{{ $pet->name }}</td>
                               <td>Pet</td>
+                              <td>{{ $pet->price }} </td>
                               <td>{{ $pet->qty }}</td>
-                              <td>{{ $pet->price }}</td>
+                              <td>{{ $pet->price * $pet->qty }} </td>
                         </tr>
                         @endforeach
                    @endif
@@ -47,8 +49,9 @@
                            <td>{{ $i++ }}</td>
                            <td>{{ $product->name }}</td>
                            <td>Product</td>
-                           <td>{{ $product->qty }}</td>
                            <td>{{ $product->price }}</td>
+                           <td>{{ $product->qty }}</td>
+                           <td>{{ $product->price * $product->qty }}</td>
                      </tr>
                      @endforeach
                 @endif

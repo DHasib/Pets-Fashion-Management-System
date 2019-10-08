@@ -83,9 +83,9 @@
                                  @if($product->discount == null)
                                       <td><h5>No discount Set Yet...</h5></td>
                                  @else
-                                        <td>{{$product->discount }}%Off</td>
+                                        <td><strong class="badge badge-warning">{{$product->discount }}%Off</strong></td>
                                     @endif
-                                      <td>{{ $product->description }}</td>
+                                      <td>{{ str_limit($product->description,51) }}<a href="{{url('about/product/'.$product->slug)}}" target="_blank"><b>More</b></a></td>
                                       <td><img src="{{ url($product->image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
 
                                       <td> <button class="btn btn-warning btn-sm" ><a href="{{url('admin/product/'.$product->id .'/edit')}}" style="color:White;">Edit</a></button></td> 
