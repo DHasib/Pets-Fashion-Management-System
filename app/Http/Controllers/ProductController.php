@@ -72,7 +72,7 @@ class ProductController extends Controller
             ],[
                 "image.image"       =>"Image Must be a Image",
                 "image.mimes"       =>"Please insert jpeg,jpg formate Images",
-                "image.max"         =>"Image can't be larger then 1 MB ",
+                "image.size "         =>"Image can't be larger then 1 MB",
               ])->validate();
 
 
@@ -142,7 +142,7 @@ class ProductController extends Controller
             "discount"          =>"integer|max:100|min:5",
             "price"             =>"required|integer",
             "stock"             =>"required|integer|min:1|max:100000",
-            "image"             =>"image|mimes:jpeg,jpg|max:2050",
+            "image"             =>"required|image|mimes:jpeg,jpg|max:2050",
            ],[
             "image.image"       =>"Image Must be a Image",
             "image.mimes"       =>"Please insert jpeg,jpg formate Images",

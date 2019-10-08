@@ -77,16 +77,6 @@
                         <!-- Header_Area -->
                         <nav class="navbar navbar-default header_aera" id="main_navbar">
                             <div class="container">
-                                <!-- searchForm -->
-                                <div class="searchForm">
-                                    <form action="#" class="row m0">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                            <input type="search" name="search" class="form-control" placeholder="Type & Hit Enter">
-                                            <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
-                                        </div>
-                                    </form>
-                                </div><!-- End searchForm -->
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <div class="col-md-2 p0">
                                     <div class="navbar-header">
@@ -113,7 +103,7 @@
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                                         class="fa fa-chevron-circle-down"> Services </i> </a>
                                                 <ul class="dropdown-menu other_dropdwn">
-                                                    <li><a href="{{ url('/calculate_pet_keeping_cost') }}">calculate Pet keeping cost</a></li>
+                                                    <li><a href="{{ url('/pet_keeping_cost') }}">Pet keeping cost</a></li>
                                                     <li><a href="{{ url('user/doctor_support') }}">Doctor Support</a></li>
                                                 </ul>
                                             </li>
@@ -137,9 +127,7 @@
                                                         @else
                                                                @if(Auth::user()->role == 1 ) 
                                                                      <li><a href="{{url('admin/dashboard/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
-                                                                @elseif(aUTH::user()->role == 2)
-                                                                     <li><a href="{{url('doctor/profile/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
-                                                               @else 
+                                                              @else
                                                                      <li><a href="{{url('user/profile/show')}}"> <i class="fa fa-user"> {{ Auth::user()->name }}  </i></a></li>
                                                                @endif 
 
@@ -156,8 +144,6 @@
                                                 @else 
                                                      <span class="badge badge-light">0</span></a></li>
                                                  @endif
-
-                                            <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                                         </ul>
                                     </div><!-- /.navbar-collapse -->
                                 </div>

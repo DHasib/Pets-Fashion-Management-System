@@ -78,7 +78,7 @@
                                       <td>{{ $post->category->name }}</td>
                                       <td>{{ $post->user->name }}</td>
                                       <td>{{ $post->blog_title }}</td>
-                                      <td>{{ $post->blog_content }}</td>
+                                      <td>{{ str_limit($post->blog_content,101) }}<a href="{{url ('post',['slug' => $post->slug ]) }}" target="_blank"><b>More</b></a></td>
                                       <td><img src="{{ url($post->blog_image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
                              
                                        @if($post->status == 0)

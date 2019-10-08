@@ -79,7 +79,7 @@
 
                               <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="bcontent">Descrip Product:</label>
-                               <textarea name="description" id="description"  class="form-control"  cols="30" rows="10" value="{{ old('description') }}"> @if(isset($product)){{$product->description}}@endif</textarea> 
+                               <textarea name="description" id="description"  class="form-control"  cols="30" rows="10" value="{{ old('description') }}"> @if(isset($product)){{$product->description}}@else {{ old('description') }} @endif</textarea> 
                                
       
                                         @if ($errors->has('description'))

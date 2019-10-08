@@ -18,7 +18,7 @@
     </div><br>
 
     <div class="container">
-        @if(isset($post))
+        @if(isset($post) &&  $post->status == 0 )
         <div class="row medium-padding120">
             <main class="main">
                 <div class="col-lg-10 col-lg-offset-1">
@@ -251,6 +251,8 @@
             </main>
         </div>
     </div>
+    @else 
+    <div class="alert alert-danger"><h2>This post Is Panding ...Please For Admin Approval</h2></div>
     @endif
 
 </div>

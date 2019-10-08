@@ -199,6 +199,8 @@
     
 })(jQuery);
 
+
+
 function doctorSupport(evt, details) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -223,6 +225,19 @@ function doctorSupport(evt, details) {
         });
     });
 
-//to Calculate Pet keeping Cost...................................
+//to Show Pet keeping Cost...................................
 
+function petKeepingCost(evt, details) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(details).style.display = "block";
+    evt.currentTarget.className += " active";
+}
 

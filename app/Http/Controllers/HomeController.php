@@ -269,10 +269,10 @@ class HomeController extends Controller
 //==================================================================================================================================================================================================================
 
               //Pet Keeping cost index.................................................
-                    public function calculate_pet_keeping_cost()
+                    public function pet_keeping_cost()
                     {
                      // DD($request->value);
-                        return view("public/html.calculate_pet_keeping_cost") ->with('link',           DynamicLinks::all()) 
+                        return view("public/html/pet_keeping_cost") ->with('link',           DynamicLinks::all()) 
                                                                               ->with('categories',       Category::all())
                                                                               ->with('discountProduct',  Product::all())
                                                                               ->with('discountPet',      Pet::all());
@@ -297,7 +297,10 @@ class HomeController extends Controller
 
     public function doctor_support(){
         $link = DynamicLinks::all();
-        return view("public/html.doctor_support", compact('link'));
+        return view("public/html.doctor_support")->with('link',           DynamicLinks::all()) 
+                                                 ->with('categories',       Category::all())
+                                                 ->with('discountProduct',  Product::all())
+                                                 ->with('discountPet',      Pet::all());
     }
 
     public function contact_us(){

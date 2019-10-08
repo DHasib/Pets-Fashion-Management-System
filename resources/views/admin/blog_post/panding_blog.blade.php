@@ -56,12 +56,30 @@
                                               <td>{{ $post->category->name }}</td>
                                               <td>{{ $post->user->name }}</td>
                                               <td>{{ $post->blog_title }}</td>
-                                              <td>{{ $post->blog_content }}</td>
+                                              <td>{{ str_limit($post->blog_content,89) }}<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Read More</button></td>
                                               <td><img src="{{ url($post->blog_image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
                                               <td><button class="btn btn-success btn-sm" ><a href="{{url('admin/active/'.$post->id)}}" style="color:White;">Panding</a></button> </td>
                                               
                                           </tr>
-                                
+                                          <!-- Start Modal -->
+                                          <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog modal-lg">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title ">Blog Content</h4>
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                 
+                                                </div>
+                                                <div class="modal-body">
+                                                  <p>{{$post->blog_content }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      <!-- EndModal -->
                                   @endif
                           @empty
                              <div class="alert alert-info">No Panding Blogs Yet..... </div>

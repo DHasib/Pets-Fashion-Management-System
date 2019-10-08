@@ -54,7 +54,7 @@
 
 
 
-                Route::get("calculate_pet_keeping_cost", "HomeController@calculate_pet_keeping_cost");
+                Route::get("pet_keeping_cost", "HomeController@pet_keeping_cost");
                 Route::post("test", "HomeController@test");
 
                 Route::get("user/doctor_support", "HomeController@doctor_support");

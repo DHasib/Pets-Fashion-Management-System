@@ -61,7 +61,7 @@
                                       <td>{{ $trash->category->name }}</td>
                                       <td>{{ $trash->user->name }}</td>
                                       <td>{{ $trash->blog_title }}</td>
-                                      <td>{{ $trash->blog_content }}</td>
+                                      <td>{{ str_limit($trash->blog_content,201) }}</td>
                                       <td><img src="{{ url($trash->blog_image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
                                
                                       <td> <button method="delete"  class="btn btn-success btn-sm" ><a href="{{asset('admin/restore/'.$trash->id)}}" style="color:White;">Restoe</a></button></td> 

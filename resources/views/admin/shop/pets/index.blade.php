@@ -83,7 +83,7 @@
                                  @if($pet->discount == null)
                                       <td><h5>No discount Set Yet...</h5></td>
                                  @else
-                                        <td><strong class="badge badge-warning"><h3>{{$pet->discount }}%Off</h3></strong></td>
+                                        <td><strong class="badge badge-warning">{{$pet->discount }}%Off</strong></td>
                                     @endif
                                       <td>{{ str_limit($pet->description,50) }}<a href="{{url('about/pet/'.$pet->slug)}}" target="_blank"><b>More</b></a></td>
                                       <td><img src="{{ url($pet->image) }}" class="img-rounded" style="width:80px; height:50px;"></td>

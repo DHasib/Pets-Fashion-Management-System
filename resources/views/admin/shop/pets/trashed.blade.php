@@ -62,9 +62,13 @@
                                       <td>{{ $trash->category->name }}</td>
                                       <td>{{ $trash->title }}</td>
                                       <td>{{ $trash->price }}</td>
-                                      <td>{{ $trash->discount }}</td>
                                       <td>{{ $trash->stock }}</td>
-                                      <td>{{ $trash->description }}</td>
+                                   @if($trash->discount == null)
+                                      <td><h6>No discount Set Yet...</h6></td>
+                                   @else
+                                         <td><strong class="badge badge-warning">{{$trash->discount }}%Off</strong></td>
+                                   @endif
+                                      <td>{{ str_limit($trash->description,50) }}</td>
                                       <td><img src="{{ url($trash->image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
                                
                                       <td> <button method="delete"  class="btn btn-success btn-sm" ><a href="{{asset('admin/restore/'.$trash->id. '/pet')}}" style="color:White;">Restoe</a></button></td> 

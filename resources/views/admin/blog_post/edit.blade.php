@@ -79,7 +79,7 @@
 
                               <div class="form-group {{ $errors->has('blog_content') ? ' has-error' : '' }}">
                                 <label for="bcontent">Write Blog Content:</label>
-                               <textarea name="blog_content" id="blog_content"  class="form-control"  cols="30" rows="10" value="{{ old('blog_content') }}"> @if(isset($blog_post)){{$blog_post->blog_content}}@endif</textarea> 
+                               <textarea name="blog_content" class="form-control"  cols="30" rows="10" value="{{ old('blog_content') }}"> @if(isset($blog_post)){{$blog_post->blog_content}}@endif</textarea> 
                                
       
                                         @if ($errors->has('blog_content'))
