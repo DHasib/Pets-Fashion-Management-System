@@ -33,8 +33,9 @@
                         </ul>
                     </li>
                     
-                        <li class="nav-item"><a class="nav-link" href="{{url('user/order/details')}}" >Order Details </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('user/order/details')}}" >My Orders </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('user/read/books')}}" >Read Books</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('user/doctor/appoinment')}}" >Doctor Appoinment Details</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

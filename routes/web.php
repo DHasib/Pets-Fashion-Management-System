@@ -57,7 +57,7 @@
                 Route::get("pet_keeping_cost", "HomeController@pet_keeping_cost");
                 Route::post("test", "HomeController@test");
 
-                Route::get("user/doctor_support", "HomeController@doctor_support");
+            
 
 
 
@@ -77,6 +77,10 @@
 
                 Route::get("page_not_found", "HomeController@page_not_found");
 
+                //to get doctor Appoinment..............................................................
+                Route::get("doctor_appoinment", "HomeController@doctor_appoinment");
+             
+
                 
             //    Route::get("admin/dashboard/show", "adminController@showAdminDashboard");
 
@@ -84,6 +88,10 @@
 //Route group for Registered Users.........................................................................................................................................................................................
 //.................................................................................................................................................................................................................
     Route::prefix('user')->middleware(['auth'])->group(function () {
+
+    //to get doctor Appoinment..............................................................
+        Route::post("store/appoinment", "HomeController@storeAppoinment");
+        Route::get("doctor/appoinment", "HomeController@showDoctorAppoinment");
 
        //Like and unlike a Blog.....................................................
             Route::get("blog/like/{id}", "LikeBlogController@blogLike");
@@ -123,8 +131,10 @@
             Route::Post("account/password/change", "ProfileController@changeUserPassword");
             Route::Post("change/email", "ProfileController@changeEmail");
             Route::Post("change/phonenumber", "ProfileController@changePhoneNumber");
+            Route::get("doctor/appoinment", "ProfileController@showDoctorAppoinment");
+            Route::get("visited/doctor/{id}", "ProfileController@markAsVisited");
 
-      
+     
 
 
     

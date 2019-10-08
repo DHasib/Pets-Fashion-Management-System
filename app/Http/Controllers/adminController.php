@@ -155,7 +155,7 @@ class adminController extends Controller
 
                     $validate_data =  Validator::make($request->all(),[
 
-                    'block_days_user'.$request->id   =>"required|date", 
+                      'block_days_user'.$request->id   =>"required|date", 
 
                     ])->validate();
 

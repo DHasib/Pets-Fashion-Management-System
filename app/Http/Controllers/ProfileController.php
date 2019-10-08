@@ -15,6 +15,8 @@ use App\Category;
 use App\LikeBlog;
 use App\BlogComment;
 
+use App\DoctorAppoinment;
+
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -285,7 +287,36 @@ class ProfileController extends Controller
                 }
      }
 
+//Show User Get Doctor Appoinment Details.....................................................
+    public function showDoctorAppoinment(){
+      
+        return view("user/doctor_appoinment")->with('user',                 Auth::user())
+                                             ->with('recent_appoinments',   DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 0)->get())
+                                             ->with('link',                 DynamicLinks::all())
+                                             ->with('previous_appoinments', DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 1)->get())
+                                             ->with('appoinments_details',  DoctorAppoinment::where('status', 0)->get());
+    }
+//Mars Appoinment As visited User By doctor.....................................................
+    public function markAsVisited($id){
 
+       $Visited = DoctorAppoinment::find($id);
+
+       $Visited->status    = 1;
+       $is_saved = $Visited->save();
+      
+       if($is_saved){
+             session()->flash("success", "This Patient Mark as visited ");
+
+
+             return view("user/doctor_appoinment")->with('user',                 Auth::user())
+                                                  ->with('recent_appoinments',   DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 0)->get())
+                                                  ->with('link',                 DynamicLinks::all())
+                                                  ->with('previous_appoinments', DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 1)->get())
+                                                  ->with('appoinments_details',  DoctorAppoinment::where('status', 0)->get());
+
+       }
+       
+    }
     /**
      * Remove the specified resource from storage.
      *
