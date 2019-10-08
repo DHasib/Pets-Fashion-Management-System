@@ -220,8 +220,8 @@ class ProfileController extends Controller
             "profile_pic"    => "required|image|mimes:jpeg,jpg|max:2050",
 
       ],[
-        "profile_pic.image"       =>"File Must be a Image",
-        "profile_pic.mimes"       =>"File only accept jpeg,jpg formate",
+        "profile_pic.image"       =>"Image Must be a Image",
+        "profile_pic.mimes"       =>"Please insert jpeg,jpg formate Images",
         "profile_pic.max"         =>"Image can't be larger then 1 MB ",
       ])->validate();
 

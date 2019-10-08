@@ -34,7 +34,11 @@ class DynamicHomepageController extends Controller
             "slider_heading"        =>"required|max:100|string",
             "slider_desc"           =>"required|max:200|string",
             "slider_image"          =>"required|image|mimes:jpeg,jpg|max:2050",
-           ])->validate();
+           ],[
+            "slider_image.image"       =>"Images Must be a Image",
+            "slider_image.mimes"       =>"Images only accept jpeg,jpg formate",
+            "slider_image.max"         =>"Image can't be larger then 1 MB ",
+          ])->validate();
 
            $sdata = DynamicHomepage::all();
          if($sliderDetails = DynamicHomepage::find($request->id))

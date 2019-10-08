@@ -68,7 +68,11 @@ class PetController extends Controller
             "discount"          =>"integer|max:100|min:5",
             "stock"             =>"required|integer|min:1|max:100000",
             "image"             =>"required|image|mimes:jpeg,jpg|max:2050",
-           ])->validate();
+           ],[
+            "image.image"       =>"Image Must be a Image",
+            "image.mimes"       =>"Please insert jpeg,jpg formate Images",
+            "image.max"         =>"Image can't be larger then 1 MB ",
+          ])->validate();
 
       //DD($request->gender);
            $image = $request->image;
@@ -137,7 +141,11 @@ class PetController extends Controller
             "price"             =>"required|integer",
             "stock"             =>"required|integer|min:1|max:100000",
             "image"             =>"image|mimes:jpeg,jpg|max:2050",
-           ])->validate();
+           ],[
+            "image.image"       =>"Image Must be a Image",
+            "image.mimes"       =>"Please insert jpeg,jpg formate Images",
+            "image.max"         =>"Image can't be larger then 1 MB ",
+          ])->validate();
 
            $pet  =  Pet::find($id);
            if($request->hasFile('image'))
