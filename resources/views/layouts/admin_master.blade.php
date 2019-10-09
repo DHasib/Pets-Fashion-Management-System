@@ -284,17 +284,9 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class="nav-icon fas fa-comments"></i>
-                <p>
-                  Live Chat
-                </p>
-              </a>
-            </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa-smile-o"></i>
+                <i class="nav-icon fa fa-book "></i>
                 <p>
                   Books
                   <i class="fas fa-angle-left right"></i>

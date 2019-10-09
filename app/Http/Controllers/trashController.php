@@ -22,7 +22,7 @@ class trashController extends Controller
  
 // ========================================================================================================================================================================================================  
 
-        //Trashed a blog post..................................... 
+        //Trashed a blog post.................................................................................
             public function destroy($id)
             {
                 $plog_post = BlogPost::find($id); 
@@ -33,25 +33,25 @@ class trashController extends Controller
 
                 return redirect()->back();
             }
-        //Show Trashed  blog for admin..................................... 
+        //Show Trashed  blog for admin..................................... .................................
             public function trashed() 
             {
                 $trashed = BlogPost::onlyTrashed()->where('user_id', Auth::user()->id)->get();
                 
-                return view('admin/blog_post/trashed')->with('trashed', $trashed)
-                                                    ->with('authUser', Auth::user()); 
+                return view('admin/blog_post/trashed')->with('trashed',  $trashed)
+                                                     ->with('authUser',  Auth::user()); 
             }
 
-        //Show Trashed  blog for User can trash Their post..................................... 
+        //Show Trashed  blog for User can trash Their post.....................................................
             public function trashedUser() 
             {
                 $trashed = BlogPost::onlyTrashed()->where('user_id', Auth::user()->id)->get();
                 
-                return view('user/trashed')->with('trashed', $trashed)
-                                                    ->with('user', Auth::user())
-                                                    ->with('link',  DynamicLinks::all()); 
+                return view('user/trashed')->with('trashed',   $trashed)
+                                            ->with('user',     Auth::user())
+                                            ->with('link',     DynamicLinks::all()); 
             }
-        //Permanently Delete Trashed Blog Post..................................... 
+        //Permanently Delete Trashed Blog Post.................................................................
             public function kill($id)
             {
                 $trashed = BlogPost::withTrashed()->where('id', $id)->first();
@@ -62,7 +62,7 @@ class trashController extends Controller
 
                 return redirect()->back();
             }
-        //Resore Trashed Blog Post..................................... 
+        //Resore Trashed Blog Post............................................................................ 
             public function restore($id)
             {
                 $trashed = BlogPost::withTrashed()->where('id', $id)->first();
@@ -81,7 +81,7 @@ class trashController extends Controller
 //......................................................Start Trash For Items ( Pets ) only by Admin...................................................................................................................
  
 // ========================================================================================================================================================================================================  
-                //Trashed a Pet ..................................... 
+                //Trashed a Pet .........................................................................
                 public function destroyPet($id)
                 {
                     $pet = Pet::find($id); 
@@ -92,16 +92,16 @@ class trashController extends Controller
 
                     return redirect()->back();
                 }
-                //Show Trashed  Pets for admin..................................... 
+                //Show Trashed  Pets for admin.......................................................... 
                 public function trashedPet() 
                 {
                     $trashed = Pet::onlyTrashed()->get();
                     
                     return view('admin/shop/pets/trashed')->with('trashed', $trashed)
-                                                        ->with('authUser', Auth::user()); 
+                                                        ->with('authUser',  Auth::user()); 
                 }
 
-                //Permanently Delete Trashed for Pets..................................... 
+                //Permanently Delete Trashed for Pets.................................................... 
                 public function killPet($id)
                 {
                     $trashed = Pet::withTrashed()->where('id', $id)->first();
@@ -130,7 +130,7 @@ class trashController extends Controller
  
 // ========================================================================================================================================================================================================  
 
-            //Trashed a Pet ..................................... 
+            //Trashed a Pet ............................................................................
             public function destroyProduct($id)
             {
                 $product = Product::find($id); 
@@ -141,16 +141,16 @@ class trashController extends Controller
 
                 return redirect()->back();
             }
-            //Show Trashed  Pets for admin..................................... 
+            //Show Trashed  Pets for admin................................................................
             public function trashedProduct() 
             {
                 $trashed = Product::onlyTrashed()->get();
                 
                 return view('admin/shop/products/trashed')->with('trashed', $trashed)
-                                                        ->with('authUser', Auth::user()); 
+                                                        ->with('authUser',  Auth::user()); 
             }
 
-            //Permanently Delete Trashed for Pets..................................... 
+            //Permanently Delete Trashed for Pets.......................................................... 
             public function killProduct($id)
             {
                 $trashed = Product::withTrashed()->where('id', $id)->first();
@@ -161,7 +161,7 @@ class trashController extends Controller
 
                 return redirect()->back();
             }
-            //Resore Trashed for Pets ..................................... 
+            //Resore Trashed for Pets ......................................................................... 
             public function restoreProduct($id)
             {
                 $trashed = Product::withTrashed()->where('id', $id)->first();

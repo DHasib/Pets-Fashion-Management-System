@@ -20,7 +20,7 @@ use Session;
 
 class adminController extends Controller
 { 
-    //count Panding Order (Same user Multiple order count)........... 
+    //count Panding Order (Same user Multiple order count)........... ...............................
             public function  total_user_order() {
         
         $total_user_order = DB::table('order_lists')
@@ -31,7 +31,7 @@ class adminController extends Controller
                             ->get();
                             return $total_user_order;
             }
-     //count Panding totl Pet Order.....................   
+     //count Panding totl Pet Order............................................................. 
             public function  total_pet_order() {
                 
                 $total_pet_order =DB::table('users')
@@ -46,7 +46,7 @@ class adminController extends Controller
                     ->get();
                     return $total_pet_order;
             }   
-    //count Panding totl Product Order............. 
+    //count Panding totl Product Order.............................................................
             public function  total_product_order()  {        
                 $total_product_order =DB::table('users')
                     ->join('order_lists', 'users.id', '=', 'order_lists.user_id')

@@ -21,9 +21,9 @@ class ProductController extends Controller
     {
         
 
-        return view('admin/shop/products/index')->with('products', Product::all())
-                                                ->with('Categories', Category::all())
-                                                ->with('authUser',   Auth::user());
+        return view('admin/shop/products/index')->with('products',     Product::all())
+                                                ->with('Categories',   Category::all())
+                                                ->with('authUser',     Auth::user());
 
     }
 
@@ -72,7 +72,7 @@ class ProductController extends Controller
             ],[
                 "image.image"       =>"Image Must be a Image",
                 "image.mimes"       =>"Please insert jpeg,jpg formate Images",
-                "image.size "         =>"Image can't be larger then 1 MB",
+                "image.size "       =>"Image can't be larger then 1 MB",
               ])->validate();
 
 
@@ -119,9 +119,9 @@ class ProductController extends Controller
         
         $product = Product::find($id);
 
-        return view('admin/shop/products/edit')->with('product', $product)
-                                                ->with('categories', Category::all())
-                                                ->with('authUser',  Auth::user());
+        return view('admin/shop/products/edit')->with('product',      $product)
+                                                ->with('categories',  Category::all())
+                                                ->with('authUser',    Auth::user());
 
     }
 
@@ -204,8 +204,8 @@ class ProductController extends Controller
 
                                
                         return view('admin/shop/products/index')->with('products',     $products)
-                                                                ->with('Categories', Category::all())
-                                                                ->with('authUser',   Auth::user());
+                                                                ->with('Categories',   Category::all())
+                                                                ->with('authUser',     Auth::user());
                     }
             }
     /**

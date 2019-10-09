@@ -74,7 +74,7 @@ class PetController extends Controller
             "image.max"         =>"Image can't be larger then 1 MB ",
           ])->validate();
 
-      //DD($request->gender);
+
            $image = $request->image;
            $pet_image_new_name      =  $image->getClientOriginalName();
            $image->move('images/uploads/pets_img', $pet_image_new_name);
@@ -117,9 +117,9 @@ class PetController extends Controller
     {
         $pet = pet::find($id);
 
-        return view('admin/shop/pets/edit')->with('pet', $pet)
-                                           ->with('categories', Category::all())
-                                           ->with('authUser',  Auth::user());
+        return view('admin/shop/pets/edit')->with('pet',             $pet)
+                                           ->with('categories',      Category::all())
+                                           ->with('authUser',        Auth::user());
     }
 
     /**
@@ -190,7 +190,7 @@ class PetController extends Controller
 
                     if ($search == NULL) 
                     {
-                    return view("admin/shop/pets/index")->with('pets',   Pet::all())
+                    return view("admin/shop/pets/index")->with('pets',       Pet::all())
                                                         ->with('Categories', Category::all())
                                                         ->with('authUser',   Auth::user());
                     } 
@@ -200,9 +200,9 @@ class PetController extends Controller
                                         ->get(); 
 
                                 
-                        return view('admin/shop/pets/index')->with('pets',    $pets)
-                                                            ->with('Categories', Category::all())
-                                                            ->with('authUser',   Auth::user());
+                        return view('admin/shop/pets/index')->with('pets',        $pets)
+                                                            ->with('Categories',  Category::all())
+                                                            ->with('authUser',    Auth::user());
                     }
             }
     /**

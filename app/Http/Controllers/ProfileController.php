@@ -26,7 +26,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //Show User Profile............................................................
+    //Show User Profile.........................................................................................
     public function index()
     {
         return view("user/profile")->with('user',           Auth::user())
@@ -38,23 +38,23 @@ class ProfileController extends Controller
     }
 
 
-//Show Admin Profile.....................................................
+//Show Admin Profile..........................................................................................
     public function userProfileSetting()
     {
-        return view("user/setting")->with('user',             Auth::user())
-                                   ->with('link',             DynamicLinks::all());
+        return view("user/setting")->with('user',   Auth::user())
+                                   ->with('link',   DynamicLinks::all());
     }
 
 
-    //Show blog posted user profile....................
+    //Show blog posted user profile............................................................................
         public function pUserShow($id){
 
             $user = user::find($id);
         
             //dd($id);
-            return view("public/profile")->with('user',    $user)
-                                        ->with('uposts',   BlogPost::where('user_id',$id)->get())
-                                        ->with('link',    DynamicLinks::all())
+            return view("public/profile")->with('user',           $user)
+                                        ->with('uposts',          BlogPost::where('user_id',$id)->get())
+                                        ->with('link',            DynamicLinks::all())
                                         ->with('LikeBlog',         LikeBlog::all())
                                         ->with('BlogComment',      BlogComment::all());
 
@@ -140,7 +140,7 @@ class ProfileController extends Controller
              }
     }
 
-    //Change Email address.....................................................
+    //Change Email address.........................................................................................
     public function changeEmail(Request $request){
        
             $validate_data =  Validator::make($request->all(),[
@@ -162,7 +162,7 @@ class ProfileController extends Controller
              }
         }
        
-//Change Phone Number ...................................................
+//Change Phone Number ..............................................................................................
     public function changePhoneNumber(Request $request){
       
             $validate_data =  Validator::make($request->all(),[
@@ -185,7 +185,7 @@ class ProfileController extends Controller
        
     }
 
-//Save profile details.............................................................................................
+//Save profile details..............................................................................................
     public function saveProfile(Request $request) 
     {
       $validate_data =  Validator::make($request->all(),[
@@ -287,7 +287,7 @@ class ProfileController extends Controller
                 }
      }
 
-//Show User Get Doctor Appoinment Details.....................................................
+//Show User Get Doctor Appoinment Details....................................................................................................................
     public function showDoctorAppoinment(){
       
         return view("user/doctor_appoinment")->with('user',                 Auth::user())
@@ -296,7 +296,7 @@ class ProfileController extends Controller
                                              ->with('previous_appoinments', DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 1)->get())
                                              ->with('appoinments_details',  DoctorAppoinment::where('status', 0)->get());
     }
-//Mars Appoinment As visited User By doctor.....................................................
+//Mars Appoinment As visited User By doctor.....................................................................................................................
     public function markAsVisited($id){
 
        $Visited = DoctorAppoinment::find($id);

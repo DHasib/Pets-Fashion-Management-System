@@ -16,7 +16,7 @@ use App\OrderDetail;
 
 class OrderDetailController extends Controller
 {
-     //count Panding Order (Same user Multiple order count)........... 
+     //count Panding Order (Same user Multiple order count)..............................................................
      public function  total_user_order() {
         $total_user_order = DB::table('order_lists')
                             ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -26,7 +26,7 @@ class OrderDetailController extends Controller
                             ->get();
                             return $total_user_order;
             }
-     //count Panding totl Pet Order.....................   
+     //count Panding totl Pet Order........................................................................................
             public function  total_pet_order() {
                 $total_pet_order =DB::table('users')
                                     ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
@@ -40,7 +40,7 @@ class OrderDetailController extends Controller
                                     ->get();
                                     return $total_pet_order;
             }   
-    //count Panding totl Product Order............. 
+    //count Panding totl Product Order.....................................................................................
             public function  total_product_order()  {        
                 $total_product_order =DB::table('users')
                                         ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
@@ -56,10 +56,10 @@ class OrderDetailController extends Controller
                                         return $total_product_order;
             }
     
-//All the panding Order show for admin..............................
+//All the panding Order show for admin......................................................................................................................................................................................................................................................................................................
     protected function pandingOrder(){
                             
-            //Query to find out total panding Product order details..........................
+            //Query to find out total panding Product order details.............................................................................
                 $product_order_panding = DB::table('users')
                                             ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                             ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -71,7 +71,7 @@ class OrderDetailController extends Controller
                                                 $query->where('order_status', '=', 1);
                                             })
                                             ->latest();
-            //Query to find out total panding Pet order details and union them to fetch..........................
+            //Query to find out total panding Pet order details and union them to fetch..........................................................
                 $pet_order_panding  = DB::table('users')
                                         ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                         ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -102,7 +102,7 @@ class OrderDetailController extends Controller
 
 
 
-//after deleviry successfuly mark as deleviry complete for admin..............................
+//after deleviry successfuly mark as deleviry complete for admin....................................
     protected function completeOrder(Request $request)
     {
 
@@ -122,7 +122,7 @@ class OrderDetailController extends Controller
 
     }
 
-//To show all the Order/ Delivery Conplete Details for admin................................
+//To show all the Order/ Delivery Conplete Details for admin...........................................................................................................................................................................................................................................................................
     protected function listOrder(){ 
 
                 $product_order_list = DB::table('users')
@@ -163,7 +163,7 @@ class OrderDetailController extends Controller
     }
 
 
-//Show Pets Fashion Total Sales for admin.........................................
+//Show Pets Fashion Total Sales for admin..................................................................................................................................................
      protected function salseReport(){
 
                     $total_price = DB::table('payment_details')
@@ -204,10 +204,10 @@ class OrderDetailController extends Controller
 
          }
 
-        //Show User Order Details for User...........................
+        //Show User Order Details for User.............................................................................................................................................................................................................................................................
             public function userOrderDetails(){
 
-                //Login User Recenet or PAnding delivery Product panding Order Details.......................................................
+                //Login User Recenet or PAnding delivery Product panding Order Details.......................................................................
                         $recent_product_order_ = DB::table('users')
                                                     ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                                     ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -221,7 +221,7 @@ class OrderDetailController extends Controller
                                                     ->where(function ($query) {
                                                         $query->where('order_status', '=',  '1');
                                                     });
-               //Login User Recenet or panding delivery panding Pet Order Details.......................................................
+               //Login User Recenet or panding delivery panding Pet Order Details..............................................................................
                         $recent_pet_order  = DB::table('users')
                                                 ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                                 ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -238,7 +238,7 @@ class OrderDetailController extends Controller
                                                 ->union($recent_product_order_)
                                                 ->get();
 
-                    //Login User Product  Order Details.......................................................
+                    //Login User Product  Order Details............................................................................................................
                         $product_order = DB::table('users')
                                                 ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                                 ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -253,7 +253,7 @@ class OrderDetailController extends Controller
                                                     $query->where('order_status', '=',  '0');
                                                 });
 
-                //Login User Pet Order Details.......................................................
+                //Login User Pet Order Details....................................................................................................................
                         $pet_order = DB::table('users')
                                                 ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                                 ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -269,7 +269,7 @@ class OrderDetailController extends Controller
                                                     })
                                                 ->union($product_order)
                                                 ->get();
-                    //Total Recent Order Amount Show...................................................
+                    //Total Recent Order Amount Show..................................................................................................................
                         $total_price = DB::table('users')
                                         ->join('order_lists', 'users.id', '=', 'order_lists.user_id')
                                         ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')

@@ -52,7 +52,6 @@ class DynamicPDFController extends Controller
 
          public function convert_sales_data_to_html()
            {
-
                  
                   $sales_data = $this->total_sales();
                   $sales_amount = $this->total_amount();

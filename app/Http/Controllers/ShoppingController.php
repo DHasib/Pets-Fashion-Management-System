@@ -15,9 +15,8 @@ class ShoppingController extends Controller
 //Add to cart selected Pets...............................................................
     public function petAddToCart($pet_id)
     {
-        //DD(request()->all());
-
           $pet = Pet::find($pet_id);
+
         if($pet->stock != 0){
 
           $cartItem = Cart::instance('pet')->add([ 
@@ -74,8 +73,8 @@ class ShoppingController extends Controller
  //Add to cart Show all items...............................................................
         public function cart()
         {
-            return view('public/shop/shopping_cart/cart')->with('link',  DynamicLinks::all())
-                                                         ->with('discountPet', Pet::all())
+            return view('public/shop/shopping_cart/cart')->with('link',             DynamicLinks::all())
+                                                         ->with('discountPet',      Pet::all())
                                                          ->with('discountProduct',  Product::all());
         }
 
@@ -86,16 +85,16 @@ class ShoppingController extends Controller
                 Cart::instance('pet')->remove($id);
 
                 Session::flash('success', 'Item Removed from Cart.');
-                return redirect()->back()->with('link',  DynamicLinks::all())
-                                         ->with('discountPet', Pet::all())
+                return redirect()->back()->with('link',             DynamicLinks::all())
+                                         ->with('discountPet',      Pet::all())
                                          ->with('discountProduct',  Product::all());
                 }else{
                    
                     Cart::instance('product')->remove($id);
 
                     Session::flash('success', 'Item Removed from Cart.');
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
    
@@ -113,15 +112,15 @@ class ShoppingController extends Controller
 
                     Session::flash('success', 'Pet qunatity updated.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                            ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',            DynamicLinks::all())
+                                            ->with('discountPet',      Pet::all())
                                             ->with('discountProduct',  Product::all());
                 }else{
                     
                     Session::flash('error', 'Out of Stock!! Quentity are not Increse ');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
 
@@ -134,15 +133,15 @@ class ShoppingController extends Controller
 
                     Session::flash('success', 'Product qunatity updated.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                              ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',              DynamicLinks::all())
+                                              ->with('discountPet',      Pet::all())
                                               ->with('discountProduct',  Product::all());
                 }else{
                     
                     Session::flash('error', 'Out of Stock!! Quentity are not Increse.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
             }
@@ -160,15 +159,15 @@ class ShoppingController extends Controller
 
                     Session::flash('success', 'Pet qunatity updated.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
                 else{
                     Session::flash('error', 'Pet qunatity Must be greater then 0.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
 
@@ -181,15 +180,15 @@ class ShoppingController extends Controller
 
                     Session::flash('success', 'Product qunatity updated.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
-                                             ->with('discountProduct',  Product::all());
+                    return redirect()->back()->with('link',               DynamicLinks::all())
+                                             ->with('discountPet',        Pet::all())
+                                             ->with('discountProduct',    Product::all());
                 }
                 else{
                     Session::flash('error', 'Product qunatity Must be greater then 0.');
         
-                    return redirect()->back()->with('link',  DynamicLinks::all())
-                                             ->with('discountPet', Pet::all())
+                    return redirect()->back()->with('link',             DynamicLinks::all())
+                                             ->with('discountPet',      Pet::all())
                                              ->with('discountProduct',  Product::all());
                 }
             }

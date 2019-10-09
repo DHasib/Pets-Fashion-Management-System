@@ -23,7 +23,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
 
-        $authUser = Auth::user(); 
+        $authUser      =  Auth::user(); 
         $validate_data =  Validator::make($request->all(),[
 
             "title"             =>"required|string|min:4|max:30", 
@@ -47,7 +47,7 @@ class BookController extends Controller
 
           $book_read  =  Book::create([
               'title'           => $request->title,
-              'image'      => 'images/uploads/books/images/'.  $image_new_name,
+              'image'           => 'images/uploads/books/images/'.  $image_new_name,
               'books'           =>  'images/uploads/books/pdf/'.  $books_new_name,
            ]);
            
@@ -60,7 +60,7 @@ class BookController extends Controller
 //to Show all the book list fro admin..............................................
     public function list(){
             
-        $books = Book::all();
+        $books    = Book::all();
         $authUser = Auth::user(); 
         
         return view('admin/books/book_list')->with('books', $books)
@@ -78,8 +78,8 @@ class BookController extends Controller
 
         ])->validate();
 
-          $authUser = Auth::user();
-            $search = $request->search;
+          $authUser =  Auth::user();
+            $search =  $request->search;
 
             if ($search == NULL) 
             {
@@ -102,10 +102,10 @@ class BookController extends Controller
     public function readBooks(){
             
         $books = Book::paginate(9);
-        $user = Auth::user(); 
+        $user  = Auth::user(); 
         
-        return view('user/read_books')->with('books', $books)
-                                      ->with('user', $user)
+        return view('user/read_books')->with('books',  $books)
+                                      ->with('user',   $user)
                                       ->with('link',   DynamicLinks::all());
 
     }

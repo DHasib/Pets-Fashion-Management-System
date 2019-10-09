@@ -19,6 +19,8 @@ class BlogPostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Show All Blog Details For Admin......................................
     public function index()
     {
        
@@ -215,9 +217,9 @@ class BlogPostsController extends Controller
                 $blog_post = BlogPost::find($id);
 
                 return view('user/edit')->with('blog_post',   $blog_post)
-                                        ->with('categories', Category::all())
-                                        ->with('user',       Auth::user())
-                                        ->with('link',       DynamicLinks::all());
+                                        ->with('categories',  Category::all())
+                                        ->with('user',        Auth::user())
+                                        ->with('link',        DynamicLinks::all());
 
             }
 

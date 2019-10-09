@@ -19,13 +19,14 @@ class DynamicHomepageController extends Controller
 
 // ================  Slider Area ===================================================================================================================================================================================================
 
+   //To show slider in home page........................................................
     public function showUploadSlider()
     {
         $authUser = Auth::user(); 
          $sdata = DynamicHomepage::all();
         return view("admin/home_page/home_slider", compact("sdata", "authUser"));
     }  
-
+  //To Update Slider image and details....................................................
     protected function updateSliderDetails(Request $request)
     {
         $authUser = Auth::user(); 
@@ -90,7 +91,7 @@ class DynamicHomepageController extends Controller
 
 // ============  Top Header Area =======================================================================================================================================================================================================
     
-
+//To show Header data.........................................................................
 public function showTopHeader()
 {
     $authUser = Auth::user(); 
@@ -98,7 +99,7 @@ public function showTopHeader()
     return view("admin/home_page/home_top_header", compact("link", "authUser"));
 }  
 
-
+//To update Header Details......................................................................
 protected function updatetopHeader(Request $request)
     {
         $authUser = Auth::user(); 
