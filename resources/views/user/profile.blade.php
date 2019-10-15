@@ -20,7 +20,11 @@
                         <div class="alert alert-success">
                             <strong>{{ Session::get('success') }}</strong>
                         </div>{{ Session::get('error') }}</strong>
-                    @endif
+                     @elseif (Session::has('error'))
+                        <div class="alert alert-danger">
+                            <strong>{{ Session::get('error') }}</strong>
+                        </div>
+                     @endif
                     <div class="panel-body">
                         <!-- My Blogs -->
                         @if(isset($posts))
@@ -103,7 +107,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading overflow-auto">
                                                     <div class="col-md-1 blog-details-author-thumb">
-                                                        <img src="{{asset ($comment->user->profile->user_img) }}"
+                                                        <img src="@if ($comment->user->profile->user_img != null) {{asset ($comment->user->profile->user_img) }} @else {{url('images/avater.jpg')}} @endif"
                                                             style="width:31px; height:31px; border-radius:100%;" alt="Author">
                                                     </div>
 

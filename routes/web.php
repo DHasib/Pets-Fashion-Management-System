@@ -60,8 +60,10 @@
     Route::prefix('user')->middleware(['auth'])->group(function () {
 
             //to get doctor Appoinment......................................................................
-                Route::post("store/appoinment", "HomeController@storeAppoinment");
-                Route::get("doctor/appoinment", "HomeController@showDoctorAppoinment");
+                Route::post("store/appoinment", "DoctorController@storeAppoinment");
+                Route::get("doctor/appoinment", "DoctorController@showDoctorAppoinment");
+                Route::get("appoinment/cancel/{id}", "DoctorController@cancelAppoinment");
+                 
 
             //Like and unlike a Blog.........................................................................
                 Route::get("blog/like/{id}", "LikeBlogController@blogLike");
@@ -100,10 +102,7 @@
                     Route::Post("account/password/change", "ProfileController@changeUserPassword");
                     Route::Post("change/email", "ProfileController@changeEmail");
                     Route::Post("change/phonenumber", "ProfileController@changePhoneNumber");
-            //User Get Doctoe Appoinment..........................................................................
-                Route::get("doctor/appoinment", "ProfileController@showDoctorAppoinment");
-             // Doctoe Mark User Appoinment as complete to visiited................................................
-                Route::get("visited/doctor/{id}", "ProfileController@markAsVisited");
+          
 
     });
 
@@ -196,5 +195,16 @@
                         Route::get('slider/edit/{slider_id}', 'DynamicHomepageController@editSlide');
                         Route::post("slider/update", "DynamicHomepageController@updateSliderDetails");
 
+
+});
+
+
+Route::prefix('doctor')->middleware(['auth' , 'auth.doctor'])->group(function () {
+
+        //User Get Doctoe Appoinment..........................................................................
+        Route::get("appoinment/show", "DoctorController@showDoctorAppoinment");
+        // Doctoe Mark User Appoinment as complete to visiited................................................
+        Route::get("visited/{id}", "DoctorController@markAsVisited");
+        Route::get("appoinment/cancel/{id}", "DoctorController@cancelAppoinment");
 
 });

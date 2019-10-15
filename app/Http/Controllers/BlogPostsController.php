@@ -216,12 +216,32 @@ class BlogPostsController extends Controller
 
                 $blog_post = BlogPost::find($id);
 
-                return view('user/edit')->with('blog_post',   $blog_post)
-                                        ->with('categories',  Category::all())
-                                        ->with('user',        Auth::user())
-                                        ->with('link',        DynamicLinks::all());
+                    if($blog_post){
+
+                            if($blog_post->user_id == Auth::id()){
+
+
+                                return view('user/edit')->with('blog_post',   $blog_post)
+                                                        ->with('categories',  Category::all())
+                                                        ->with('user',        Auth::user())
+                                                        ->with('link',        DynamicLinks::all());
+                            }
+                            else{
+                                Session::flash('error', ' You do not have permission to Edit other user Blogs.');
+                                return redirect()->back();
+                            }
+                    }
+                    else{
+                        Session::flash('error', ' Invailed Edit Order.');
+
+                        return redirect()->back();
+                    }
+
+               
 
             }
+
+           
 
  //Blog post form show for Only User...................................................................................................
             public function postBlog()

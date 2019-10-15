@@ -27,12 +27,26 @@ class trashController extends Controller
             {
                 $plog_post = BlogPost::find($id); 
 
-                $plog_post->delete();
+                if($plog_post){
+                    if($plog_post->user_id == Auth::id()){
 
-                Session::flash('success', 'The post was just trashed.');
-
-                return redirect()->back();
+                        $plog_post->delete();
+                        Session::flash('success', 'The post was just trashed.');
+                        return redirect()->back();
+                    }
+                    else{
+                        Session::flash('error', ' You do not have permission to Trashed other user Blogs.');
+                        return redirect()->back();
+                      }
+                }else{
+  
+                    Session::flash('error', ' Invailed Trashed Order.');
+        
+                    return redirect()->back();
+                 }
+              
             }
+        
         //Show Trashed  blog for admin..................................... .................................
             public function trashed() 
             {
@@ -55,23 +69,54 @@ class trashController extends Controller
             public function kill($id)
             {
                 $trashed = BlogPost::withTrashed()->where('id', $id)->first();
+
                 
-                $trashed->forceDelete();
+                if($trashed){
+                    if($trashed->user_id == Auth::id()){
 
-                Session::flash('success', 'Blog Deleted Permanently.');
+                        $trashed->forceDelete();
 
-                return redirect()->back();
+                        Session::flash('success', 'Blog Deleted Permanently.');
+        
+                        return redirect()->back();
+                    }
+                    else{
+                        Session::flash('error', ' You do not have permission to Delete other user Blogs.');
+                        return redirect()->back();
+                      }
+                }else{
+  
+                    Session::flash('error', ' Invailed Trashed Order.');
+        
+                    return redirect()->back();
+                 }
+                
+                
             }
         //Resore Trashed Blog Post............................................................................ 
             public function restore($id)
             {
                 $trashed = BlogPost::withTrashed()->where('id', $id)->first();
 
-                $trashed->restore();
+                if($trashed){
+                    if($trashed->user_id == Auth::id()){
+                        $trashed->restore();
 
-                Session::flash('success', 'Post Restored Successfully.');
-
-                return redirect()->back()->with('authUser', Auth::user()); 
+                        Session::flash('success', 'Post Restored Successfully.');
+        
+                        return redirect()->back()->with('authUser', Auth::user()); 
+                    }
+                    else{
+                        Session::flash('error', ' You do not have permission to Restored other user Blogs.');
+                        return redirect()->back();
+                      }
+                }else{
+  
+                    Session::flash('error', ' Invailed Trashed Order.');
+        
+                    return redirect()->back();
+                 }
+              
             }
 
 

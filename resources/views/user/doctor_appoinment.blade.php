@@ -44,6 +44,7 @@
                                         <th>Pet Problem Noticed Date</th>
                                         <th>Pet Age</th>
                                         <th>Doctor visite date</th>
+                                        <th>Cancel Appoinment</th>
 
                                     </tr>
                                 </thead>
@@ -56,6 +57,9 @@
                                         <td>{{$appoinment->problem_notice_date}} </td>
                                         <td>{{$appoinment->pet_age }}</td>
                                         <td> {{$appoinment->doctor_visit_date }} </td>
+                                        <td> <button class="btn btn-danger btn-sm"><a
+                                            href="{{url('user/appoinment/cancel',$appoinment->id )}}"
+                                            style="color:White;">Cancel</a></button></td>
                                     </tr>
 
                                     @endforeach
@@ -113,7 +117,7 @@
                     <div class="panel-body">
                         <!-- Recent Order Details -->
                         <div class="well well-sm" style="background-color:#f8b81d;">
-                            <h5> Doctor Appoinment List</h5>
+                            <h5> Patient Appoinment List</h5>
                         </div>
                         <div class="card-body table-responsive p-0" style="height:800px;" id="result">
 
@@ -122,13 +126,14 @@
                             <table class="table table-head-fixed">
                                 <thead>
                                     <tr>
-                                        <th>Patient Owner Name</th>
-                                        <th>My Pet Category</th>
+                                        <th>Patient Name</th>
+                                        <th>Pet Category</th>
                                         <th>Pet Problems </th>
                                         <th>Pet Problem Noticed Date</th>
                                         <th>Pet Age</th>
                                         <th>Doctor visite date</th>
                                         <th>Mark as Visited </th>
+                                        <th>Cancel Appoinment</th>
 
                                     </tr>
                                 </thead>
@@ -143,14 +148,17 @@
                                         <td>{{$docappoinment->pet_age }}</td>
                                         <td>{{$docappoinment->doctor_visit_date }} </td>
                                         <td> <button class="btn btn-success btn-sm"><a
-                                                    href="{{url('user/visited/doctor',$docappoinment->id )}}"
+                                                    href="{{url('doctor/visited',$docappoinment->id )}}"
                                                     style="color:White;">Visited</a></button></td>
+                                        <td> <button class="btn btn-danger btn-sm"><a
+                                            href="{{url('doctor/appoinment/cancel',$docappoinment->id )}}"
+                                            style="color:White;">Cancel</a></button></td>
                                     </tr>
 
                                     @endforeach
                                 </tbody>
                                 @else
-                                <div class="alert alert-danger">Recently You Did't Get Any Doctor Appoinment.... </div>
+                                <div class="alert alert-danger">Recently Patient Did't Get Any Doctor Appoinment.... </div>
                                 @endif
 
                             </table>

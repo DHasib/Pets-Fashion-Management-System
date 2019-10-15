@@ -42,7 +42,7 @@
                             <th>Title</th>
                             <th>Content</th>
                             <th>Image</th>
-                            <th>Status</th>
+                            <th>Publish Blogs</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -58,7 +58,7 @@
                                               <td>{{ $post->blog_title }}</td>
                                               <td>{{ str_limit($post->blog_content,89) }}<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Read More</button></td>
                                               <td><img src="{{ url($post->blog_image) }}" class="img-rounded" style="width:80px; height:50px;"></td>
-                                              <td><button class="btn btn-success btn-sm" ><a href="{{url('admin/active/'.$post->id)}}" style="color:White;">Panding</a></button> </td>
+                                              <td><button class="btn btn-success btn-sm" ><a href="{{url('admin/active/'.$post->id)}}" style="color:White;">Approved </a></button> </td>
                                               
                                           </tr>
                                           <!-- Start Modal -->

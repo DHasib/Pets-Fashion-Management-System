@@ -24,7 +24,7 @@
                 <section class="col-md-12">
                     <br>
                     <div class="panel-heading pnlheading">
-                        <h4>Make an Doctor Appoinment </h4>
+                        <h4>Doctor Appoinment </h4>
                     </div>
                     <div class="calculate scroll"><br><br>
 

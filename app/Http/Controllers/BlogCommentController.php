@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\BlogPost;
 use App\User;
@@ -40,12 +41,26 @@ class BlogCommentController extends Controller
 
         $Comment = BlogComment::find($id);
 
+          if($Comment){
+              if($Comment->user_id == Auth::id()){
 
-            $Comment->delete();
+                $Comment->delete();
 
-            Session::flash('success', ' succesfully deleted the Comment.');
+                Session::flash('success', ' succesfully deleted the Comment.');
+    
+                return redirect()->back();
+              }
+              else{
+                Session::flash('error', ' You do not have permission to Deleted other user Comment.');
+                return redirect()->back();
+              }
+          }else{
+
+            Session::flash('error', ' Invailed Order.');
 
             return redirect()->back();
+         }
+          
      
 
 

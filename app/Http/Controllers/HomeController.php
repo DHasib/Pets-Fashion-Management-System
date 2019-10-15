@@ -13,7 +13,6 @@ use Auth;
 use App\Category;
 use App\LikeBlog;
 use Session;
-use App\DoctorAppoinment;
 
 use App\BlogComment;
 use Validator;
@@ -277,42 +276,7 @@ class HomeController extends Controller
                                                 ->with('discountProduct',  Product::all())
                                                 ->with('discountPet',      Pet::all());
     }
-//To Insert Doctor Appoinment.............................................................................
-    public function storeAppoinment(Request $request){
-       
-        $validate_data =  Validator::make($request->all(),[
 
-            "category_id"      =>"required|integer", 
-            "pet_problem"      =>"required|string|min:50|max:500",
-            "pet_p_n_date"     =>"required|date",
-            "pet_age"          =>"required|string",
-            "doctor_v_date"    =>"required|date",
-          
-           ])->validate();
-
-          if( strtotime($request->pet_p_n_date) > strtotime('now'))
-          {
-              session()->flash("error", "You can't select future date to noticed pet problen !! please Select Valid Date");
-              return redirect()->back();
-          }
-          if( strtotime($request->doctor_v_date) < strtotime('now'))
-          {
-              session()->flash("error", "You can't select Previous date to Visite Doctor !! please Select Valid Date");
-              return redirect()->back();
-          }
-
-          $store_appoinment  =  DoctorAppoinment::create([
-              'category_id'           => $request->category_id,
-              'pet_problem'           => $request->pet_problem,
-              'problem_notice_date'   => $request->pet_p_n_date,
-              'pet_age'               => $request->pet_age,
-              'doctor_visit_date'     => $request->doctor_v_date,
-              'user_id'               => Auth::id()
-
-           ]);
-                   session::flash("success", "Sucessfully Get Doctor Appoinment Please Check Your Profile for More Details");
-                   return redirect()->back();
-    }
     
 
 //Pet Keeping cost index.................................................
