@@ -35,8 +35,13 @@
                         </div>
                         <form class="example" action="{{url('products/search')}}" method="post">
                             {{csrf_field()}}
-                            <input type="text" placeholder="Search.." name="search_products">
+                            <input type="text" placeholder="Search.." name="search_products" class="list-group-item {{ $errors->has('search_products') ? 'has-error' : '' }}">
                             <button type="submit"><i class="fa fa-search"></i></button>
+                            @if ($errors->has('search_products'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('search_products') }}</strong>
+                            </span>
+                         @endif
                         </form><br>
                     </div>
                 </div><!-- End Sidebar Column -->

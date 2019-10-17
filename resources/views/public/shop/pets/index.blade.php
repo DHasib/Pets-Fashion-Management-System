@@ -34,11 +34,16 @@
                         <div class="panel-heading text-center pnlheading">
                             <h6>Search Pet By Name/Title</h6>
                         </div>
-                        <form class="example" action="{{url('pets/search')}}" method="post">
+                        <form class="example" action="{{url('pets/search')}}" method="POST">
                             {{csrf_field()}}
-                            <input type="text" placeholder="Search.." name="search_pets">
+                            <input type="text" placeholder="Search.." name="search_pets" class="list-group-item {{ $errors->has('search_pets') ? 'has-error' : '' }}">
                             <button type="submit"><i class="fa fa-search"></i></button>
-                        </form><br><br><br><br>
+                            @if ($errors->has('search_pets'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('search_pets') }}</strong>
+                            </span>
+                         @endif
+                        </form><br> <br><br><br>
                     </div>
                 </div><!-- End Sidebar Column -->
                 <!-- Start Content Column -->

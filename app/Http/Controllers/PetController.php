@@ -185,25 +185,30 @@ class PetController extends Controller
                     'search'  => "required|string", 
 
                 ])->validate();
+            
+                        $search = $request->search;
 
-                    $search = $request->search;
+                        if ($search != NULL) 
+                        {
+                            $pets = Pet::where('title','LIKE', '%'.$search.'%')
+                                            ->get(); 
 
-                    if ($search == NULL) 
-                    {
-                    return view("admin/shop/pets/index")->with('pets',       Pet::all())
-                                                        ->with('Categories', Category::all())
-                                                        ->with('authUser',   Auth::user());
-                    } 
-                    else 
-                    {
-                        $pets = Pet::where('title','LIKE', '%'.$search.'%')
-                                        ->get(); 
+                                    
+                            return view('admin/shop/pets/index')->with('pets',        $pets)
+                                                                ->with('Categories',  Category::all())
+                                                                ->with('authUser',    Auth::user());
 
-                                
-                        return view('admin/shop/pets/index')->with('pets',        $pets)
-                                                            ->with('Categories',  Category::all())
-                                                            ->with('authUser',    Auth::user());
-                    }
+                      
+                        } 
+                        else 
+                        {
+                            return view("admin/shop/pets/index")->with('pets',       Pet::all())
+                            ->with('Categories', Category::all())
+                            ->with('authUser',   Auth::user());
+                        }
+            
+
+                  
             }
     /**
      * Remove the specified resource from storage.

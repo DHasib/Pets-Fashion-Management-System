@@ -206,7 +206,7 @@
                                     the Hot Offer</a></li>
                             <li><a href="{{url('blog')}}"><i class="fa fa-chevron-right"></i>Our Latest Helpful
                                     Blogs</a></li>
-                            <li><a href="{{url('calculate_pet_keeping_cost')}}"><i
+                            <li><a href="{{url('pet_keeping_cost')}}"><i
                                         class="fa fa-chevron-right"></i>Tools</a></li>
                         </ul>
                     </div>

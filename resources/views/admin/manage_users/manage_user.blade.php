@@ -25,7 +25,7 @@
                             <div class="input-group input-group-sm  {{ $errors->has('search_user') ? 'has-error' : '' }}" style="width: 150px;">
                                <form class="form-inline" action="{{url('admin/search/blog')}}" method="POST">
                                 {{ csrf_field() }}
-                                      <div class="input-group-append">
+                                      <div class="input-group-append {{ $errors->has('search_user') ? 'has-error' : '' }}">
                                           <input type="text" name="search_user" value="{{ old('search_user') }}" class="form-control" size="8" placeholder="Search" >
                                           <button type="submit" class="form-control btn btn-default"><i class="fas fa-search"></i></button>
                                       </div>
