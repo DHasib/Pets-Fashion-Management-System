@@ -48,11 +48,37 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+   @if($user->role == 2)
+   <!-- Doctor-->
+   <div class="panel panel-default">
+        <div class="well well-sm" style="background-color:#f8b81d;">
+            <h4>About</h4>
+        </div>
+        <!-- /.card-header -->
+        <div class="panel-body">
+
+            <p class="text-muted text-justify">
+                <span class="list-group-item"> <b>Graduate</b>: Doctorate, Master</span>
+                <span class="list-group-item"> <b>Undergraduate</b>: Bachelor</span>
+                <span class="list-group-item"> <b>Medical and Health Professions</b>:
+                    <ul>
+                        <li> Clinical Laboratory Science Professions </li>
+                        <li> Communication Disorders Sciences </li>
+                        <li> Health and Fitness </li>
+                        <li> Medical Assisting </li>
+                    </ul>
+                </span>
+                <br>
+            </p>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    @else
 
     <!-- About Me Box -->
     <div class="panel panel-default">
         <div class="well well-sm" style="background-color:#f8b81d;">
-            <h4>About Me</h4>
+            <h4>About</h4>
         </div>
         <!-- /.card-header -->
         <div class="panel-body">
@@ -62,5 +88,6 @@
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
+    @endif
 </div>
 <!-- Menu Top  -->

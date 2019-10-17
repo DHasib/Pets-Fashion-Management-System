@@ -25,10 +25,31 @@
                         <strong>{{ Session::get('error') }}</strong>
                     </div>
                     @endif
+                      <!-- Doctor chamber details -->
+                    <div class="panel-body">
+                      <h3 class="text-center"> Doctor Chember Details</h3><br>
+                      <div class="col-md-6">
+                            <span class="list-group-item"> <b>Location:</b>  Mirpur 32A lal goli gobba tower</span>
+                            <span class="list-group-item"> <b>laboratory:</b> All kinf of Digital Facality Available</span>
+                            <br>
+                      </div>
+                      <div class="col-md-6  pull-right">
+                        <span class="list-group-item"> <b>Fees:</b> 300 taka</span>
+                        <br>
+                    
+                            @if(isset($doctor) && $doctor->count() > 0)
+                                @foreach ($doctor as $dprofile)
+                                    <button class="btn btn-small btn-info"><a href="{{url('selected/user/profile',$dprofile->id )}}">Doctor Profile</a></button>
+                                @endforeach
+                            @endif
+                  
+                    </div>
+                    </div>
+                    <hr>
 
                     @if(auth::user()->role == 0 )
                     <div class="panel-body">
-                        <!-- Recent Order Details -->
+                        <!-- Recent Get Doctgor Appoinment Details -->
                         <div class="well well-sm" style="background-color:#f8b81d;">
                             <h5>Recent Doctor Appoinment </h5>
                         </div>
@@ -71,7 +92,7 @@
                             </table>
                         </div><br>
                         <hr><br>
-                        <!-- Past Order Details -->
+                        <!-- Past Doctor appoinment  Details -->
 
 
                         <div class="well well-sm" style="background-color:deepskyblue;">
@@ -115,7 +136,7 @@
                     </div> <!-- panel body -->
                     @else
                     <div class="panel-body">
-                        <!-- Recent Order Details -->
+                        <!-- Doctor Paitent List -->
                         <div class="well well-sm" style="background-color:#f8b81d;">
                             <h5> Patient Appoinment List</h5>
                         </div>

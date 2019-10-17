@@ -271,10 +271,12 @@ class HomeController extends Controller
 
 //To show Doctor Appoinment Form..........................................................................
     public function doctor_appoinment(){
+
         return view("doctor/doctor_appoinment")->with('link',              DynamicLinks::all()) 
                                                 ->with('categories',       Category::all())
                                                 ->with('discountProduct',  Product::all())
                                                 ->with('discountPet',      Pet::all());
+                                               
     }
 
     
