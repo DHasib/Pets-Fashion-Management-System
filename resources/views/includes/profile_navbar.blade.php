@@ -35,7 +35,7 @@
                     
                         <li class="nav-item"><a class="nav-link" href="{{url('user/order/details')}}" >My Orders </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('user/read/books')}}" >Read Books</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@if (Auth::User()->role == 2) {{url('doctor/appoinment/show')}} @else {{url('user/doctor/appoinment')}} @endif" >Doctor Appoinment Details</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@if (Auth::User() && Auth::User()->role == 2) {{url('doctor/appoinment/show')}} @else {{url('user/doctor/appoinment')}} @endif" >Doctor Appoinment Details</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

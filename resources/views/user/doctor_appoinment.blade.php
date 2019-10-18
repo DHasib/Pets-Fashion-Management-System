@@ -47,7 +47,7 @@
                     </div>
                     <hr>
 
-                    @if(auth::user()->role == 0 )
+                    @if(Auth::User &&  auth::user()->role == 0 )
                     <div class="panel-body">
                         <!-- Recent Get Doctgor Appoinment Details -->
                         <div class="well well-sm" style="background-color:#f8b81d;">

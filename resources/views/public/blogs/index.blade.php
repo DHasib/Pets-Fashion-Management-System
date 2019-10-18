@@ -80,7 +80,7 @@
                                     <span class="category">
                                         <i class="seoicon-tags"></i>
                                         <a
-                                            href="{{url('category',$first_post->category->id)}}">{{ $first_post->category->name }}</a>
+                                            href="{{url('blog/category',$first_post->category->id)}}">{{ $first_post->category->name }}</a>
                                     </span>
 
                                     <span class="post__comments text-uppercase">
@@ -156,7 +156,7 @@
 
                                     <span class="category">
                                         <i class="seoicon-tags"></i>
-                                        <a href="#">{{ $second_post->category->name }}</a>
+                                        <a href="{{url('blog/category',$second_post->category->id)}}">{{ $second_post->category->name }}</a>
                                     </span>
 
                                     <span class="post__comments text-uppercase">
@@ -231,7 +231,7 @@
 
                                     <span class="category">
                                         <i class="seoicon-tags"></i>
-                                        <a href="#">{{ $third_post->category->name }}</a>
+                                        <a href="{{url('blog/category',$third_post->category->id)}}">{{ $third_post->category->name }}</a>
                                     </span>
 
                                     <span class="post__comments text-uppercase">
