@@ -111,11 +111,11 @@
                                     </span>
                                     @endif
                                 </div>
-                                @if(auth::user())
+                                @if(auth::user() && Auth::user()->role == 0)
                                 <button class="btn btn-warning btn-sm btn-middle" type="submit">Get Appoinment
                                 </button><br><br><br><br>
                                 @else
-                                <div class="btn btn-danger"><a href="{{url('login')}}">Must Log in to Get Doctor Appoinment</a></div>
+                                <div class="btn btn-danger"><a href="{{url('login')}}">Must Log in As a User to Get Doctor Appoinment</a></div>
                                 @endif
                             </div>
                             <!-- for diveded section1 -->
