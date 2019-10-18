@@ -280,7 +280,7 @@
               <a href="{{ url('admin/category/show') }}" class="nav-link">
                 <i class="nav-icon fas fa-list-alt"></i>
                 <p>
-                  Pet Category
+                Category
                 </p>
               </a>
             </li>

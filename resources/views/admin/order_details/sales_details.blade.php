@@ -21,7 +21,8 @@
 
                       <div class="card-tools">
                           <div class="btn btn-primary float-right"><a href="{{ url('admin/salse/report' ) }}" style="color:White;">Refresh</a></div>                  
-                          <div class="btn btn-danger float-right" style="margin-left:20px; margin-right:20px;"><a href="{{ url('admin/sales/pdf/convert') }}" style="color:White;">PDF Download</a></div>                  
+                          <div class="btn btn-danger float-right" style="margin-left:20px; margin-right:20px;"><a href="{{ url('admin/sales/pdf/convert') }}" style="color:White;">PDF Invoice  <i class="fa fa-download" aria-hidden="true"></i></a>  
+                          </div>                  
                      
                         </div>
 
