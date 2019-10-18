@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\DoctorAppoinment;
+use Validator;
 
 use Session;
 use App\DynamicLinks;
