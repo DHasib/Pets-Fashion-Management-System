@@ -208,6 +208,8 @@
                                     Blogs</a></li>
                             <li><a href="{{url('pet_keeping_cost')}}"><i
                                         class="fa fa-chevron-right"></i>Tools</a></li>
+                            <li><a href="{{url('doctor_appoinment')}}"><i
+                                            class="fa fa-chevron-right"></i>Get Doctor Appoinment</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-6 footer_about">
