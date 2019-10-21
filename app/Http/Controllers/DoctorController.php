@@ -17,9 +17,7 @@ class DoctorController extends Controller
     
 //Show User Get Doctor Appoinment Details....................................................................................................................
 public function showDoctorAppoinment(){
-
-
-      
+    
     return view("user/doctor_appoinment")->with('user',                 Auth::user())
                                          ->with('recent_appoinments',   DoctorAppoinment::where('user_id', Auth::user()->id)->where('status', 0)->get())
                                          ->with('link',                 DynamicLinks::all())

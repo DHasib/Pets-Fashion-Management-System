@@ -21,7 +21,7 @@ use Session;
 class adminController extends Controller
 { 
     //count Panding Order (Same user Multiple order count)........... ...............................
-            public function  total_user_order() {
+     public function  total_user_order() {
         
         $total_user_order = DB::table('order_lists')
                         // ->join('order_details', 'order_lists.id', '=', 'order_details.order_list_id')
@@ -63,17 +63,17 @@ class adminController extends Controller
             }
     
  //Show Admin Profile...................................................................................................
-    public function showAdminProfile()
+    protected function showAdminProfile()
     {
-        return view("admin/profile/profile")->with('user', Auth::user())
-                                            ->with('authUser', Auth::user())
-                                            ->with('posts', BlogPost::where('user_id', Auth::user()->id)->get())
+        return view("admin/profile/profile")->with('user',                   Auth::user())
+                                            ->with('authUser',               Auth::user())
+                                            ->with('posts',                  BlogPost::where('user_id', Auth::user()->id)->get())
                                             ->with('panding_order',          $this->total_user_order()->count())
                                             ->with('total_panding_pet',      $this->total_pet_order())
                                             ->with('total_panding_product',  $this->total_product_order()); 
     }
 //Show Admin Profile..........................................................................................................
-     public function settingAdminProfile()
+  protected function settingAdminProfile()
      {
          return view("admin/profile/setting")->with('user', Auth::user())
                                              ->with('authUser', Auth::user())
@@ -82,7 +82,7 @@ class adminController extends Controller
                                             ->with('total_panding_product',  $this->total_product_order()); 
      }
 //Show Admin Dashboard............................................................................................................
-    public function showAdminDashboard() 
+  protected function showAdminDashboard() 
     {
 
         return view("admin/profile/dashboard")->with('posts_count',          BlogPost::all()->count())
@@ -100,7 +100,7 @@ class adminController extends Controller
                                             ->with('total_panding_product',  $this->total_product_order());
     } 
 //Panding Blogs list...............................................................................................................................
-        public function showPanding()
+   protected function showPanding()
         {
             $authUser = Auth::user(); 
             $panding = BlogPost::all();
@@ -112,7 +112,7 @@ class adminController extends Controller
 
         }
 //Astive user Blog....................................................................
-        public function active($id)
+    protected function active($id)
         {
             $status = BlogPost::find($id);
 
@@ -130,7 +130,7 @@ class adminController extends Controller
         }
 
  //Show User Management Form............................................................................................................................
-            public function showUserDetails()
+            protected function showUserDetails()
             {
                 $users = User::all();
                 $authUser = Auth::user(); 
