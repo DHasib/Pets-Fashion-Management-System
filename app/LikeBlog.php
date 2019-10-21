@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class LikeBlog extends Model
 {
-    protected $fillable = ['blog_id','user_id'];
+    protected $fillable = [
+        'blog_id','user_id'
+    ];
 
     public function BlogPost()
     {

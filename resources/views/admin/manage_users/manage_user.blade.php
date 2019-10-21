@@ -23,7 +23,7 @@
                         
                           <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/users/table')}}" style="color:White;">Refresh</a></div>
                             <div class="input-group input-group-sm  {{ $errors->has('search_user') ? 'has-error' : '' }}" style="width: 150px;">
-                               <form class="form-inline" action="{{url('admin/search/blog')}}" method="POST">
+                               <form class="form-inline" action="{{url('admin/users/table')}}" method="POST">
                                 {{ csrf_field() }}
                                       <div class="input-group-append {{ $errors->has('search_user') ? 'has-error' : '' }}">
                                           <input type="text" name="search_user" value="{{ old('search_user') }}" class="form-control" size="8" placeholder="Search" >

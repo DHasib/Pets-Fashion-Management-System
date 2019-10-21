@@ -24,7 +24,7 @@
                         
                           <div class="btn btn-primary float-right" style="margin-left:20px; margin-right:20px;"><a href="{{url('admin/pet')}}" style="color:White;">Refresh</a></div>
                             <div class="input-group input-group-sm  {{ $errors->has('search') ? 'has-error' : '' }}" style="width: 150px;">
-                               <form class="form-inline" action="{{url('admin/pet/search')}}" method="POST">
+                               <form class="form-inline" action="{{url('admin/pet')}}" method="POST">
                                 {{ csrf_field() }}
                                       <div class="input-group-append">
                                           <input type="text" name="search" value="{{ old('search') }}" class="form-control" size="8" placeholder="Search" >

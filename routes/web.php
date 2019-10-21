@@ -115,12 +115,16 @@
                       Route::get("add/book", "BookController@index");
                       Route::POST("store/book", "BookController@store");
                       Route::get("book/list", "BookController@list");
-                      Route::post("search/book", "BookController@search");
+                      Route::post("book/list", "BookController@search");
 
                     
                 //Post Pets CRUD Functionaly using Resource Controller......................................
                         Route::Resource("pet", "PetController");
-                        Route::POST("pet/search", "PetController@search");
+                        Route::POST("pet", "PetController@search");
+
+                //Post Product CRUD Functionaly using Resource Controller.....................................
+                        Route::Resource("product", "ProductController");
+                        Route::POST("product", "ProductController@search");
 
                 //Order Detail  Functionaly using OrderDetail Controller....................................
                         Route::get("order/panding", "OrderDetailController@pandingOrder");
@@ -131,13 +135,9 @@
                         Route::get("salse/report", "OrderDetailController@salseReport");
                         Route::get("sales/pdf/convert", "DynamicPDFController@pdf");
                         
-                //Post Product CRUD Functionaly using Resource Controller.....................................
-                        Route::Resource("product", "ProductController");
-                        Route::POST("product/search", "ProductController@search");
-
                     //Post Blog CRUD Functionaly using Resource Controller....................................
                         Route::Resource("blogPost", "BlogPostsController");
-                        Route::post("search/blog", "BlogPostsController@search");
+                        Route::post("blogPost", "BlogPostsController@search");
 
                     //Trash Blogs Controller...................................................................
                         Route::get("trash/{id}", "trashController@destroy");
@@ -184,7 +184,8 @@
                         Route::get("users/table", "adminController@showUserDetails");
                         Route::post("user/blocked", "adminController@blockedUser");
                         Route::post("user/unblocked", "adminController@unBlockedUser");
-                        Route::post("search/user", "adminController@search");
+                        //search user.......................................................
+                        Route::post("users/table", "adminController@search");
 
                     //Top Header setting Work....................................................................
                         Route::get("topHeader/show", "DynamicHomepageController@showTopHeader");

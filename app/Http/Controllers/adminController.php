@@ -229,10 +229,10 @@ class adminController extends Controller
 //Search User by admin................................................................................................................................
         protected function search(Request $request)
         {
-            $authUser = Auth::user(); 
+            $authUser                =  Auth::user(); 
             $panding_order           =  $this->total_user_order()->count();
-            $total_panding_pet       =    $this->total_pet_order();
-            $total_panding_product   = $this->total_product_order();
+            $total_panding_pet       =  $this->total_pet_order();
+            $total_panding_product   =  $this->total_product_order();
 
             $validate_data =  Validator::make($request->all(),[
 

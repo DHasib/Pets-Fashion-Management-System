@@ -20,11 +20,9 @@ class ProductController extends Controller
     public function index()
     {
         
-
         return view('admin/shop/products/index')->with('products',     Product::all())
                                                 ->with('Categories',   Category::all())
                                                 ->with('authUser',     Auth::user());
-
     }
 
     /**
