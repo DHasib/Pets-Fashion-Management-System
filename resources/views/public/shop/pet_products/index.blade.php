@@ -33,7 +33,7 @@
                         <div class="panel-heading text-center pnlheading">
                             <h6>Search Product by Name</h6>
                         </div>
-                        <form class="example" action="{{url('products/search')}}" method="post">
+                        <form class="example" action="{{url('products')}}" method="post">
                             {{csrf_field()}}
                             <input type="text" placeholder="Search.." name="search_products" class="list-group-item {{ $errors->has('search_products') ? 'has-error' : '' }}">
                             <button type="submit"><i class="fa fa-search"></i></button>

@@ -28,14 +28,14 @@
                     Route::get("about/pet/{slug}", "HomeController@aboutPet");
                     Route::get("pets/category/{id}", "HomeController@petsCategory");
                     //Search Pet...............................................
-                    Route::post("pets/search", "HomeController@searchPets");
+                    Route::post("pets", "HomeController@searchPets");
 
             //Publicly Produstc Show in Shop..................................................................
                     Route::get("products", "HomeController@productIndex");
                     Route::get("about/product/{slug}", "HomeController@aboutProduct");
                     Route::get("products/category/{id}", "HomeController@productsCategory");
                     //Search Product..................................................
-                    Route::post("products/search", "HomeController@searchProducts");
+                    Route::post("products", "HomeController@searchProducts");
 
             //Publicly Order Items and store into cart and show Cart Order Dettails..........................
                     Route::get("pet/add/cart/{pet_id}", "ShoppingController@petAddToCart");
