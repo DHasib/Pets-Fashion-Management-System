@@ -87,7 +87,7 @@ class adminController extends Controller
 
         return view("admin/profile/dashboard")->with('posts_count',          BlogPost::all()->count())
                                             ->with('panding_count',          BlogPost::where('status', 1)->get()->count())
-                                            ->with('trashed_count',          BlogPost::onlyTrashed()->get()->count())
+                                            ->with('trashed_count',          BlogPost::where('user_id', 1)->onlyTrashed()->get()->count())
                                             ->with('users_count',            User::all()->count())
                                             ->with('categories_count',       Category::all()->count())
                                             ->with('pets_count',             Pet::all()->count())

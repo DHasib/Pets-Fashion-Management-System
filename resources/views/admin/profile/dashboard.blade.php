@@ -86,7 +86,7 @@
                         <div class="inner">
                             <h3>{{$trashed_count}}</h3>
     
-                            <p>Total Trashed</p>
+                            <p>Total Trashed Blog </p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
