@@ -69,7 +69,7 @@
                                      </td>
                                   </tr>
                           @empty
-                              <div class="alert alert-danger">No Order PAnding Yet!! </div>
+                              <div class="alert alert-danger">No Items sell Yet!! </div>
                           @endforelse
                       
                           

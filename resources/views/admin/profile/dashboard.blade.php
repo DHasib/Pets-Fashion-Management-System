@@ -136,7 +136,7 @@
                         <div class="inner">
                             <h3>{{$panding_count}}</h3>
     
-                            <p>Total Panding Blog</p>
+                            <p>Total Pending Blog</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
