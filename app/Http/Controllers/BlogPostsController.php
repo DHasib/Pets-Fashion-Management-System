@@ -62,7 +62,7 @@ class BlogPostsController extends Controller
 
         $validate_data =  Validator::make($request->all(),[
 
-            "blog_title"              =>"required|string|min:4|max:30", 
+            "blog_title"              =>"required|string|min:4|max:100", 
             "category_id"             =>"required|integer",
             "blog_content"            =>"required|string|min:50",
             "blog_image"              =>"required|image|mimes:jpeg,jpg|max:2050",

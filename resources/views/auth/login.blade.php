@@ -17,7 +17,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4>{{ __('Login') }} </h4>
+                                <h4>User {{ __('Login') }} Form </h4>
                             </div>
                             <div class="panel-body">
                                     @if (session('message'))  
@@ -58,7 +58,7 @@
 
                                         </div>
                                     </div>
-
+                                         <!-- Comment The remember me Code
                                     <div class="form-group row">
                                                 <div class="form-check col-md-offset-4">
                                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -67,7 +67,7 @@
                                                         {{ __('Remember Me') }}
                                                     </label>
                                                 </div>
-                                        </div>
+                                        </div>-->
 
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-success btn-lg btn-block">

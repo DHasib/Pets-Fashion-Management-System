@@ -24,6 +24,8 @@
                                     <div class="panel-body">
                                         <form action="{{ route('register') }}" method="POST">
                                             @csrf
+
+                                            <!-- Name Field-->
                                             <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label for="name" class="col-md-4 text-right">{{ __('Name') }}</label>
                                                 <div class="col-md-6">
@@ -37,7 +39,7 @@
 
                                                 </div>
                                             </div>
-
+                                         <!-- Email Field-->
                                             <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
                                                 <label for="email_address" class="col-md-4 text-right">{{ __('E-Mail Address') }}</label>
                                                 <div class="col-md-6">
@@ -51,15 +53,15 @@
                                                             @enderror
                                                 </div>
                                             </div>
-
+                                             <!-- Gender Field-->
                                             <div class="form-group row {{ $errors->has('gender') ? ' has-error' : '' }}">
                                                     <label for="gender" class="col-md-4 text-right">Select Your Gender</label>
                                                 <div class="col-md-6">
                                                     <select name="gender" class="form-control" >
-                                                        <option value="" selected>--Select--</option>
+                                                        <option value="{{ old('gender') }}" selected disabled>--Select--</option>
                                                         <option value="male">Male</option>
                                                         <option value="female">Female</option>
-                                                    </select>
+                                                    </select><br>
                                 
                                                      <!-- For Error Messages Show  -->
                                                      @error('gender')
@@ -70,7 +72,7 @@
                                                    
                                                 </div>
                                             </div>
-
+                                             <!-- PhoneNum Field-->
                                             <div class="form-group row {{ $errors->has('PhoneNum') ? ' has-error' : '' }}">
                                                 <label for="PhoneNum" class="col-md-4 text-right">{{ __('Phone Number') }}</label>
                                                 <div class="col-md-6">
@@ -86,6 +88,7 @@
                                                 </div>
                                             </div>
 
+                                             <!-- Location Field-->
                                             <div class="form-group row {{ $errors->has('location') ? ' has-error' : '' }}">
                                                 <label for="location" class="col-md-4 text-right">{{ __('Location') }}</label>
                                                 <div class="col-md-6">
@@ -100,7 +103,7 @@
 
                                                 </div>
                                             </div>
-
+                                             <!-- Password Field-->
                                             <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
                                                 <label for="password" class="col-md-4 text-right">{{ __('Password') }}</label>
                                                 <div class="col-md-6">
@@ -112,10 +115,10 @@
                                                                         <strong class="text-danger">{{ $message }}</strong>
                                                                     </span>
                                                                 @enderror
-
                                                 </div>
                                             </div>
 
+                                             <!-- Confirm Password Field-->
                                             <div class="form-group row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                                 <label for="password_confirmation" class="col-md-4 text-right">Confirm Password</label>
                                                 <div class="col-md-6">

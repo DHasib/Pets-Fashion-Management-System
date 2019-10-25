@@ -31,7 +31,7 @@
                         <th style="width:40%">Items Images and Title</th>
                         <th style="width:12%">Price</th>
                         <th style="width:14%">Quantity</th>
-                        <th style="width:22%" class="text-center">Subtotal</th>
+                        <th style="width:22%" class="text-center">Total</th>
                         <th style="width:12%">Action</th>
                     </tr>
                 </thead>
@@ -98,7 +98,7 @@
                         <td><a href="{{url('pets')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                         </td>
                         <td colspan="2" class="hidden-xs"></td>
-                        <td ><strong>Total Cost: {{ number_format(Cart::instance('pet')->Total() + Cart::instance('product')->Total() ) }} </strong></td>
+                        <td ><strong>Sub Total : {{ number_format(Cart::instance('pet')->Total() + Cart::instance('product')->Total() ) }} </strong></td>
                         @if(Auth::user())
                         <td>
                             <span style="float: right;">

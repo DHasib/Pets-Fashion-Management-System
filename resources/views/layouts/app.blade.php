@@ -110,7 +110,7 @@
                                     <li><a href="{{ url('doctor_appoinment') }}">Get Doctor Appoinment</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ url('/blog') }}">Blog</a></li>
+                            <li><a href="{{ url('/blog') }}">Blogs</a></li>
                             <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
 
                             <li class="dropdown submenu">
