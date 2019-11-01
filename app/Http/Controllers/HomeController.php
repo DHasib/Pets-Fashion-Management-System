@@ -236,16 +236,18 @@ class HomeController extends Controller
     //product Search By anyone using title...........................................................................................................
             protected function searchProducts(Request $request)
             {
-            $categories = Category::all();
-            $link = DynamicLinks::all();
-            $discountProduct = Product::all();
-            $discountPet = Pet::all();
+           
 
             $validate_data =  Validator::make($request->all(),[
 
                 'search_products'  => "required|string", 
 
             ])->validate();
+
+                $categories = Category::all();
+                $link = DynamicLinks::all();
+                $discountProduct = Product::all();
+                $discountPet = Pet::all();
 
                 $search_products = $request->search_products;
 

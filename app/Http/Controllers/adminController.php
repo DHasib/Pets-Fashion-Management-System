@@ -177,7 +177,7 @@ class adminController extends Controller
                         $is_saved = $UserDetails->save();
 
                             if ($is_saved){
-                                session()->flash("seccess", "Sucessfully Blocked User");
+                                session()->flash("success", "Sucessfully Blocked User");
                                 return view("admin/manage_users/manage_user", compact("users" ,"authUser","panding_order","total_panding_pet","total_panding_product")); 
                             }else{
                                 session()->flash("error", "Failed to Blocked User");
